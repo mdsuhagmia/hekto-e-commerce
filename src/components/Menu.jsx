@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from './Container'
 import logo from '../assets/logo.png'
 import { NavLink } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
 
 const Menu = () => {
+  let [isSticky, setIsSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 130) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <nav className='bg-white py-4'>
+    <nav className={`${isSticky ? "bg-[#f7eeee] fixed top-0 left-0 w-full z-[99999] transition-all duration-200 ease-in-out py-3" : "bg-white w-full py-4" }`}>
       <Container>
-        <div className='flex justify-between items-center'>
+        <div className={`flex justify-between items-center`}>
           <div>
             <img src={logo} alt="" />
           </div>
@@ -55,9 +68,9 @@ const Menu = () => {
           <div className='flex items-center'>
             <div className='bg-[#D9D9D9] rounded-l-[5px]'>
               <input type="search" 
-                className='h-[40px] outline-0 px-4' />
+                className='h-[35px] outline-0 px-4' />
             </div>
-            <div className='bg-[#FB2E86] h-[40px] px-2 rounded-r-[5px] flex items-center cursor-pointer'>
+            <div className='bg-[#FB2E86] h-[35px] px-2 rounded-r-[5px] flex items-center cursor-pointer'>
               <FiSearch className='text-white text-xl'/>
             </div>
           </div>

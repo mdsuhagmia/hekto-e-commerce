@@ -10,7 +10,7 @@ const RootLayout = () => {
   let [showArrow, setShowArrow] = useState(false)
     useEffect(()=>{
      let handleScrollTo = ()=>{
-      if(window.scrollY > 70){
+      if(window.scrollY > 130){
         setShowArrow(true)
       }else{
         setShowArrow(false)
@@ -31,7 +31,7 @@ const RootLayout = () => {
       <FooterDown/>
       {showArrow && (
       <div className='fixed bottom-6 right-[4px]'>
-        <FaAngleDoubleUp onClick={handleScroll} className='bg-blue-500 p-2 rounded-full cursor-pointer text-4xl text-white' />
+        <FaAngleDoubleUp onClick={handleScroll} className='bg-blue-500 p-2 rounded-full cursor-pointer text-4xl text-white hover:scale-110 hover:bg-blue-600 transition-transform duration-300 ease-in-out' />
       </div>
       )}
     </div>
