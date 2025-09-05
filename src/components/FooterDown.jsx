@@ -1,0 +1,30 @@
+import React from 'react'
+import Container from './Container'
+import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa'
+
+const FooterDown = () => {
+  return (
+    <footer className='bg-[#E7E4F8] py-3'>
+      <Container>
+        <div className='flex justify-between items-center px-20'>
+          <div>
+            <p className='text-[16px] text-[#9DA0AE] font-lato font-semibold'>©Webecy - All Rights Reserved</p>
+          </div>
+          <div className='flex items-center gap-x-3 text-white'>
+            <div className='bg-[#151875] p-1 rounded-full cursor-pointer'>
+              <FaFacebookF className='' />
+            </div>
+            <div className='bg-[#151875] p-1 rounded-full cursor-pointer'>
+              <FaInstagram />
+            </div>
+            <div className='bg-[#151875] p-1 rounded-full cursor-pointer'>
+              <FaTwitter />
+            </div>
+          </div>
+        </div>
+      </Container>
+    </footer>
+  )
+}
+
+export default FooterDown

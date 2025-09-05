@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+@theme{
+  --font-josefin: "Josefin Sans", sans-serif;
+  --font-lato: "Lato", sans-serif;
+}
+
+.ban_slick .slick-dots{
+  position: absolute;
+  top: 55%;
+  left: 10%;
+}
+.ban_slick .slick-dots li button{
+  color: transparent;
+}
+.ban_slick .slick-dots li.slick-active{
+  background-color: red;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+
+.tc_slick .slick-dots{
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+.tc_slick .slick-dots li button{
+  color: transparent;
+  border: 1px solid #ff0000;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}
+.tc_slick .slick-dots li.slick-active{
+  background-color: red;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  margin-bottom: 15px
+}
