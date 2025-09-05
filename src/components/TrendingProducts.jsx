@@ -51,7 +51,7 @@ const TrendingProducts = () => {
             <div className='px-2'>
               <div className='bg-[#ffffff20] min-h-[360px] w-full rounded-[5px] shadow-md border-1 border-[#0000001f] mb-8 mt-4'>
                   <div className='bg-gray-100 w-full flex justify-center relative group'>
-                <Link to={"/products"} className=''>
+                <Link to={"/products"} target='_top' className=''>
                     <img src={item.image_path} alt="" className='w-full' />
                 </Link>
                     <div className='flex gap-x-6 absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 bg-[#f8efef] w-full py-4 justify-center'>
