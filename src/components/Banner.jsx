@@ -10,23 +10,26 @@ const Banner = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 3000
   };
   return (
     <section>
       <Slider {...settings} className='ban_slick'>
         <div>
-          <Link>
+          <Link to={"/products"}>
             <img src={bg} alt="" />
           </Link>
         </div>
         <div>
-          <Link>
+          <Link to={"/products"}>
             <img src={bg} alt="" />
           </Link>
         </div>
         <div>
-          <Link>
+          <Link to={"/products"}>
             <img src={bg} alt="" />
           </Link>
         </div>

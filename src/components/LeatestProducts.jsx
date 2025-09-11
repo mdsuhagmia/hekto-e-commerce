@@ -17,12 +17,12 @@ const LeatestProducts = () => {
         <h2 className='text-center text-[#151875] font-bold font-lato pb-4 text-3xl'>Leatest Products</h2>
         <div className=''>
           <ul className='flex gap-x-4 items-center justify-center pb-12'>
-            <li className='text-[#151875] text-[18px] font-lato font-medium cursor-pointer'>New Arrival</li>
-            <li className='text-[#151875] text-[18px] font-lato font-medium cursor-pointer'>Best Seller</li>
-            <li className='text-[#151875] text-[18px] font-lato font-medium cursor-pointer'>Featured</li>
-            <li className='text-[#151875] text-[18px] font-lato font-medium cursor-pointer'>Special Offer</li>
+            <li className='text-[#151875] text-[12px] sm:text-[16px] md:text-[18px] font-lato font-medium cursor-pointer'>New Arrival</li>
+            <li className='text-[#151875] text-[12px] sm:text-[16px] md:text-[18px] font-lato font-medium cursor-pointer'>Best Seller</li>
+            <li className='text-[#151875] text-[12px] sm:text-[16px] md:text-[18px] font-lato font-medium cursor-pointer'>Featured</li>
+            <li className='text-[#151875] text-[12px] sm:text-[16px] md:text-[18px] font-lato font-medium cursor-pointer'>Special Offer</li>
           </ul>
-          <div className='grid grid-cols-3 gap-x-4 pb-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-6 pb-4'>
             <div className='bg-white rounded-[5px] shadow-lg mb-12'>
               <div className='bg-[#F7F7F7] py-10 flex justify-center relative group'>
                 <img src={lea1} alt="" />

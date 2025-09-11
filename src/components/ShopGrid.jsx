@@ -7,7 +7,7 @@ const ShopGrid = () => {
     <section className='py-10 bg-[#F6F5FF]'>
       <Container>
         <div>
-          <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-1'>Shop Grid Default</h2>
+          <h2 className='text-[#151875] text-[30px] md:text-[35px] font-bold font-josefin pb-1'>Shop Grid Default</h2>
           <ul className='flex items-center gap-x-1'>
             <li>
               <NavLink to={"/"}

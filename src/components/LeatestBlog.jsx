@@ -16,7 +16,7 @@ const LeatestBlog = () => {
       <Container>
         <div>
           <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-8 pt-12 text-center'>Leatest Blog</h2>
-          <div className='grid grid-cols-3 gap-x-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4'>
             <div className=''>
               <div>
                 <img src={lb1} alt="" className='w-full' />
@@ -67,7 +67,7 @@ const LeatestBlog = () => {
               </button>
               </div>
             </div>
-            <div className=''>
+            <div className='mx-auto sm:col-span-2 lg:col-span-1'>
               <img src={lb3} alt="" className='w-full' />
               <div className='flex items-center gap-x-10'>
                 <div className='flex items-center gap-x-2 py-4 pl-4'>

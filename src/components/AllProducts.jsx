@@ -25,20 +25,20 @@ const AllProducts = () => {
 
   let paginate = (pagiIndex)=>{
     setCurrentPage(pagiIndex + 1)
-    window.scrollTo({top: 0, behavior: 'smooth'})
+    // window.scrollTo({top: 0, behavior: 'smooth'})
   }
   
   let next = ()=>{
     if(currentPage < pageNumber.length){
       setCurrentPage((nIndex)=>nIndex + 1)
-      window.scrollTo({top: 0, behavior: 'smooth'})
+      // window.scrollTo({top: 0, behavior: 'smooth'})
     }
   }
 
   let prev = ()=>{
     if(currentPage > 1){
       setCurrentPage((pIndex)=>pIndex - 1)
-      window.scrollTo({top: 0, behavior: 'smooth'})
+      // window.scrollTo({top: 0, behavior: 'smooth'})
     }
   }
 
@@ -64,12 +64,12 @@ const AllProducts = () => {
         <ShopGrid/>
       <Container>
         <div className='flex items-center justify-between py-12'>
-          <div>
+          <div className='hidden lg:block'>
             <h2 className='text-[#151875] text-[16px] font-bold font-josefin pb-1'>Ecommerce Furniture Item </h2>
             <p className='text-[#8A8FB9] text-[16px] font-medium font-josefin'>About {data.length} results</p>
           </div>
           <div className='flex items-center gap-x-2'>
-            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2'>Per Page:</h2>
+            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2 hidden sm:block'>Per Page:</h2>
             <select name="per-page" id="per-page" className='px-6 py-1 border-2 border-[#00000064] rounded-[5px]'
               onChange={handlePerPage}>
               <option value="12">12</option>
@@ -78,15 +78,15 @@ const AllProducts = () => {
             </select>
           </div>
           <div className='flex items-center gap-x-2'>
-            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2'>Sort By:</h2>
-            <select name="per-page" id="per-page" className='px-2 py-1 border-2 border-[#00000064] rounded-[5px]'>
+            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2 hidden md:block'>Sort By:</h2>
+            <select name="per-page" id="per-page" className='px-2 py-1 border-2 border-[#00000064] rounded-[5px] hidden md:block'>
               <option value="">Price</option>
               <option value="low-to-high">Low To High</option>
               <option value="high-to-low">High To Low</option>
             </select>
           </div>
           <div className='flex items-center gap-x-2'>
-            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2'>Category:</h2>
+            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2 hidden sm:block'>Category:</h2>
             <div className='flex items-center gap-x-2'>
               <select name="category" id="category"
                 className='px-2 py-1 border-2 border-[#00000064] rounded-[5px]'
@@ -99,7 +99,7 @@ const AllProducts = () => {
             </div>
           </div>
           <div className='flex items-center gap-x-2'>
-            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2'>View:</h2>
+            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2 hidden sm:block'>View:</h2>
             <div className='flex items-center gap-x-2'
               onClick={()=>setView(!view)}>
                 {view == true ? <div className="p-1 rounded-[4px] cursor-pointer bg-blue-500 text-white">
@@ -121,7 +121,8 @@ const AllProducts = () => {
           paginate={paginate}
           next={next}
           prev={prev}
-          currentPage={currentPage}/>
+          currentPage={currentPage}
+          showFilter={showFilter}/>
       </Container>
     </section>
   )

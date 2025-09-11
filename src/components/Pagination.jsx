@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Pagination = ({pageNumber, paginate, next, prev, currentPage}) => {
+const Pagination = ({pageNumber, paginate, next, prev, currentPage, showFilter}) => {
   return (
-    <nav aria-label="Page navigation example" className='py-4'>
+    <nav aria-label="Page navigation example" className={`${showFilter.length > 0 ? "hidden" : "py-4" }`}>
       <ul className="inline-flex -space-x-px text-xl">
         <li className='cursor-pointer'
           onClick={prev}>

@@ -4,13 +4,13 @@ import unique from '../assets/unique.png'
 
 const Unique = () => {
   return (
-    <section className='bg-[#F1F0FF] py-8 mb-3'>
+    <section className='bg-[#F1F0FF] py-8 mb-3 hidden lg:block'>
       <Container>
         <div className='grid grid-cols-2'>
-          <div>
+          <div className=''>
             <img src={unique} alt="" className='w-full' />
           </div>
-          <div>
+          <div className=''>
             <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-5 pt-16'>Unique Features Of leatest & <br />  Trending Poducts</h2>
             <ul>
               <div className='flex items-center gap-x-4 pb-4'>
@@ -19,11 +19,11 @@ const Unique = () => {
               </div>
               <div className='flex gap-x-4 pb-2'>
                 <div className='h-4 w-4 rounded-full bg-indigo-500'></div>
-                <li className='text-[#ACABC3] text-[16px] font-lato font-medium'>Reinforced with double wood dowels, glue, screw - nails corner <br /> blocks and machine nails</li>
+                <li className='text-[#ACABC3] text-[12px] md:text-[16px] font-lato font-medium'>Reinforced with double wood dowels, glue, screw - nails corner <br /> blocks and machine nails</li>
               </div>
               <div className='flex items-center gap-x-4 pb-8'>
                 <div className='h-4 w-4 rounded-full bg-[#2fff0a]'></div>
-                <li className='text-[#ACABC3] text-[16px] font-lato font-medium'>All frames constructed with hardwood solids and laminates</li>
+                <li className='text-[#ACABC3] text-[12px] md:text-[16px] font-lato font-medium'>All frames constructed with hardwood solids and laminates</li>
               </div>
             </ul>
             <div className='flex gap-x-6'>

@@ -5,6 +5,7 @@
 @theme{
   --font-josefin: "Josefin Sans", sans-serif;
   --font-lato: "Lato", sans-serif;
+  --breakpoint-xs: 640px,
 }
 
 .ban_slick .slick-dots{
@@ -12,6 +13,7 @@
   top: 55%;
   left: 10%;
 }
+
 .ban_slick .slick-dots li button{
   color: transparent;
 }
@@ -20,6 +22,18 @@
   border-radius: 50%;
   height: 20px;
   width: 20px;
+}
+
+@media (max-width: 640Px) {
+.ban_slick .slick-dots li.slick-active{
+  background-color: red;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+.ban_slick .slick-dots li{
+  margin-bottom: -4px !important;
+}
 }
 
 .tc_slick .slick-dots{
