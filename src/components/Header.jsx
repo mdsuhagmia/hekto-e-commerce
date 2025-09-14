@@ -21,22 +21,25 @@ const Header = () => {
       <Container>
         <div>
           <div className='block md:hidden'>
-            <div className='flex justify-between items-center gap-x-4 py-2'>
-              <div>
+            <div className='flex justify-between items-center py-2'>
+              <div className='w-[20%]'>
                 <img src={logo} alt="" />
               </div>
-              <div className='flex items-center'>
-                <div className='bg-[#fff] rounded-[4px] border-2 border-[#00000020]'>
-                  <input type="search"
-                    placeholder='search...'
-                    className='w-38 sm:w-60 outline-0 px-2 py-[2px]' />
+              <div className='w-[50%]'>
+                <div className='flex items-center'>
+                  <div className='bg-[#fff] w-full rounded-[4px] border-2 border-[#00000020]'>
+                    <input type="search"
+                      placeholder='Search...'
+                      className='w-38 sm:w-60 outline-0 px-2 py-[2px]' />
+                  </div>
                 </div>
               </div>
-                <div onClick={handleOpneMenu} className='cursor-pointer'>
-                  {openMenu ? "" : <RiMenu3Fill className="text-3xl cursor-pointer" /> }
-                </div>
+              <div onClick={handleOpneMenu} className='cursor-pointer w-[10%] flex justify-end'>
+                {openMenu ? "" : <RiMenu3Fill className="text-3xl cursor-pointer" /> }
+              </div>
+              <div className={` bg-white z-[99999] shadow-2xl transition-all duration-700 ease-in-out ${openMenu ? "absolute top-0 left-0 w-full h-auto opacity-100" : "absolute top-0 left-[-768px] w-full h-auto opacity-0"}`}>
                 {openMenu && (
-                <div className={` ${openMenu == true ? "top-0 left-0 w-full h-auto bg-white absolute z-[99999] shadow-2xl transition-all duration-500 ease-in-out" : "top-0 left-[-300px]" }`}>
+                <div>
                   <div onClick={handleOpneMenu} className='flex justify-end pt-4 pr-4' >
                     {openMenu ? <IoCloseSharp className="text-3xl cursor-pointer" /> : "" }
                   </div>
@@ -80,6 +83,7 @@ const Header = () => {
                   </ul>
                 </div>
                 )}
+              </div>
             </div>
           </div>
           <div className={`hidden md:block`}>

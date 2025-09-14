@@ -29,10 +29,10 @@ const ListItem = ({allPage, showFilter}) => {
         <div>
           {cateFilterShow.map((item) => (
             <div className='px-2 pb-12'>
-              <div className='flex gap-x-8 items-center'>
+              <div className='flex gap-x-0 lg:gap-x-8 items-center'>
                 <div className='w-1/3 bg-gray-100 flex justify-center relative group'>
                   <Link to={`/products/allproducts/${item.id}`} className='w-full'>
-                    <img src={item.image_path} alt="" className='w-full rounded-[5px]' />
+                    <img src={item.image_path} alt="" className='w-full rounded-[5px] max-h-[260px]' />
                   </Link>
                   <div className='absolute left-4 top-[48%] opacity-0 group-hover:opacity-100'>
                     <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
@@ -48,22 +48,22 @@ const ListItem = ({allPage, showFilter}) => {
                 </div>
                 <div className='w-2/3'>
                   <Link to={`/products/allproducts/${item.id}`}>
-                    <h1 className='text-xl text-[#151875] font-semibold font-lato px-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
+                    <h1 className='text-[12px] sm:text-xl text-[#151875] font-semibold font-lato px-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
                   </Link>
                   <div className='flex gap-x-4 pb-2'>
-                    <h4 className='pl-4 text-[15px] text-[#111C85] font-medium font-josefin'>${item.discount_price}</h4>
-                    <h4 className='pl-4 text-[15px] text-[#FF2AAA] font-medium font-josefin line-through'>${item.price}</h4>
+                    <h4 className='pl-4 text-[12px] sm:text-[15px] text-[#111C85] font-medium font-josefin'>${item.discount_price}</h4>
+                    <h4 className='pl-4 text-[12px] sm:text-[15px] text-[#FF2AAA] font-medium font-josefin line-through'>${item.price}</h4>
                   </div>
-                  <h4 className='w-xl pl-4 text-[#9295AA] text-[18px] font-semibold font-lato'>{item.description}</h4>
-                  <div className='flex pt-4 gap-x-6'>
+                  <h4 className='max-w-xl pl-4 text-[#9295AA] text-[8px] sm:text-[14px] md:sm:text-[16px] font-semibold font-lato'>{item.description}</h4>
+                  <div className='flex pt-4 gap-x-6 pl-4'>
                     <div className=''>
-                      <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-2xl' />
+                      <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                     </div>
                     <div className=''>
-                      <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' />
+                      <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                     </div>
                     <div className=''>
-                      <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' />
+                      <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                     </div>
                   </div>
                 </div>
@@ -80,10 +80,10 @@ const ListItem = ({allPage, showFilter}) => {
         </div>
       </div> : allPage.map((item) => (
         <div className='px-2 pb-12'>
-          <div className='flex gap-x-8 items-center'>
+          <div className='flex gap-x-0 lg:gap-x-8 items-center'>
             <div className='w-1/3 bg-gray-100 flex justify-center relative group'>
               <Link to={`/products/allproducts/${item.id}`} className='w-full'>
-                <img src={item.image_path} alt="" className='w-full rounded-[5px] h-60' />
+                <img src={item.image_path} alt="" className='w-full rounded-[5px] max-h-[260px]' />
               </Link>
               <div className='absolute left-4 top-[48%] opacity-0 group-hover:opacity-100'>
                 <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
@@ -99,22 +99,22 @@ const ListItem = ({allPage, showFilter}) => {
             </div>
             <div className='w-2/3'>
               <Link to={`/products/allproducts/${item.id}`}>
-                <h1 className='text-xl text-[#151875] font-semibold font-lato px-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
+                <h1 className='text-[12px] sm:text-xl text-[#151875] font-semibold font-lato px-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
               </Link>
               <div className='flex gap-x-4 pb-2'>
-                <h4 className='pl-4 text-[15px] text-[#111C85] font-medium font-josefin'>${item.discount_price}</h4>
-                <h4 className='pl-4 text-[15px] text-[#FF2AAA] font-medium font-josefin line-through'>${item.price}</h4>
+                <h4 className='pl-4 text-[12px] sm:text-[15px] text-[#111C85] font-medium font-josefin'>${item.discount_price}</h4>
+                <h4 className='pl-4 text-[12px] sm:text-[15px] text-[#FF2AAA] font-medium font-josefin line-through'>${item.price}</h4>
               </div>
-              <h4 className='w-xl pl-4 text-[#9295AA] text-[18px] font-semibold font-lato'>{item.description}</h4>
-              <div className='flex pt-4 gap-x-6'>
+              <h4 className='max-w-xl pl-4 text-[#9295AA] text-[8px] sm:text-[14px] md:sm:text-[16px] font-semibold font-lato'>{item.description}</h4>
+              <div className='flex pt-4 gap-x-6 pl-4'>
                 <div className=''>
-                  <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-2xl' />
+                  <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                 </div>
                 <div className=''>
-                  <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' />
+                  <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                 </div>
                 <div className=''>
-                  <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' />
+                  <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                 </div>
               </div>
             </div>

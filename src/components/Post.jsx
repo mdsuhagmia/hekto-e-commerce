@@ -30,7 +30,7 @@ const Post = ({allPage, showFilter}) => {
       {cateFilterShow.length > 0 ? <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         {cateFilterShow.map((item) => (
           <div className='px-2 pb-4'>
-            <div className='bg-[#ffffff20] min-h-[380px] w-full rounded-[5px] shadow-md border-1 border-[#0000001f]'>
+            <div className='bg-[#ffffff20] min-h-[260px] sm:min-h-[380px] w-full rounded-[5px] shadow-md border-1 border-[#0000001f]'>
               <div className='bg-gray-100 w-full flex justify-center relative group'>
                 <Link to={`/products/allproducts/${item.id}`} className=''>
                   <img src={item.image_path} alt="" className='w-full  rounded-t-[5px]' />
@@ -49,11 +49,11 @@ const Post = ({allPage, showFilter}) => {
               </div>
               <div className=''>
                 <Link to={`/products/allproducts/${item.id}`}>
-                  <h1 className='text-xl text-[#151875] font-semibold font-lato px-4 pt-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
+                  <h1 className='text-sm sm:text-xl text-[#151875] font-semibold font-lato px-4 pt-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
                 </Link>
                 <div className='flex gap-x-4 pb-2'>
-                  <h4 className='pl-4 text-md text-[#151875] font-medium font-lato'>${item.discount_price}</h4>
-                  <h4 className='pl-4 text-md text-[#FB2E86] font-medium font-lato line-through'>${item.price}</h4>
+                  <h4 className='pl-4 text-sm sm:text-md text-[#151875] font-medium font-lato'>${item.discount_price}</h4>
+                  <h4 className='pl-4 text-sm sm:text-md text-[#FB2E86] font-medium font-lato line-through'>${item.price}</h4>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@ const Post = ({allPage, showFilter}) => {
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {allPage.map((item) => (
             <div className='px-2 pb-4'>
-              <div className='bg-[#ffffff20] min-h-[380px] w-full rounded-[5px] shadow-md border-1 border-[#0000001f]'>
+              <div className='bg-[#ffffff20] min-h-[260px] sm:min-h-[380px] w-full rounded-[5px] shadow-md border-1 border-[#0000001f]'>
                 <div className='bg-gray-100 w-full flex justify-center relative group'>
                   <Link to={`/products/allproducts/${item.id}`}>
                     <img src={item.image_path} alt="" className='w-full rounded-t-[5px]' />
@@ -90,11 +90,11 @@ const Post = ({allPage, showFilter}) => {
                 </div>
                 <div className=''>
                   <Link to={`/products/allproducts/${item.id}`}>
-                    <h1 className='text-xl text-[#151875] font-semibold font-lato px-4 pt-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
+                    <h1 className='text-sm sm:text-xl text-[#151875] font-semibold font-lato px-4 pt-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
                   </Link>
                   <div className='flex gap-x-4 pb-2'>
-                    <h4 className='pl-4 text-md text-[#151875] font-medium font-lato'>${item.discount_price}</h4>
-                    <h4 className='pl-4 text-md text-[#FB2E86] font-medium font-lato line-through'>${item.price}</h4>
+                    <h4 className='pl-4 text-sm sm:text-md text-[#151875] font-medium font-lato'>${item.discount_price}</h4>
+                    <h4 className='pl-4 text-sm sm:text-md text-[#FB2E86] font-medium font-lato line-through'>${item.price}</h4>
                   </div>
                 </div>
               </div>
