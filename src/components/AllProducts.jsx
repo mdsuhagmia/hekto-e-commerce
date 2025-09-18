@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Container from './Container'
-import ShopGrid from './ShopGrid'
 import { TbLayoutGrid } from 'react-icons/tb'
 import { BsListUl } from 'react-icons/bs'
 import Post from './Post'
@@ -61,7 +60,6 @@ const AllProducts = () => {
   let [view, setView] = useState(true)
   return (
     <section className='pb-16'>
-        <ShopGrid/>
       <Container>
         <div className='flex items-center justify-between py-12'>
           <div className='hidden lg:block'>
@@ -111,6 +109,7 @@ const AllProducts = () => {
         </div>
         <div>
           {view == true ? <Post 
+          
           allPage={allPage}
           showFilter={showFilter}/>  : <ListItem 
           allPage={allPage}

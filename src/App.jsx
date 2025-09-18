@@ -7,8 +7,13 @@ import Blog from "./pages/Blog"
 import Shop from "./pages/Shop"
 import Contact from "./pages/Contact"
 import ProductsDetails from "./components/ProductsDetails"
+import NotFound from "./pages/NotFound"
+import MyAccount from "./pages/MyAccount"
+import SignUp from "./pages/SignUp"
+import ForgotPassword from "./pages/ForgotPassword"
 
 let routing = createBrowserRouter(createRoutesFromElements(
+<>
   <Route element={<RootLayout/>}>
     <Route path="/" element={<Home/>}></Route>
     <Route path="/pages" element={<Pages/>}></Route>
@@ -17,7 +22,12 @@ let routing = createBrowserRouter(createRoutesFromElements(
     <Route path="/blog" element={<Blog/>}></Route>
     <Route path="/shop" element={<Shop/>}></Route>
     <Route path="/contact" element={<Contact/>}></Route>
+    <Route path="/myaccount" element={<MyAccount/>}></Route>
+    <Route path="/signup" element={<SignUp/>}></Route>
+    <Route path="/forgotpassword" element={<ForgotPassword/>}></Route>
   </Route>
+  <Route path="*" element={<NotFound/>}></Route>
+</>
 ))
 
 function App() {

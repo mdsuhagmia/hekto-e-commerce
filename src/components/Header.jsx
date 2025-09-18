@@ -112,7 +112,7 @@ const Header = () => {
                   </select>
                 </div>
                 <div className='flex items-center gap-x-1 text-white cursor-pointer'>
-                  <Link className='font-josefin font-normal pr-1 text-[14px] lg:text-[16px]'>Login</Link>
+                  <Link to={"/myaccount"} className='font-josefin font-normal pr-1 text-[14px] lg:text-[16px]'>Login</Link>
                   <LuUser className='cursor-pointer' />
                 </div>
                 <div className='flex items-center gap-x-1 text-white cursor-pointer'>

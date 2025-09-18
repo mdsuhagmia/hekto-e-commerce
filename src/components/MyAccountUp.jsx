@@ -2,29 +2,29 @@ import React from 'react'
 import Container from './Container'
 import { NavLink } from 'react-router-dom'
 
-const ShopGrid = () => {
+const MyAccountUp = () => {
   return (
     <section className='py-10 bg-[#F6F5FF]'>
       <Container>
         <div>
-          <h2 className='text-[#151875] text-[30px] md:text-[35px] font-bold font-josefin pb-1'>Shop Grid Default</h2>
+          <h2 className='text-[#151875] text-[30px] md:text-[35px] font-bold font-josefin pb-1'>My Account</h2>
           <ul className='flex items-center gap-x-1'>
             <li>
               <NavLink to={"/"}
                 className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
-                  Home .
+                Home .
               </NavLink>
             </li>
             <li>
               <NavLink to={"/pages"}
                 className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
-                  Pages .
+                Pages .
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/products"}
+              <NavLink to={"/myaccount"}
                 className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
-                  Products
+                  My Account
               </NavLink>
             </li>
           </ul>
@@ -34,4 +34,4 @@ const ShopGrid = () => {
   )
 }
 
-export default ShopGrid
+export default MyAccountUp
