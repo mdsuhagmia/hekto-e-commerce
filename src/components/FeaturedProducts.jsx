@@ -35,7 +35,7 @@ const FeaturedProducts = () => {
   }
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -72,7 +72,7 @@ const FeaturedProducts = () => {
         <div>
           <h2 className='text-[#1A0B5B] text-2xl md:text-3xl font-bold font-lato text-center pb-6'>Featured Products</h2>
         </div>
-        <Slider {...settings}>
+        <Slider {...settings} className='featureP'>
           <div className='px-2 w-1/4 mb-2'>
             <div className='w-full bg-[#F6F7FB] border-1 border-[#00000013] shadow-md rounded-[5px] mr-6'>
               <div className='py-15 flex justify-center relative group'>
