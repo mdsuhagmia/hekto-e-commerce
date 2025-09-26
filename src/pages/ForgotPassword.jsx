@@ -10,7 +10,7 @@ const ForgotPassword = () => {
             Reset Password
           </h2>
           <p className="text-[17px] text-[#9096B2] font-medium font-lato pb-6 text-center">
-            Enter your email address and we will send you a reset link.
+            Forgot your password? Enter your email and get a reset code instantly.
           </p>
           <form className='max-w-[432px] mx-auto'>
             <input
@@ -23,7 +23,7 @@ const ForgotPassword = () => {
               type="submit"
               className="w-full text-center py-2 text-white text-[17px] font-bold font-lato bg-[#FB2E86] rounded-[5px] mt-4 hover:bg-[#aa2760] cursor-pointer"
             >
-              Send Reset Link
+              Send Code
             </button>
           </form>
         </div>

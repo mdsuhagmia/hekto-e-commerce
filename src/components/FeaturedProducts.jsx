@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from './Container'
 import fea1 from '../assets/fea1.png'
 import fea2 from '../assets/fea2.png'
@@ -10,8 +10,11 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import Slider from 'react-slick'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
+import { apiData1 } from './ContextApi'
 
 const FeaturedProducts = () => {
+  let aData = useContext(apiData1)
+  console.log(aData)
   function SampleNextArrow(props) {
     const { onClick } = props;
     return (
@@ -69,6 +72,14 @@ const FeaturedProducts = () => {
   return (
     <section className='bg-white py-16'>
       <Container>
+        {/* <div>
+          {aData.map((item)=>(
+            <div>
+              <h2>{item.title}</h2>
+              <img src={item.image} alt="" />
+            </div>
+          ))}
+        </div> */}
         <div>
           <h2 className='text-[#1A0B5B] text-2xl md:text-3xl font-bold font-lato text-center pb-6'>Featured Products</h2>
         </div>

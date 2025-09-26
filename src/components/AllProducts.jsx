@@ -58,6 +58,23 @@ const AllProducts = () => {
   }
   
   let [view, setView] = useState(true)
+
+
+//   let handlePriceChange = (e) => {
+//   let priceValue = e.target.value
+//   let sorted = [...data]
+
+//   if (priceValue === "low-to-high") {
+//     sorted.sort((a, b) => a.price - b.price)
+//   } else if (priceValue === "high-to-low") {
+//     sorted.sort((a, b) => b.price - a.price)
+//   } else {
+//     sorted = data
+//   }
+
+//   setShowFilter(sorted)
+//   setSortedData(sorted)
+// }
   return (
     <section className='pb-16'>
       <Container>
@@ -76,9 +93,14 @@ const AllProducts = () => {
             </select>
           </div>
           <div className='flex items-center gap-x-2'>
-            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2 hidden md:block'>Sort By:</h2>
-            <select name="per-page" id="per-page" className='px-2 py-1 border-2 border-[#00000064] rounded-[5px] hidden md:block'>
-              <option value="">Price</option>
+            <h2 className='text-[#151875] text-[16px] font-medium font-josefin pr-2 hidden md:block'>Price:</h2>
+            <select
+              name="price"
+              id="price"
+              className='px-2 py-1 border-2 border-[#00000064] rounded-[5px] hidden md:block'
+              // onChange={handlePriceChange}
+            >
+              <option value="best-match">Best Match</option>
               <option value="low-to-high">Low To High</option>
               <option value="high-to-low">High To Low</option>
             </select>
@@ -91,7 +113,7 @@ const AllProducts = () => {
                 onChange={handleCategory}>
                 <option value="all-products" onChange={()=>setShowFilter("")}>All Products</option>
                 {shopCategory.map((item)=>(
-                  <option value={item}>{item}</option>
+                  <option value={item} className='capitalize'>{item}</option>
                 ))} 
               </select>
             </div>
@@ -109,11 +131,13 @@ const AllProducts = () => {
         </div>
         <div>
           {view == true ? <Post 
-          
           allPage={allPage}
-          showFilter={showFilter}/>  : <ListItem 
+          showFilter={showFilter}/> 
+           : <ListItem 
           allPage={allPage}
-          showFilter={showFilter}/>}
+          showFilter={showFilter}
+          data={data}
+          setShowFilter={setShowFilter}/>}
         </div>
         <Pagination
           pageNumber={pageNumber}

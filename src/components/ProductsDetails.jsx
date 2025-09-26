@@ -1,10 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import Container from './Container'
 import ProductDetailsUp from './ProductDetailsUp'
 import { FaFacebookF, FaInstagram, FaStar, FaStarHalfAlt, FaTwitter } from 'react-icons/fa'
 import { CiHeart, CiStar } from 'react-icons/ci'
+import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch } from 'react-redux'
+import { addToCart } from './slice/ProductSlice'
 
 const ProductsDetails = () => {
   let [allProduct, setAllProduct] = useState([])
@@ -29,6 +32,19 @@ const ProductsDetails = () => {
     let number = index + 0.5
     return(singleProducts.rating > index + 1 ? <FaStar className='text-[gold]' /> : singleProducts.rating > number ? <FaStarHalfAlt className='text-[gold]' /> : <CiStar /> )
   })
+
+  let discount = (singleProducts.price - singleProducts.discount_price)
+
+  let navigate = useNavigate()
+  let Dispatch = useDispatch()
+
+  let handleCart = (item)=>{
+    Dispatch(addToCart({...item, qun: 1}))
+    toast.success("Add to cart success!")
+    setTimeout(()=>{
+      navigate("/cart")
+    }, 2000)
+  }
   
   return (
     <>
@@ -45,13 +61,17 @@ const ProductsDetails = () => {
                 {clintReating}
               </div>
               <div className='flex gap-x-4 items-center pb-2'>
-                <h3 className='text-[#151875] text-[16px] font-semibold font-josefin'>${singleProducts.price}</h3>
+                <h3 className='text-[#151875] text-[16px] font-semibold font-josefin'>${singleProducts.discount_price}</h3>
                 <h3 className='text-[#df3636] text-[16px] font-semibold font-josefin line-through'>${singleProducts.price}</h3>
+                <h3 className='text-[#df3636] text-[16px] font-semibold font-josefin'>Discount: ${discount.toFixed(2)}</h3>
               </div>
-              <p className='text-[#A9ACC6] text-[14px] sm:text-[16px] font-medium font-josefin pb-4 max-w-lg'>{singleProducts.description}</p>
-              <div className='flex gap-x-4 items-center pb-2 cursor-pointer'>
-                <p className='text-[#151875] text-[16px] font-medium font-josefin'>Add To cart</p>
-                <CiHeart />
+              <p className='text-[#A9ACC6] text-[14px] sm:text-[16px] font-medium font-josefin max-w-lg'>{singleProducts.description}</p>
+              <div className='w-40 py-4'>
+                <div className='flex justify-between items-center cursor-pointer group border-2 border-[#0000001a] px-6 py-1 rounded-[5px] hover:border-[#f01313]' onClick={()=>handleCart(singleProducts)}>
+                  <p className='text-[#151875] text-[16px] font-medium font-josefin group-hover:text-[#f01313]'>Add To cart</p>
+                  <CiHeart className='group-hover:text-[#f01313]' />
+                </div>
+                <ToastContainer />
               </div>
               <p className='text-[#151875] text-[16px] font-semibold font-josefin pb-2'>Categories: {singleProducts.category}</p>
               <p className='text-[#151875] text-[16px] font-semibold font-josefin pb-2'>Stock: {singleProducts.stock}</p>

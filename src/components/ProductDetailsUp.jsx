@@ -1,8 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import Container from './Container'
 
 const ProductDetailsUp = () => {
+  let { id } = useParams()
   return (
     <section className='py-10 bg-[#F6F5FF]'>
       <Container>
@@ -22,9 +23,9 @@ const ProductDetailsUp = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/productdetails"}
+              <NavLink to={`/products/allproducts/${id}`}
                 className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
-                Product Details
+                Products Details
               </NavLink>
             </li>
           </ul>

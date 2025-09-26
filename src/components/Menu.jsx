@@ -19,7 +19,7 @@ const Menu = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <nav className={`hidden md:block ${isSticky ? "bg-[#f7eeee] fixed top-0 left-0 w-full z-[99999] transition-all duration-200 ease-in-out py-3" : "bg-white w-full py-4" }`}>
+    <nav className={`hidden md:block ${isSticky ? "bg-[#f7eeee] fixed top-0 left-0 w-full z-[9999] transition-all duration-200 ease-in-out py-3" : "bg-white w-full py-4" }`}>
       <Container>
         <div className={`flex justify-between items-center`}>
           <div>
