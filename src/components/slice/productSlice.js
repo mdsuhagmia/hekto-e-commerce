@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const ProductSlice = createSlice({
+export const productSlice = createSlice({
   name: 'product',
   initialState: {
     cartItem: localStorage.getItem("cartStores") ? JSON.parse(localStorage.getItem("cartStores")) : [],
@@ -42,6 +42,6 @@ export const ProductSlice = createSlice({
 })
 
 
-export const { addToCart, productRemove, increment, decrement, allRemoceCart } = ProductSlice.actions
+export const { addToCart, productRemove, increment, decrement, allRemoceCart } = productSlice.actions
 
-export default ProductSlice.reducer
+export default productSlice.reducer
