@@ -1,47 +1,45 @@
+// src/components/slice/ProductSlice.js
 import { createSlice } from '@reduxjs/toolkit'
 
-export const counterSlice = createSlice({
+const productSlice = createSlice({
   name: 'product',
   initialState: {
     cartItem: localStorage.getItem("cartStores") ? JSON.parse(localStorage.getItem("cartStores")) : [],
   },
   reducers: {
     addToCart: (state, action) => {
-      let findProduct = state.cartItem.findIndex((item)=>item.id == action.payload.id)
+      const findProduct = state.cartItem.findIndex(item => item.id === action.payload.id)
       if(findProduct !== -1){
         state.cartItem[findProduct].qun += 1
-        localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
-      }else{
-        state.cartItem = [ ...state.cartItem, action.payload ]
-        localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
+      } else {
+        state.cartItem.push(action.payload)
       }
+      localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
     },
 
-    productRemove: (state, action)=>{
+    productRemove: (state, action) => {
       state.cartItem.splice(action.payload, 1)
       localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
     },
 
-    increment: (state, action)=>{
+    increment: (state, action) => {
       state.cartItem[action.payload].qun += 1
       localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
     },
 
-    decrement: (state, action)=>{
+    decrement: (state, action) => {
       if(state.cartItem[action.payload].qun > 1){
         state.cartItem[action.payload].qun -= 1
         localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
       }
     },
 
-    allRemoceCart: (state)=>{
+    allRemoveCart: (state) => {
       state.cartItem = []
       localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
     },
   },
 })
 
-
-export const { addToCart, productRemove, increment, decrement, allRemoceCart } = counterSlice.actions
-
-export default counterSlice.reducer
+export const { addToCart, productRemove, increment, decrement, allRemoveCart } = productSlice.actions
+export default productSlice.reducer
