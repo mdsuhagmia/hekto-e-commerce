@@ -120,7 +120,9 @@ const Header = () => {
                   <FaHeart className='cursor-pointer' />
                 </div>
                 <div className='flex items-center gap-x-1 text-white pl-4'>
-                  <BsCart className='cursor-pointer text-xl' />
+                  <Link to={"/cart"}>
+                    <BsCart className='cursor-pointer text-xl' />
+                  </Link>
                 </div>
               </div>
             </div>

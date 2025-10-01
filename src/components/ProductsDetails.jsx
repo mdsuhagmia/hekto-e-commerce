@@ -45,7 +45,6 @@ const ProductsDetails = () => {
       navigate("/cart")
     }, 2000)
   }
-  
   return (
     <>
       <ProductDetailsUp />
