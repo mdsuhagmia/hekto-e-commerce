@@ -7,7 +7,7 @@ import { FaFacebookF, FaInstagram, FaStar, FaStarHalfAlt, FaTwitter } from 'reac
 import { CiHeart, CiStar } from 'react-icons/ci'
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux'
-import { addToCart } from './slice/ProductSlice'
+import { addToCart } from './slice/productSlice'
 
 const ProductsDetails = () => {
   let [allProduct, setAllProduct] = useState([])
