@@ -12,7 +12,7 @@ import MyAccount from "./pages/MyAccount"
 import SignUp from "./pages/SignUp"
 import ForgotPassword from "./pages/ForgotPassword"
 import Cart from "./pages/Cart"
-import Checkout from "./pages/Checkout"
+import OrderCompleted from "./pages/OrderCompleted"
 
 let routing = createBrowserRouter(createRoutesFromElements(
 <>
@@ -22,7 +22,7 @@ let routing = createBrowserRouter(createRoutesFromElements(
     <Route path="/products" element={<Products/>}></Route>
     <Route path="/products/allproducts/:id" element={<ProductsDetails/>}></Route>
     <Route path="/cart" element={<Cart/>}></Route>
-    <Route path="/checkout" element={<Checkout/>}></Route>
+    <Route path="/ordercompleted" element={<OrderCompleted/>}></Route>
     <Route path="/blog" element={<Blog/>}></Route>
     <Route path="/shop" element={<Shop/>}></Route>
     <Route path="/contact" element={<Contact/>}></Route>

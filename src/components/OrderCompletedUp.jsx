@@ -2,7 +2,7 @@ import React from 'react'
 import Container from './Container'
 import { NavLink } from 'react-router-dom'
 
-const CheckoutUp = () => {
+const OrderCompletedUp = () => {
   return (
     <section className='py-10 bg-[#F6F5FF]'>
       <Container>
@@ -22,9 +22,9 @@ const CheckoutUp = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/checkout"}
+              <NavLink to={"/ordercompleted"}
                 className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
-                Checkout
+                Order Completed
               </NavLink>
             </li>
           </ul>
@@ -34,4 +34,4 @@ const CheckoutUp = () => {
   )
 }
 
-export default CheckoutUp
+export default OrderCompletedUp

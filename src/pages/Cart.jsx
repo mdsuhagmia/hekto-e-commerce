@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { IoMdClose } from 'react-icons/io'
 import { allRemoceCart, decrement, increment, productRemove } from '../components/slice/productSlice'
 import { Link } from 'react-router-dom'
-import { FaMinus, FaPlus, FaShoppingCart } from 'react-icons/fa'
+import { FaMinus, FaPlus } from 'react-icons/fa'
 import { BsCartXFill } from 'react-icons/bs'
 
 const Cart = () => {
@@ -126,7 +126,7 @@ const Cart = () => {
                         </div>
                         <div className='text-center px-6'>
                           <Link
-                            to={"/checkout"}
+                            to={"/ordercompleted"}
                             className='bg-[#19D16F] w-full py-2 rounded-[5px] inline-block text-white text-[14px] font-bold font-lato'
                           >
                             Proceed To Checkout
