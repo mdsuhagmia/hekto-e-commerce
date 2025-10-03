@@ -10,7 +10,7 @@ const Footer = () => {
       <Container>
         <div className='flex justify-between'>
           <div className='w-[29%] lg:w-[43%]'>
-            <img src={logo} alt="" />
+            <img src={logo} alt="ff" />
             <div className='flex items-center pt-8 w-[90%] lg:w-[60%]'>
               <div className='bg-[#fff] rounded-l-[5px] w-[70%]'>
                 <input type="search"

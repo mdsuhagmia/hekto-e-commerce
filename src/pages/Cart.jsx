@@ -22,16 +22,16 @@ const Cart = () => {
       <CartUp/>
       <section className='py-16'>
         <Container>
-          <div className='flex justify-between gap-6'>
-            <div className='lg:w-2/3 w-full'>
+          <div className='lg:flex justify-between gap-6'>
+            <div className='lg:w-2/3 w-full pb-12 lg:pb-0'>
               <table className='w-full'>
                 {data.length > 0 && (
                   <thead>
                     <tr>
-                      <th className='text-start py-6 text-[#1D3178] text-[20px] font-bold font-josefin'>Product</th>
-                      <th className='text-start py-6 text-[#1D3178] text-[20px] font-bold font-josefin px-8'>Price</th>
-                      <th className='text-start py-6 text-[#1D3178] text-[20px] font-bold font-josefin px-8'>Quantity</th>
-                      <th className='text-start py-6 text-[#1D3178] text-[20px] font-bold font-josefin px-8'>Total</th>
+                      <th className='text-start py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin'>Product</th>
+                      <th className='text-start py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-4 sm:px-8'>Price</th>
+                      <th className='text-start py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-4 sm:px-8'>Quantity</th>
+                      <th className='text-start py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-4 sm:px-8'>Total</th>
                     </tr>
                   </thead>
                 )}
@@ -93,7 +93,7 @@ const Cart = () => {
               )}
             </div>
             {data.length > 0 && (
-             <div className='lg:w-1/3 w-full '>
+             <div className='lg:w-1/3 w-full'>
               <div className='w-full pl-0 lg:pl-4 mt-6'>
                 <h2 className='pb-6 text-center text-[#1D3178] text-[20px] font-bold font-josefin'>Cart Totals</h2>
                 <table className='bg-[#F4F4FC] w-full rounded-[5px]'>

@@ -49,14 +49,14 @@ const TrendingProducts = () => {
         }
       },
       {
-        breakpoint: 768,
+        breakpoint: 640,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1
+          slidesToScroll: 2,
         }
       },
       {
-        breakpoint: 640,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1

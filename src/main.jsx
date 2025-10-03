@@ -12,6 +12,6 @@ createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <ContextApi>
       <App />
-    </ContextApi>,
+    </ContextApi>
   </Provider>
 )

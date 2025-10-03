@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa'
 
 const FooterDown = () => {
   return (
-    <footer className='bg-[#E7E4F8] py-3'>
+    <section className='bg-[#E7E4F8] py-3'>
       <Container>
         <div className='flex justify-between items-center px-0 lg:px-20'>
           <div>
@@ -23,7 +23,7 @@ const FooterDown = () => {
           </div>
         </div>
       </Container>
-    </footer>
+    </section>
   )
 }
 
