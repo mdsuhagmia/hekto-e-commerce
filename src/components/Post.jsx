@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { addToCart } from './slice/productSlice'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify';
 
 const Post = ({allPage, showFilter}) => {
 
@@ -23,7 +26,12 @@ const Post = ({allPage, showFilter}) => {
     setShowAll(true)
   }
 
+  let dispatch = useDispatch()
 
+  let handleCart = (item)=>{
+    dispatch(addToCart({...item, qun: 1}))
+    toast.success("Added to cart successfully!")
+  }
 
   return (
     <div className=''>
@@ -37,7 +45,7 @@ const Post = ({allPage, showFilter}) => {
                 </Link>
                 <div className='absolute left-4 top-[48%] opacity-0 group-hover:opacity-100'>
                   <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                    <AiOutlineShoppingCart className='text-blue-500 cursor-pointer text-md' />
+                    <AiOutlineShoppingCart onClick={()=>dispatch(addToCart({...item, qun: 1}))} className='text-blue-500 cursor-pointer text-md' />
                   </div>
                   <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
                     <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
@@ -78,7 +86,7 @@ const Post = ({allPage, showFilter}) => {
                   </Link>
                   <div className='absolute left-4 top-[48%] opacity-0 group-hover:opacity-100'>
                     <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                      <AiOutlineShoppingCart className='text-blue-500 cursor-pointer text-md' />
+                      <AiOutlineShoppingCart className='text-blue-500 cursor-pointer text-md' onClick={()=>handleCart(item)} />
                     </div>
                     <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
                       <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
@@ -86,6 +94,7 @@ const Post = ({allPage, showFilter}) => {
                     <div className='bg-white p-2 rounded-full hover:bg-[#ffffffc2]'>
                       <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                     </div>
+                    
                   </div>
                 </div>
                 <div className=''>

@@ -1,44 +1,49 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from './Container'
-import unique from '../assets/unique.png'
+import { apiData } from './ContextApi'
+import { useDispatch } from 'react-redux'
+import { addToCart } from './slice/productSlice'
+import { toast } from 'react-toastify'
 
 const Unique = () => {
+  let data = useContext(apiData)
+  let [filterShow, setFilterShow] = useState([])
+  useEffect(()=>{
+    let filterPro = data.filter((item)=>item.category === "matress")
+    let filterS = filterPro.slice(2, 3)
+    setFilterShow(filterS)
+  },[data])
+
+  let dispatch = useDispatch()
+  let handleCart = (item)=>{
+    dispatch(addToCart({...item, qun: 1}))
+    toast.success("Added to cart successfully!")
+  }
   return (
-    <section className='bg-[#F1F0FF] py-8 mb-3 hidden lg:block'>
+    <section className='bg-[#F1F0FF] py-8'>
       <Container>
-        <div className='grid grid-cols-2'>
-          <div className=''>
-            <img src={unique} alt="" className='w-full' />
-          </div>
-          <div className=''>
-            <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-5 pt-16'>Unique Features Of leatest & <br />  Trending Poducts</h2>
-            <ul>
-              <div className='flex items-center gap-x-4 pb-4'>
-                <div className='h-4 w-4 rounded-full bg-amber-600'></div>
-                <li className='text-[#ACABC3] text-[16px] font-lato font-medium'>All frames constructed with hardwood solids and laminates</li>
-              </div>
-              <div className='flex gap-x-4 pb-2'>
-                <div className='h-4 w-4 rounded-full bg-indigo-500'></div>
-                <li className='text-[#ACABC3] text-[12px] md:text-[16px] font-lato font-medium'>Reinforced with double wood dowels, glue, screw - nails corner <br /> blocks and machine nails</li>
-              </div>
-              <div className='flex items-center gap-x-4 pb-8'>
-                <div className='h-4 w-4 rounded-full bg-[#2fff0a]'></div>
-                <li className='text-[#ACABC3] text-[12px] md:text-[16px] font-lato font-medium'>All frames constructed with hardwood solids and laminates</li>
-              </div>
-            </ul>
-            <div className='flex gap-x-6'>
-              <div>
-                <button className='bg-[#FB2E86] text-[17px] font-josefin font-semibold px-[24px] py-[14px] text-white rounded-[5px] cursor-pointer hover:bg-[#fb2e87cc]'>
-                  Add To Cart
-                </button>
-              </div>
-              <div>
-                <h4 className='text-[#151875] text-[14px] font-josefin font-semibold pb-1'>B&B Italian Sofa </h4>
-                <h5 className='text-[#151875] text-[14px] font-josefin font-semibold'>$32.00</h5>
+        {filterShow.map((item) => (
+          <div className='grid grid-cols-2 items-center'>
+            <div className='px-8 py-8'>
+              <img src={item.image_path} alt="" className='w-full rounded-full' />
+            </div>
+            <div className=''>
+              <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-5'>{item.name}</h2>
+                <p className='text-[#ACABC3] text-[16px] font-lato font-medium pb-4'>{item.description}</p>
+              <div className='flex gap-x-6'>
+                <div>
+                  <button onClick={() => handleCart(item)} className='bg-[#FB2E86] text-[17px] font-josefin font-semibold px-[24px] py-[14px] text-white rounded-[5px] cursor-pointer hover:bg-[#fb2e87cc]'>
+                    Add To Cart
+                  </button>
+                </div>
+                <div>
+                  <h4 className='text-[#151875] text-[14px] font-josefin font-semibold pb-2 capitalize'>{item.wood_type} Italian Mettress </h4>
+                  <h5 className='text-[#151875] text-[14px] font-josefin font-semibold'>${item.price}</h5>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ))}
       </Container>
     </section>
   )

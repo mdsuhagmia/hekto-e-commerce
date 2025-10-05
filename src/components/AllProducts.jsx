@@ -59,11 +59,10 @@ const AllProducts = () => {
   
   let [view, setView] = useState(true)
 
-
+//? price low to high and high to low
 //   let handlePriceChange = (e) => {
 //   let priceValue = e.target.value
 //   let sorted = [...data]
-
 //   if (priceValue === "low-to-high") {
 //     sorted.sort((a, b) => a.price - b.price)
 //   } else if (priceValue === "high-to-low") {
@@ -71,10 +70,11 @@ const AllProducts = () => {
 //   } else {
 //     sorted = data
 //   }
-
 //   setShowFilter(sorted)
 //   setSortedData(sorted)
 // }
+
+
   return (
     <section className='pb-16'>
       <Container>

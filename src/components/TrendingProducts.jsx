@@ -6,6 +6,9 @@ import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
+import { addToCart } from './slice/productSlice'
+import { toast } from 'react-toastify'
 
 const TrendingProducts = () => {
   let produc = useContext(apiData)
@@ -65,6 +68,12 @@ const TrendingProducts = () => {
     ]
   };
 
+  let dispatch = useDispatch()
+  let handleCart = (item)=>{
+      dispatch(addToCart({...item, qun: 1}))
+      toast.success("Added to cart successfully!")
+    }
+
   return (
     <section className='pb-16'>
       <Container>
@@ -78,7 +87,9 @@ const TrendingProducts = () => {
                     <img src={item.image_path} alt="" className='w-full' />
                 </Link>
                     <div className='flex gap-x-6 absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 bg-[#f8efef] w-full py-4 justify-center'>
-                      <div><AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-2xl' /></div>
+                      <div onClick={()=>handleCart(item)}>
+                        <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-2xl' />
+                      </div>
                       <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' /></div>
                       <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' /></div>
                     </div>

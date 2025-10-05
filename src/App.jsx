@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp"
 import ForgotPassword from "./pages/ForgotPassword"
 import Cart from "./pages/Cart"
 import OrderCompleted from "./pages/OrderCompleted"
+import { ToastContainer } from "react-toastify"
 
 let routing = createBrowserRouter(createRoutesFromElements(
 <>
@@ -39,6 +40,9 @@ function App() {
   return (
     <>
      <RouterProvider router={routing}></RouterProvider>
+     <ToastContainer
+        autoClose={3000}
+      />
     </>
   )
 }

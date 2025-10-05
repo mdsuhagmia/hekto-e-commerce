@@ -1,14 +1,15 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Container from './Container'
 import ProductDetailsUp from './ProductDetailsUp'
 import { FaFacebookF, FaInstagram, FaStar, FaStarHalfAlt, FaTwitter } from 'react-icons/fa'
 import { CiHeart, CiStar } from 'react-icons/ci'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux'
 import { addToCart } from './slice/productSlice'
 import jj from '../assets/jj.png'
+import { initFlowbite } from 'flowbite'
 
 const ProductsDetails = () => {
   let [allProduct, setAllProduct] = useState([])
@@ -27,7 +28,7 @@ const ProductsDetails = () => {
   }
   useEffect(()=>{
     getData()
-  },[])
+  },[id])
 
   let clintReating = Array.from({length: 5}, (_, index)=>{
     let number = index + 0.5
@@ -35,6 +36,11 @@ const ProductsDetails = () => {
   })
 
   let discount = (singleProducts.price - singleProducts.discount_price)
+
+  //? discount persen ber korar code ex. 6% discount
+  // const discountPercentage = ((singleProducts.price - singleProducts.discount_price) / singleProducts.price) * 100;
+  // const roundedDiscount = Math.round(discountPercentage); 
+  // console.log(roundedDiscount)
 
   let navigate = useNavigate()
   let Dispatch = useDispatch()
@@ -51,6 +57,10 @@ const ProductsDetails = () => {
   let handleMore = ()=>{
     setMore(!more)
   }
+
+  useEffect(() => {
+    initFlowbite();
+  }, []);
 
   return (
     <>
@@ -77,7 +87,7 @@ const ProductsDetails = () => {
                   <p className='text-[#151875] text-[16px] font-medium font-josefin group-hover:text-[#f01313]'>Add To cart</p>
                   <CiHeart className='group-hover:text-[#f01313]' />
                 </div>
-                <ToastContainer />
+                
               </div>
               <p className='text-[#151875] text-[16px] font-semibold font-josefin pb-2'>Categories: {singleProducts.category}</p>
               <p className='text-[#151875] text-[16px] font-semibold font-josefin pb-2'>Stock: {singleProducts.stock}</p>
@@ -119,7 +129,7 @@ const ProductsDetails = () => {
                   </div>
                 )}
                 <h4 className="text-[16px] text-[#151875] font-medium font-josefin cursor-pointer hover:text-red-600 inline-block" onClick={handleMore}>
-                  {more == true ? <h4>Hide Details</h4> : <h4>More Details</h4> }
+                  {more == true ? "Hide Details" : "More Details" }
                 </h4>
                 
               </div>

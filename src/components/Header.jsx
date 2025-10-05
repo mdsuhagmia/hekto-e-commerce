@@ -1,30 +1,47 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Container from './Container'
-import { MdOutlineMailOutline } from 'react-icons/md'
-import { LuPhoneCall, LuUser } from 'react-icons/lu'
-import { Link, NavLink } from 'react-router-dom'
-import { FaHeart } from 'react-icons/fa'
-import { BsCart } from 'react-icons/bs'
-import logo from '../assets/logo.png'
-import { RiMenu3Fill } from 'react-icons/ri'
-import { IoCloseSharp } from 'react-icons/io5'
+import React, { useEffect, useRef, useState } from 'react';
+import Container from './Container';
+import { MdOutlineMailOutline } from 'react-icons/md';
+import { LuPhoneCall, LuUser } from 'react-icons/lu';
+import { Link, NavLink } from 'react-router-dom';
+import { FaHeart } from 'react-icons/fa';
+import { BsCart } from 'react-icons/bs';
+import logo from '../assets/logo.png';
+import { RiMenu3Fill } from 'react-icons/ri';
+import { IoCloseSharp } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  let menuRef = useRef();
+  let [menuOpen, setMenuOpen] = useState(false);
 
-  let [openMenu, setOpenMenu] = useState(false)
-  let handleOpneMenu = ()=>{
-    setOpenMenu(!openMenu)
-  }
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuOpen && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]); 
+
+  let data = useSelector((state) => state.product.cartItem);
+
+  
   
   return (
-    <header className='bg-[#ffffff] md:bg-[#7E33E0] py-2 border-b-2 border-[#00000019] shadow-sm'>
+    <header className='bg-[#ffffff] md:bg-[#7E33E0] py-2 border-b-2 border-[#00000019] shadow-sm relative'>
       <Container>
         <div>
           <div className='block md:hidden'>
-            <div className='flex justify-between items-center py-2'>
+            <div className='flex justify-between items-center py-2 '>
               <div className='w-[20%]'>
-                <img src={logo} alt="" />
+                <img src={logo} alt="Logo" />
               </div>
+              
               <div className='w-[50%]'>
                 <div className='flex items-center'>
                   <div className='bg-[#fff] w-full rounded-[4px] border-2 border-[#00000020]'>
@@ -34,58 +51,79 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-              <div onClick={handleOpneMenu} className='cursor-pointer w-[10%] flex justify-end'>
-                {openMenu ? "" : <RiMenu3Fill className="text-3xl cursor-pointer" /> }
+              
+              <div onClick={()=>setMenuOpen((prev)=> !prev)} className='cursor-pointer w-[10%] flex justify-end'>
+                {menuOpen ? "" : <RiMenu3Fill className="text-3xl cursor-pointer" /> }
               </div>
-              <div className={` bg-white z-[99999] shadow-2xl transition-all duration-700 ease-in-out ${openMenu ? "absolute top-0 left-0 w-full h-auto opacity-100" : "absolute top-0 left-[-768px] w-full h-auto opacity-0"}`}>
-                {openMenu && (
-                <div>
-                  <div onClick={handleOpneMenu} className='flex justify-end pt-4 pr-4' >
-                    {openMenu ? <IoCloseSharp className="text-3xl cursor-pointer" /> : "" }
+              
+              <div ref={menuRef} className={`bg-white z-[9999] shadow-2xl absolute top-0 left-0 h-auto w-full transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : '-translate-x-[1200px]'}`}>
+                <div className='relative h-auto w-full'>
+                  <div onClick={() => setMenuOpen(false)} className='absolute top-2 right-4 cursor-pointer z-50'>
+                      <IoCloseSharp className="text-4xl text-[#0D0E43]" />
                   </div>
-                  <ul className='py-4 text-center'>
-                    <li className='pb-2' onClick={() => setOpenMenu(false)}>
+                  <ul className='pt-8 pb-4 text-center'>
+                    <li className='pb-2'>
                       <NavLink to={"/"}
-                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}> 
                         Home
                       </NavLink>
                     </li>
-                    <li className='pb-2' onClick={() => setOpenMenu(false)}>
+                    <li className='pb-2'>
                       <NavLink to={"/pages"}
-                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}>
                         Pages
                       </NavLink>
                     </li>
-                    <li className='pb-2' onClick={() => setOpenMenu(false)}>
+                    <li className='pb-2'>
                       <NavLink to={"/products"}
-                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}>
                         Products
                       </NavLink>
                     </li>
-                    <li className='pb-2' onClick={() => setOpenMenu(false)}>
+                    <li className='pb-2'>
                       <NavLink to={"/blog"}
-                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}>
                         Blog
                       </NavLink>
                     </li>
-                    <li className='pb-2' onClick={() => setOpenMenu(false)}>
+                    <li className='pb-2'>
                       <NavLink to={"/shop"}
-                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}>
                         Shop
                       </NavLink>
                     </li>
-                    <li className='pb-2' onClick={() => setOpenMenu(false)}>
+                    <li className='pb-2'>
                       <NavLink to={"/contact"}
-                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}>
                         Contact
+                      </NavLink>
+                    </li>
+                    <li className='pb-2'>
+                      <NavLink to={"/cart"}
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}>
+                        Cart
+                      </NavLink>
+                    </li>
+                    <li className='pb-2'>
+                      <NavLink to={"/myaccount"}
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}>
+                        My Account
                       </NavLink>
                     </li>
                   </ul>
                 </div>
-                )}
               </div>
             </div>
           </div>
+          
           <div className={`hidden md:block`}>
             <div className="flex justify-between items-center">
               <div className='flex items-center gap-x-6'>
@@ -119,8 +157,11 @@ const Header = () => {
                   <Link className='font-josefin font-normal pr-1 text-[14px] lg:text-[16px]'>Wishlist</Link>
                   <FaHeart className='cursor-pointer' />
                 </div>
-                <div className='flex items-center gap-x-1 text-white pl-4'>
+                <div className='flex items-center gap-x-1 text-white pl-4 relative'>
                   <Link to={"/cart"}>
+                    <div className='absolute -top-2 left-8 h-5 w-5 rounded-full bg-[#fff] text-blue-600 flex items-center justify-center'>
+                      <p className='text-[14px]'>{data.length}</p>
+                    </div>
                     <BsCart className='cursor-pointer text-xl' />
                   </Link>
                 </div>
@@ -130,7 +171,7 @@ const Header = () => {
         </div>
       </Container>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

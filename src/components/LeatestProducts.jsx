@@ -1,182 +1,153 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Container from './Container'
-import lea1  from '../assets/lea1.png'
-import lea2  from '../assets/lea2.png'
-import lea3  from '../assets/lea3.png'
-import lea4  from '../assets/lea4.png'
-import lea5  from '../assets/lea5.png'
-import lea6  from '../assets/lea6.png'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
-import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
-import sale from '../assets/sale.png'
+import { initFlowbite } from 'flowbite'
+import { apiData } from './ContextApi';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { FaRegHeart, FaSearchPlus } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './slice/productSlice';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const LeatestProducts = () => {
+  useEffect(() => {
+      initFlowbite();
+    }, []);
+
+    let dispatch = useDispatch()
+    let handleCartAdd = (item)=>{
+      dispatch(addToCart({...item, qun: 1}))
+      toast.success("Added to cart successfully!")
+    }
+
+    let data = useContext(apiData)
+    let chirShow = data.filter((item)=>item.category === "lamp")
+    let chirShow2 = data.filter((item)=>item.category === "garden")
+    let chirFilter = chirShow.slice(20, 26)
+    let chirFilter2 = chirShow.slice(27, 33)
+    let chirFilter3 = chirShow.slice(6, 12)
+    let chirFilter4 = chirShow2.slice(6, 12)
+
   return (
     <section className='pb-6'>
       <Container>
         <h2 className='text-center text-[#151875] font-bold font-lato pb-4 text-3xl'>Leatest Products</h2>
         <div className=''>
-          <ul className='flex gap-x-4 items-center justify-center pb-12'>
-            <li className='text-[#151875] text-[12px] sm:text-[16px] md:text-[18px] font-lato font-medium cursor-pointer'>New Arrival</li>
-            <li className='text-[#151875] text-[12px] sm:text-[16px] md:text-[18px] font-lato font-medium cursor-pointer'>Best Seller</li>
-            <li className='text-[#151875] text-[12px] sm:text-[16px] md:text-[18px] font-lato font-medium cursor-pointer'>Featured</li>
-            <li className='text-[#151875] text-[12px] sm:text-[16px] md:text-[18px] font-lato font-medium cursor-pointer'>Special Offer</li>
-          </ul>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-6 pb-4'>
-            <div className='bg-white rounded-[5px] shadow-lg mb-12'>
-              <div className='bg-[#F7F7F7] py-10 flex justify-center relative group'>
-                <img src={lea1} alt="" />
-                <div className='absolute top-4 left-4 opacity-0 group-hover:opacity-100'>
-                  <div className='pb-12'>
-                    <img src={sale} alt="" />
+          <div className="mb-4">
+            <ul className="flex justify-center flex-wrap -mb-px text-[6px] sm:text-sm md:text-xl font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+              <li className="me-2" role="presentation">
+                <button className="inline-block p-4 text-[#151875] cursor-pointer hover:text-red-500" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">New Arrival</button>
+              </li>
+              <li className="me-2" role="presentation">
+                <button className="inline-block p-4 hover:text-red-500  text-[#151875] cursor-pointer" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Best Seller</button>
+              </li>
+              <li className="me-2" role="presentation">
+                <button className="inline-block p-4 hover:text-red-500 text-[#151875] cursor-pointer" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Featured</button>
+              </li>
+              <li role="presentation">
+                <button className="inline-block p-4 hover:text-red-500 text-[#151875] cursor-pointer" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Special Offer</button>
+              </li>
+            </ul>
+          </div>
+          <div id="default-tab-content">
+            <div className="hidden p-4 max-w-[1152px]" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div className='grid grid-cols-3 gap-4'>
+                {chirFilter.map((item) => (
+                  <div className='shadow-md'>
+                    <div className='relative group'>
+                      <Link to={`/products/allproducts/${item.id}`} target='_top'>
+                        <img src={item.image_path} alt="" />
+                      </Link>
+                      <div className='absolute left-4 bottom-8 opacity-0 group-hover:opacity-100'>
+                        <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                      </div>
+                    </div>
+                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
+                        <h4 className='text-[16px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <div className='flex items-center gap-x-4'>
+                          <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
+                          <p className='line-through text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
+                        </div>
+                      </div>
                   </div>
-                  <div><AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                </div>
-              </div>
-              <div className='flex items-center justify-between px-4'>
-                <div>
-                  <p className='text-[#151875] text-[16px] font-josefin font-medium'>Comfort Handy Craft</p>
-                </div>
-                <div className='flex items-center gap-x-3 py-4'>
-                  <div>
-                    <p className='text-[#151875] text-[14px] font-josefin font-medium'>$42.00</p>
-                  </div>
-                  <div>
-                    <p className='text-[#FB2448] text-[14px] font-josefin font-medium'>$65.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='bg-white rounded-[5px] shadow-lg mb-12'>
-              <div className='bg-[#F7F7F7] py-10 flex justify-center relative group'>
-                <img src={lea2} alt="" />
-                <div className='absolute top-4 left-4 opacity-0 group-hover:opacity-100'>
-                  <div className='pb-12'>
-                    <img src={sale} alt="" />
-                  </div>
-                  <div><AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                </div>
-              </div>
-              <div className='flex items-center justify-between px-4'>
-                <div>
-                  <p className='text-[#151875] text-[16px] font-josefin font-medium'>Comfort Handy Craft</p>
-                </div>
-                <div className='flex items-center gap-x-3 py-4'>
-                  <div>
-                    <p className='text-[#151875] text-[14px] font-josefin font-medium'>$42.00</p>
-                  </div>
-                  <div>
-                    <p className='text-[#FB2448] text-[14px] font-josefin font-medium'>$65.00</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
-            <div className='bg-white rounded-[5px] shadow-lg mb-12'>
-              <div className='bg-[#F7F7F7] py-10 flex justify-center relative group'>
-                <img src={lea3} alt="" />
-                <div className='absolute top-4 left-4 opacity-0 group-hover:opacity-100'>
-                  <div className='pb-12'>
-                    <img src={sale} alt="" />
+            <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+              <div className='grid grid-cols-3 gap-4'>
+                {chirFilter2.map((item) => (
+                  <div className='shadow-md'>
+                    <div className='relative group'>
+                      <Link to={`/products/allproducts/${item.id}`} target='_top'>
+                        <img src={item.image_path} alt="" />
+                      </Link>
+                      <div className='absolute left-4 bottom-8 opacity-0 group-hover:opacity-100'>
+                        <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                      </div>
+                    </div>
+                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
+                        <h4 className='text-[16px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <div className='flex items-center gap-x-4'>
+                          <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
+                          <p className='line-through text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
+                        </div>
+                      </div>
                   </div>
-                  <div><AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                </div>
-              </div>
-              <div className='flex items-center justify-between px-4'>
-                <div>
-                  <p className='text-[#151875] text-[16px] font-josefin font-medium'>Comfort Handy Craft</p>
-                </div>
-                <div className='flex items-center gap-x-3 py-4'>
-                  <div>
-                    <p className='text-[#151875] text-[14px] font-josefin font-medium'>$42.00</p>
-                  </div>
-                  <div>
-                    <p className='text-[#FB2448] text-[14px] font-josefin font-medium'>$65.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='bg-white rounded-[5px] shadow-lg mb-12'>
-              <div className='bg-[#F7F7F7] py-10 flex justify-center relative group'>
-                <img src={lea4} alt="" />
-                <div className='absolute top-4 left-4 opacity-0 group-hover:opacity-100'>
-                  <div className='pb-12'>
-                    <img src={sale} alt="" />
-                  </div>
-                  <div><AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                </div>
-              </div>
-              <div className='flex items-center justify-between px-4'>
-                <div>
-                  <p className='text-[#151875] text-[16px] font-josefin font-medium'>Comfort Handy Craft</p>
-                </div>
-                <div className='flex items-center gap-x-3 py-4'>
-                  <div>
-                    <p className='text-[#151875] text-[14px] font-josefin font-medium'>$42.00</p>
-                  </div>
-                  <div>
-                    <p className='text-[#FB2448] text-[14px] font-josefin font-medium'>$65.00</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
-            <div className='bg-white rounded-[5px] shadow-lg mb-12'>
-              <div className='bg-[#F7F7F7] py-10 flex justify-center relative group'>
-                <img src={lea5} alt="" />
-                <div className='absolute top-4 left-4 opacity-0 group-hover:opacity-100'>
-                  <div className='pb-12'>
-                    <img src={sale} alt="" />
+            <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+              <div className='grid grid-cols-3 gap-4'>
+                {chirFilter3.map((item) => (
+                  <div className='shadow-md'>
+                    <div className='relative group'>
+                      <Link to={`/products/allproducts/${item.id}`} target='_top'>
+                        <img src={item.image_path} alt="" />
+                      </Link>
+                      <div className='absolute left-4 bottom-8 opacity-0 group-hover:opacity-100'>
+                        <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                      </div>
+                    </div>
+                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
+                        <h4 className='text-[16px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <div className='flex items-center gap-x-4'>
+                          <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
+                          <p className='line-through text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
+                        </div>
+                      </div>
                   </div>
-                  <div><AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                </div>
-              </div>
-              <div className='flex items-center justify-between px-4'>
-                <div>
-                  <p className='text-[#151875] text-[16px] font-josefin font-medium'>Comfort Handy Craft</p>
-                </div>
-                <div className='flex items-center gap-x-3 py-4'>
-                  <div>
-                    <p className='text-[#151875] text-[14px] font-josefin font-medium'>$42.00</p>
-                  </div>
-                  <div>
-                    <p className='text-[#FB2448] text-[14px] font-josefin font-medium'>$65.00</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
-            <div className='bg-white rounded-[5px] shadow-lg mb-12'>
-              <div className='bg-[#F7F7F7] py-10 flex justify-center relative group'>
-                <img src={lea6} alt="" />
-                <div className='absolute top-4 left-4 opacity-0 group-hover:opacity-100'>
-                  <div className='pb-12'>
-                    <img src={sale} alt="" />
+            <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+              <div className='grid grid-cols-3 gap-4'>
+                {chirFilter4.map((item) => (
+                  <div className='shadow-md'>
+                    <div className='relative group'>
+                      <Link to={`/products/allproducts/${item.id}`} target='_top'>
+                        <img src={item.image_path} alt="" />
+                      </Link>
+                      <div className='absolute left-4 bottom-8 opacity-0 group-hover:opacity-100'>
+                        <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                      </div>
+                    </div>
+                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
+                        <h4 className='text-[16px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <div className='flex items-center gap-x-4'>
+                          <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
+                          <p className='line-through text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
+                        </div>
+                      </div>
                   </div>
-                  <div><AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                  <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 mb-4' /></div>
-                </div>
-              </div>
-              <div className='flex items-center justify-between px-4'>
-                <div>
-                  <p className='text-[#151875] text-[16px] font-josefin font-medium'>Comfort Handy Craft</p>
-                </div>
-                <div className='flex items-center gap-x-3 py-4'>
-                  <div>
-                    <p className='text-[#151875] text-[14px] font-josefin font-medium'>$42.00</p>
-                  </div>
-                  <div>
-                    <p className='text-[#FB2448] text-[14px] font-josefin font-medium'>$65.00</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
