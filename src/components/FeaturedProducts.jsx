@@ -86,7 +86,7 @@ const FeaturedProducts = () => {
         </div>
         <Slider {...settings} className='featureP'>
           {shopMatress.map((item)=>(
-          <div className='px-2 w-1/4 mb-2'>
+          <div className='px-2 mb-2'>
             <div className='w-full bg-[#F6F7FB] border-1 border-[#00000013] shadow-md rounded-[5px] mr-6'>
               <div className='flex justify-center relative group'>
                 <Link to={`/products/allproducts/${item.id}`} target='_top'>
