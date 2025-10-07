@@ -10,7 +10,6 @@ import DiscountItem from '../components/DiscountItem'
 import TopCategories from '../components/TopCategories'
 import UpdateProd from '../components/UpdateProd'
 import LeatestBlog from '../components/LeatestBlog'
-import Unique2 from '../components/Unique2'
 
 const Home = () => {
   return (
@@ -20,7 +19,6 @@ const Home = () => {
       <LeatestProducts/>
       <Shopex/>
       <Unique/>
-      <Unique2/>
       <TrendingProducts/>
       <TrendDown/>
       <DiscountItem/>

@@ -69,7 +69,7 @@ const ProductsDetails = () => {
         <Container>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-8 items-center'>
             <div className='pb-8 lg:pb-0 w-2/3 lg:w-full mx-auto'>
-              <img src={singleProducts.image_path} alt="" className='h-auto w-full' />
+              <img src={singleProducts.image_path} alt="" className='h-auto w-full rounded-2xl' />
             </div>
             <div>
               <h2 className='text-[#0D134E] text-[25px] sm:text-[36px] font-bold font-josefin pb-2'>{singleProducts.name}</h2>

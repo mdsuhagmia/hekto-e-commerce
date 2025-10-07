@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from '../components/Container'
 import CartUp from '../components/CartUp'
 import { useDispatch, useSelector } from 'react-redux'
 import { IoMdClose } from 'react-icons/io'
-import { allRemoceCart, decrement, increment, productRemove } from '../components/slice/productSlice'
+import { addToCart, allRemoceCart, decrement, increment, productRemove } from '../components/slice/productSlice'
 import { Link } from 'react-router-dom'
-import { FaMinus, FaPlus } from 'react-icons/fa'
+import { FaMinus, FaPlus, FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import { BsCartXFill } from 'react-icons/bs'
+import { apiData } from '../components/ContextApi'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { toast } from 'react-toastify'
 
 const Cart = () => {
   let data = useSelector((item)=>item.product.cartItem)
@@ -17,6 +20,21 @@ const Cart = () => {
     acce.totalQunatity += item.qun
     return acce;
   }, {totalPrice: 0, totalQunatity: 0})
+
+  let products = useContext(apiData)
+  const [suggested, setSuggested] = useState([])
+ 
+  useEffect(() => {
+      const productRandom = [...products].sort(() => 0.5 - Math.random())
+      const selected = productRandom.slice(0, 16)
+      setSuggested(selected)
+  }, [products])
+
+  let handleCartAdd = (item) => {
+    dispatch(addToCart({ ...item, qun: 1 }))
+    toast.success("Added to cart successfully!")
+  }
+
   return (
     <>
       <CartUp/>
@@ -184,14 +202,43 @@ const Cart = () => {
              </div>
             )}
           </div>
-          {data.length > 0 ? "" : <div className='text-center'>
-            <h2 className='text-3xl text-[#262626] font-bold font-dms text-center pb-6'>Your Cart is Empty <BsCartXFill className='inline-block'/></h2>
-            <div className='text-center'>
-              <Link to={"/products"} className='text-2xl text-[#fff] font-bold font-dms bg-[#262626] py-2 px-12 rounded-[5px] hover:bg-[#262626a8]'>
-                Continue Shopping
-              </Link>
-            </div>
-          </div>}
+          {data.length > 0 ? "" :
+            <div>
+              <div className='text-center pb-16'>
+                <h2 className='text-3xl text-[#262626] font-bold font-dms text-center pb-6'>Your Cart is Empty <BsCartXFill className='inline-block' /></h2>
+                <div className='text-center'>
+                  <Link to={"/products"} className='text-2xl text-[#fff] font-bold font-dms bg-[#262626] py-2 px-12 rounded-[5px] hover:bg-[#262626a8]'>
+                    Continue Shopping
+                  </Link>
+                </div>
+              </div>
+              <div>
+                <h1 className='text-blue-500 pb-6 text-[25px] font-bold font-josefin'>Just for you</h1>
+                <div className='grid grid-cols-4 gap-x-4'>
+                  {suggested.map((item) => (
+                    <div className='shadow-lg mb-4'>
+                      <div className='relative group overflow-hidden'>
+                        <Link to={`/products/allproducts/${item.id}`} target='_top'>
+                          <img src={item.image_path} alt="" className='rounded-t-[5px]' />
+                        </Link>
+                        <div className='absolute -left-15 group-hover:left-2 bottom-8 opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-500'>
+                          <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item) (window.scrollTo({top: 0}))} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                          <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                          <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        </div>
+                      </div>
+                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
+                        <h4 className='text-[12px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <div className='flex items-center gap-x-4'>
+                          <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
+                          <p className='line-through text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>}
         </Container>
       </section>
     </>

@@ -81,6 +81,20 @@
   z-index: 9999;
 }
 
+@media (max-width: 640Px) {
+  .featureP .slick-dots li button {
+    height: 4px;
+    width: 8px;
+  }
+  .featureP .slick-dots li.slick-active button {
+    height: 4px;
+    width: 10px;
+  }
+  .featureP .slick-dots{
+    gap: 10px;
+  }
+}
+
 
 
 

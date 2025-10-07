@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { addToCart } from './slice/productSlice'
+import { toast } from 'react-toastify'
 
 const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
 
@@ -30,6 +33,12 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
     setHigh(value.high)
     let priceShow = data.filter((item)=>item.price > value.low && item.price < value.high)
     setShowFilter(priceShow)
+  }
+
+  let dispatch = useDispatch()
+  let handleCart = (item)=>{
+    dispatch(addToCart({...item, qun: 1}))
+    toast.success("Added to cart successfully!")
   }
 
   return (
@@ -62,7 +71,9 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                     </Link>
                     <div className='absolute left-4 top-[48%] opacity-0 group-hover:opacity-100'>
                       <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                        <AiOutlineShoppingCart className='text-blue-500 cursor-pointer text-md' />
+                        <AiOutlineShoppingCart 
+                        onClick={()=>handleCart(item)}
+                        className='text-blue-500 cursor-pointer text-md' />
                       </div>
                       <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
                         <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
@@ -83,7 +94,9 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                     <h4 className='max-w-xl pl-4 text-[#9295AA] text-[8px] sm:text-[14px] md:sm:text-[16px] font-semibold font-lato'>{item.description}</h4>
                     <div className='flex pt-4 gap-x-6 pl-4'>
                       <div className=''>
-                        <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
+                        <AiOutlineShoppingCart 
+                        onClick={()=>handleCart(item)}
+                        className='text-blue-500 cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                       </div>
                       <div className=''>
                         <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
@@ -113,7 +126,9 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                 </Link>
                 <div className='absolute left-4 top-[48%] opacity-0 group-hover:opacity-100'>
                   <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                    <AiOutlineShoppingCart className='text-blue-500 cursor-pointer text-md' />
+                    <AiOutlineShoppingCart 
+                    onClick={()=>handleCart(item)}
+                    className='text-blue-500 cursor-pointer text-md' />
                   </div>
                   <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
                     <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
@@ -134,7 +149,9 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                 <h4 className='max-w-xl pl-4 text-[#9295AA] text-[8px] sm:text-[14px] md:sm:text-[16px] font-semibold font-lato'>{item.description}</h4>
                 <div className='flex pt-4 gap-x-6 pl-4'>
                   <div className=''>
-                    <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
+                    <AiOutlineShoppingCart 
+                    onClick={()=>handleCart(item)}
+                    className='text-blue-500 cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                   </div>
                   <div className=''>
                     <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />

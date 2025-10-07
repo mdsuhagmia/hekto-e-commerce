@@ -4,6 +4,7 @@ import { apiData } from './ContextApi'
 import { useDispatch } from 'react-redux'
 import { addToCart } from './slice/productSlice'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 const Unique = () => {
   let data = useContext(apiData)
@@ -25,7 +26,9 @@ const Unique = () => {
         {filterShow.map((item) => (
           <div className='grid grid-cols-2 items-center'>
             <div className='px-8 py-8'>
-              <img src={item.image_path} alt="" className='w-full rounded-full' />
+              <Link to={`/products/allproducts/${item.id}`} target='_top'>
+                <img src={item.image_path} alt="" className='w-full rounded-full' />
+              </Link>
             </div>
             <div className=''>
               <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-5'>{item.name}</h2>

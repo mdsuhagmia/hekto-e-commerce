@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from './Container'
 import { Link } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
@@ -68,7 +68,11 @@ const FeaturedProducts = () => {
 
   let dispatch = useDispatch()
   let data = useContext(apiData)
-  let shopMatress = data.filter((item)=>item.category === "matress")
+  let [shopMatress, setShopMatress] = useState([])
+  useEffect(()=>{
+    let filterShopMatress = data.filter((item)=>item.category === "matress")
+    setShopMatress(filterShopMatress)
+  },[data])
 
   let handleCartAdd = (item)=>{
     dispatch(addToCart({...item, qun: 1}))
@@ -78,7 +82,7 @@ const FeaturedProducts = () => {
     <section className='bg-white py-16'>
       <Container>
         <div>
-          <h2 className='text-[#1A0B5B] text-2xl md:text-3xl font-bold font-lato text-center pb-6'>Shop the Latest Mattress Trends</h2>
+          <h2 className='text-[#1A0B5B] text-lg sm:text-2xl md:text-3xl font-bold font-lato text-center pb-6'>Shop the Latest Mattress Trends</h2>
         </div>
         <Slider {...settings} className='featureP'>
           {shopMatress.map((item)=>(
@@ -101,7 +105,7 @@ const FeaturedProducts = () => {
                 </div>
               </div>
               <div className='bg-white min-h-[120px] text-center hover:bg-[#2F1AC4] group'>
-                <h3 className='pt-4 pb-2 text-[#FB2E86] text-[16px] font-bold font-lato group-hover:text-white'>{item.name}</h3>
+                <h3 className='pt-4 pb-2 text-[#FB2E86] text-[16px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-bold font-lato group-hover:text-white'>{item.name}</h3>
                 <div className='flex justify-center gap-x-2 pb-2'>
                   <div className='h-[4px] w-[20px] bg-[#05E6B7]'></div>
                   <div className='h-[4px] w-[20px] bg-[#F701A8]'></div>

@@ -5,6 +5,9 @@ import tc3 from '../assets/tc3.png'
 import tc4 from '../assets/tc4.png'
 import Slider from 'react-slick'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
+import { useContext, useEffect, useState } from 'react'
+import { apiData } from './ContextApi'
+import { Link } from 'react-router-dom'
 
 const TopCategories = () => {
   function SampleNextArrow(props) {
@@ -61,82 +64,37 @@ const TopCategories = () => {
       }
     ]
     };
+
+    let data = useContext(apiData)
+    let [gardenCateShow, setGardenCateShow] = useState([])
+    useEffect(()=>{
+      let gardenFilterCate = data.filter((item)=>item.category === "garden")
+      let gardenSlice = gardenFilterCate.slice(10, 30)
+      setGardenCateShow(gardenSlice)
+    },[data])
+
   return (
     <section className='pb-16'>
       <Container>
         <div>
           <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-4 pt-16 text-center'>Top Categories</h2>
           <Slider {...settings} className='tc_slick py-8'>
+            {gardenCateShow.map((item)=>(
             <div className='px-2'>
-              <div className='bg-[#F6F7FB] flex items-center justify-center rounded-full border-l-8 border-white hover:border-l-8 hover:border-indigo-500 cursor-pointer relative group'>
-                <img src={tc1} alt="" className='py-12' />
+              <div className='bg-[#F6F7FB] flex items-center justify-center rounded-full relative group'>
+                <img src={item.image_path} alt="" className='rounded-[50%] border-l-8 border-white hover:border-l-8 hover:border-indigo-500' />
                 <div className='absolute left-[50%] bottom-4 translate-x-[-50%] opacity-0 group-hover:opacity-100'>
-                  <button className='cursor-pointer text-white text-[12px] font-medium font-josefin bg-[#08D15F] px-[16px] py-[5px] rounded-[5px] hover:bg-[#08d15fb6]'>
+                  <Link to={`/products/allproducts/${item.id}`} target='_top' className='inline-block text-white text-[12px] font-medium font-josefin bg-[#08D15F] px-[16px] py-[5px] rounded-[5px] hover:bg-[#279e5b]'>
                     View Shop
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div className='text-center'>
-                <h4 className='text-[#151875] text-[16px] font-semibold font-lato pb-2 pt-4'>Mini LCW Chair</h4>
-                <h5 className='text-[#151875] text-[14px] font-semibold font-lato pb-4'>$56.00</h5>
+                <h4 className='text-[#151875] text-[16px] font-semibold font-lato pb-2 pt-4'>{item.name}</h4>
+                <h5 className='text-[#151875] text-[14px] font-semibold font-lato pb-4'>${item.price}</h5>
               </div>
             </div>
-            <div className='px-2'>
-              <div className='bg-[#F6F7FB] flex items-center justify-center rounded-full border-l-8 border-white hover:border-l-8 hover:border-indigo-500 cursor-pointer relative group'>
-                <img src={tc2} alt="" className='py-12' />
-                <div className='absolute left-[50%] bottom-4 translate-x-[-50%] opacity-0 group-hover:opacity-100'>
-                  <button className='cursor-pointer text-white text-[12px] font-medium font-josefin bg-[#08D15F] px-[16px] py-[5px] rounded-[5px] hover:bg-[#08d15fb6]'>
-                    View Shop
-                  </button>
-                </div>
-              </div>
-              <div className='text-center'>
-                <h4 className='text-[#151875] text-[16px] font-semibold font-lato pb-2 pt-4'>Mini LCW Chair</h4>
-                <h5 className='text-[#151875] text-[14px] font-semibold font-lato pb-4'>$56.00</h5>
-              </div>
-            </div>
-            <div className='px-2'>
-              <div className='bg-[#F6F7FB] flex items-center justify-center rounded-full border-l-8 border-white hover:border-l-8 hover:border-indigo-500 cursor-pointer relative group'>
-                <img src={tc3} alt="" className='py-12' />
-                <div className='absolute left-[50%] bottom-4 translate-x-[-50%] opacity-0 group-hover:opacity-100'>
-                  <button className='cursor-pointer text-white text-[12px] font-medium font-josefin bg-[#08D15F] px-[16px] py-[5px] rounded-[5px] hover:bg-[#08d15fb6]'>
-                    View Shop
-                  </button>
-                </div>
-              </div>
-              <div className='text-center'>
-                <h4 className='text-[#151875] text-[16px] font-semibold font-lato pb-2 pt-4'>Mini LCW Chair</h4>
-                <h5 className='text-[#151875] text-[14px] font-semibold font-lato pb-4'>$56.00</h5>
-              </div>
-            </div>
-            <div className='px-2'>
-              <div className='bg-[#F6F7FB] flex items-center justify-center rounded-full border-l-8 border-white hover:border-l-8 hover:border-indigo-500 cursor-pointer relative group'>
-                <img src={tc4} alt="" className='py-12' />
-                <div className='absolute left-[50%] bottom-4 translate-x-[-50%] opacity-0 group-hover:opacity-100'>
-                  <button className='cursor-pointer text-white text-[12px] font-medium font-josefin bg-[#08D15F] px-[16px] py-[5px] rounded-[5px] hover:bg-[#08d15fb6]'>
-                    View Shop
-                  </button>
-                </div>
-              </div>
-              <div className='text-center'>
-                <h4 className='text-[#151875] text-[16px] font-semibold font-lato pb-2 pt-4'>Mini LCW Chair</h4>
-                <h5 className='text-[#151875] text-[14px] font-semibold font-lato pb-4'>$56.00</h5>
-              </div>
-            </div>
-            <div className='px-2'>
-              <div className='bg-[#F6F7FB] flex items-center justify-center rounded-full border-l-8 border-white hover:border-l-8 hover:border-indigo-500 cursor-pointer relative group'>
-                <img src={tc2} alt="" className='py-12' />
-                <div className='absolute left-[50%] bottom-4 translate-x-[-50%] opacity-0 group-hover:opacity-100'>
-                  <button className='cursor-pointer text-white text-[12px] font-medium font-josefin bg-[#08D15F] px-[16px] py-[5px] rounded-[5px] hover:bg-[#08d15fb6]'>
-                    View Shop
-                  </button>
-                </div>
-              </div>
-              <div className='text-center'>
-                <h4 className='text-[#151875] text-[16px] font-semibold font-lato pb-2 pt-4'>Mini LCW Chair</h4>
-                <h5 className='text-[#151875] text-[14px] font-semibold font-lato pb-4'>$56.00</h5>
-              </div>
-            </div>
+            ))}
           </Slider>
         </div>
       </Container>

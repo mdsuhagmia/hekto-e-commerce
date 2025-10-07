@@ -45,7 +45,7 @@ const Post = ({allPage, showFilter}) => {
                 </Link>
                 <div className='absolute left-4 top-[48%] opacity-0 group-hover:opacity-100'>
                   <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                    <AiOutlineShoppingCart onClick={()=>dispatch(addToCart({...item, qun: 1}))} className='text-blue-500 cursor-pointer text-md' />
+                    <AiOutlineShoppingCart onClick={()=>handleCart(item)} className='text-blue-500 cursor-pointer text-md' />
                   </div>
                   <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
                     <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
