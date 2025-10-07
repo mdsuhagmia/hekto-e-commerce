@@ -33,7 +33,7 @@ const FeaturedProducts = () => {
     );
   }
 
-  const settings = {
+  var settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -50,7 +50,7 @@ const FeaturedProducts = () => {
         }
       },
       {
-        breakpoint: 640,
+        breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -90,7 +90,7 @@ const FeaturedProducts = () => {
             <div className='w-full bg-[#F6F7FB] border-1 border-[#00000013] shadow-md rounded-[5px] mr-6'>
               <div className='flex justify-center relative group'>
                 <Link to={`/products/allproducts/${item.id}`} target='_top'>
-                  <img src={item.image_path} alt="" className='' />
+                  <img src={item.image_path} alt="" className='rounded-t-[5px]' />
                 </Link>
                 <div className='flex gap-x-4 absolute top-2 left-8 opacity-0 group-hover:opacity-100'>
                   <div><AiOutlineShoppingCart onClick={()=>handleCartAdd(item)} className='text-blue-500 cursor-pointer hover:text-blue-900 text-[24px]' /></div>

@@ -42,7 +42,7 @@ const DiscountItem = () => {
     let filterShowLamp = data.filter((item) => item.category === "lamp")
     let lampCate = filterShowLamp.slice(32, 36)
     setShowLampCate(lampCate)
-    
+
   }, [data])
 
   let discountPercentage = (price, discountPrice) => {
@@ -59,7 +59,7 @@ const DiscountItem = () => {
           <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-4 pt-16 text-center'>Discount Item</h2>
           <div>
             <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
-              <ul className="flex flex-wrap justify-center -mb-px text-xl font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-[#FB2E86] dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
+              <ul className="flex flex-wrap justify-center -mb-px text-xs sm:text-xl font-medium text-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-[#FB2E86] dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
                 <li className="me-2" role="presentation">
                   <button className="inline-block p-4 border-b-2 rounded-t-lg cursor-pointer" id="profile-styled-tab" data-tabs-target="#styled-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Garden</button>
                 </li>
@@ -76,7 +76,7 @@ const DiscountItem = () => {
             </div>
             <div id="default-styled-tab-content">
               <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">
-                <div className='grid grid-cols-4 gap-4'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
                 {showGardenCate.map((item) => (
                   <div className='shadow-md'>
                     <div className='relative group overflow-hidden'>
@@ -86,7 +86,7 @@ const DiscountItem = () => {
                       <div>
                         <Link to={`/products/allproducts/${item.id}`} target='_top'>
                           <div className='shadow-md'>
-                            <div className='absolute top-2 left-2 bg-pink-500 text-white text-sm px-2 py-1 rounded hover:text-gray-200'>
+                            <div className='absolute top-2 left-2 bg-pink-500 text-white text-[8px] sm:text-sm px-2 py-1 rounded hover:text-gray-200'>
                               {discountPercentage(item.price, item.discount_price)}
                             </div>
                           </div>
@@ -99,15 +99,15 @@ const DiscountItem = () => {
                       </div>
                     </div>
                       <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[14px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
-                        <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.price}</p>
+                        <h4 className='text-[8px] sm:text-[14px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <p className='text-[8px] sm:text-[12px] text-[#151875] font-josefin font-semibold'>${item.price}</p>
                       </div>
                   </div>
                 ))}
               </div>
               </div>
               <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                <div className='grid grid-cols-4 gap-4'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
                 {showTvTableCate.map((item) => (
                   <div className='shadow-md'>
                     <div className='relative group overflow-hidden'>
@@ -117,7 +117,7 @@ const DiscountItem = () => {
                       <div>
                         <Link to={`/products/allproducts/${item.id}`} target='_top'>
                           <div className='shadow-md'>
-                            <div className='absolute top-2 left-2 bg-pink-500 text-white text-sm px-2 py-1 rounded hover:text-gray-200'>
+                            <div className='absolute top-2 left-2 bg-pink-500 text-white text-[8px] sm:text-sm px-2 py-1 rounded hover:text-gray-200'>
                               {discountPercentage(item.price, item.discount_price)}
                             </div>
                           </div>
@@ -130,15 +130,15 @@ const DiscountItem = () => {
                       </div>
                     </div>
                       <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[14px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
-                        <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.price}</p>
+                        <h4 className='text-[8px] sm:text-[14px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <p className='text-[8px] sm:text-[14px] text-[#151875] font-josefin font-semibold'>${item.price}</p>
                       </div>
                   </div>
                 ))}
               </div>
               </div>
               <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-settings" role="tabpanel" aria-labelledby="settings-tab">
-                <div className='grid grid-cols-4 gap-4'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
                 {showMirrorCate.map((item) => (
                   <div className='shadow-md'>
                     <div className='relative group overflow-hidden'>
@@ -148,7 +148,7 @@ const DiscountItem = () => {
                       <div>
                         <Link to={`/products/allproducts/${item.id}`} target='_top'>
                           <div className='shadow-md'>
-                            <div className='absolute top-2 left-2 bg-pink-500 text-white text-sm px-2 py-1 rounded hover:text-gray-200'>
+                            <div className='absolute top-2 left-2 bg-pink-500 text-white text-[8px] sm:text-sm px-2 py-1 rounded hover:text-gray-200'>
                               {discountPercentage(item.price, item.discount_price)}
                             </div>
                           </div>
@@ -161,15 +161,15 @@ const DiscountItem = () => {
                       </div>
                     </div>
                       <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[14px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
-                        <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.price}</p>
+                        <h4 className='text-[8px] sm:text-[14px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <p className='text-[8px] sm:text-[14px] text-[#151875] font-josefin font-semibold'>${item.price}</p>
                       </div>
                   </div>
                 ))}
               </div>
               </div>
               <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                <div className='grid grid-cols-4 gap-4'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
                 {showLampCate.map((item) => (
                   <div className='shadow-md'>
                     <div className='relative group overflow-hidden'>
@@ -179,7 +179,7 @@ const DiscountItem = () => {
                       <div>
                         <Link to={`/products/allproducts/${item.id}`} target='_top'>
                           <div className='shadow-md'>
-                            <div className='absolute top-2 left-2 bg-pink-500 text-white text-sm px-2 py-1 rounded hover:text-gray-200'>
+                            <div className='absolute top-2 left-2 bg-pink-500 text-white text-[8px] sm:text-sm px-2 py-1 rounded hover:text-gray-200'>
                               {discountPercentage(item.price, item.discount_price)}
                             </div>
                           </div>
@@ -192,8 +192,8 @@ const DiscountItem = () => {
                       </div>
                     </div>
                       <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[14px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
-                        <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.price}</p>
+                        <h4 className='text-[8px] sm:text-[14px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                        <p className='text-[8px] sm:text-[14px] text-[#151875] font-josefin font-semibold'>${item.price}</p>
                       </div>
                   </div>
                 ))}

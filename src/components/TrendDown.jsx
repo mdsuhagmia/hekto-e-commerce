@@ -29,22 +29,22 @@ const TrendDown = () => {
   return (
     <section className='lg:pb-8'>
       <Container>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4'>
-          <div className='bg-[#FFF6FB] pt-6 pl-6 mb-6 lg:mb-0'>
-            <h2 className='text-[#151875] text-[26px] md:text-[18px] lg:text-[26px] font-semibold font-josefin pb-2'>23% off in all products</h2>
-            <button className='text-[#FB2E86] text-[16px] md:text-[14px] lg:text-[16px] font-semibold font-lato underline cursor-pointer'>Shop Now</button>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-4'>
+          <div className='bg-[#FFF6FB] pt-6 pl-6 mb-4 sm:mb-0'>
+            <h2 className='text-[#151875] text-[14px] md:text-[18px] lg:text-[26px] font-semibold font-josefin pb-2'>23% off in all products</h2>
+            <button className='text-[#FB2E86] text-[14px] md:text-[14px] lg:text-[16px] font-semibold font-lato underline cursor-pointer'>Shop Now</button>
             <div className='flex justify-end'>
               <img src={g1} alt="" />
             </div>
           </div>
-          <div className='bg-[#EEEFFB] pl-6 pt-8 mb-6 lg:mb-0'>
-            <h2 className='text-[#151875] text-[26px] md:text-[18px] lg:text-[26px] font-semibold font-josefin pb-2'>23% off in all products</h2>
-            <button className='text-[#FB2E86] text-[16px] md:text-[14px] lg:text-[16px] font-semibold font-lato underline cursor-pointer'>View Collection</button>
+          <div className='bg-[#EEEFFB] pl-6 pt-8 mb-6 sm:mb-0'>
+            <h2 className='text-[#151875] text-[14px] md:text-[18px] lg:text-[26px] font-semibold font-josefin pb-2'>23% off in all products</h2>
+            <button className='text-[#FB2E86] text-[14px] md:text-[14px] lg:text-[16px] font-semibold font-lato underline cursor-pointer'>View Collection</button>
             <div className='flex justify-end'>
               <img src={g2} alt=""  />
             </div>
           </div>
-          <div className='grid grid-rows-3 md:mb-4 lg:mb-0 sm:col-span-2 mx-auto md:col-span-1'>
+          <div className='grid grid-rows-3'>
             {tvCateShow.map((item) => (
               <div className='flex items-center gap-x-4 mb-4'>
                 <div className='bg-[#F5F6F8] px-4 h-full flex justify-center items-center'>
@@ -53,10 +53,10 @@ const TrendDown = () => {
                   </Link>
                 </div>
                 <div>
-                  <h4 className='text-[#151875] text-[16px] md:text-[12px] lg:text-[16px] font-semibold font-josefin pb-2'>{item.name}</h4>
+                  <h4 className='text-[#151875] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[16px] font-semibold font-josefin pb-2'>{item.name}</h4>
                   <div className='flex gap-x-4'>
-                    <h5 className='text-[#151875] text-[14px] md:text-[12px] lg:text-[14px] font-semibold font-josefin'>${item.discount_price}</h5>
-                    <h5 className='text-[#d1237a] text-[14px] md:text-[12px] lg:text-[14px] font-semibold font-josefin line-through'>${item.price}</h5>
+                    <h5 className='text-[#151875] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[14px] font-semibold font-josefin'>${item.discount_price}</h5>
+                    <h5 className='text-[#d1237a] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[14px] font-semibold font-josefin line-through'>${item.price}</h5>
                   </div>
                 </div>
               </div>
@@ -69,10 +69,10 @@ const TrendDown = () => {
                   </Link>
                 </div>
                 <div>
-                  <h4 className='text-[#151875] text-[16px] md:text-[12px] lg:text-[16px] font-semibold font-josefin pb-2'>{item.name}</h4>
+                  <h4 className='text-[#151875] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[16px] font-semibold font-josefin pb-2'>{item.name}</h4>
                   <div className='flex gap-x-4'>
-                    <h5 className='text-[#151875] text-[14px] md:text-[12px] lg:text-[14px] font-semibold font-josefin'>${item.discount_price}</h5>
-                    <h5 className='text-[#d1237a] text-[14px] md:text-[12px] lg:text-[14px] font-semibold font-josefin line-through'>${item.price}</h5>
+                    <h5 className='text-[#151875] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[14px] font-semibold font-josefin'>${item.discount_price}</h5>
+                    <h5 className='text-[#d1237a] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[14px] font-semibold font-josefin line-through'>${item.price}</h5>
                   </div>
                 </div>
               </div>
@@ -85,10 +85,10 @@ const TrendDown = () => {
                   </Link>
                 </div>
                 <div>
-                  <h4 className='text-[#151875] text-[16px] md:text-[12px] lg:text-[16px] font-semibold font-josefin pb-2'>{item.name}</h4>
+                  <h4 className='text-[#151875] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[16px] font-semibold font-josefin pb-2'>{item.name}</h4>
                   <div className='flex gap-x-4'>
-                    <h5 className='text-[#151875] text-[14px] md:text-[12px] lg:text-[14px] font-semibold font-josefin'>${item.discount_price}</h5>
-                    <h5 className='text-[#d1237a] text-[14px] md:text-[12px] lg:text-[14px] font-semibold font-josefin line-through'>${item.price}</h5>
+                    <h5 className='text-[#151875] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[14px] font-semibold font-josefin'>${item.discount_price}</h5>
+                    <h5 className='text-[#d1237a] text-[14px] sm:text-[9px] md:text-[12px] lg:text-[14px] font-semibold font-josefin line-through'>${item.price}</h5>
                   </div>
                 </div>
               </div>

@@ -77,7 +77,7 @@ const TrendingProducts = () => {
   return (
     <section className='pb-16'>
       <Container>
-        <h2 className='text-[#151875] text-[25px] md:text-[35px] font-bold font-josefin pb-6 pt-16 text-center'>Trending Products</h2>
+        <h2 className='text-[#151875] text-[25px] md:text-[35px] font-bold font-josefin pb-6 pt-10 sm:pt-16 text-center'>Trending Products</h2>
         <Slider {...settings}>
           {produc.map((item)=>(
             <div className='px-2'>
