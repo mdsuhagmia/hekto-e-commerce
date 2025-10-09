@@ -16,7 +16,7 @@ const FeaturedProducts = () => {
     return (
       <div
         onClick={onClick}
-        className='absolute top-[50%] left-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-2xl rounded-[5px] cursor-pointer'>
+        className='absolute top-[50%] left-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-md sm:text-xl lg:text-2xl rounded-[5px] cursor-pointer'>
           <MdArrowBackIosNew />
       </div>
     );
@@ -27,7 +27,7 @@ const FeaturedProducts = () => {
     return (
       <div
         onClick={onClick}
-        className='absolute top-[50%] right-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-2xl rounded-[5px] z-[9999] cursor-pointer'>
+        className='absolute top-[50%] right-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-md sm:text-xl lg:text-2xl rounded-[5px] z-[9999] cursor-pointer'>
           <MdArrowForwardIos />
       </div>
     );
@@ -50,7 +50,7 @@ const FeaturedProducts = () => {
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 767,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -59,8 +59,8 @@ const FeaturedProducts = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 2,
+          slidesToScroll: 2,
         }
       }
     ]
@@ -78,6 +78,7 @@ const FeaturedProducts = () => {
     dispatch(addToCart({...item, qun: 1}))
     toast.success("Added to cart successfully!")
   }
+
   return (
     <section className='bg-white py-16'>
       <Container>
@@ -94,7 +95,9 @@ const FeaturedProducts = () => {
                 </Link>
                 <div className='flex gap-x-4 absolute top-2 left-8 opacity-0 group-hover:opacity-100'>
                   <div><AiOutlineShoppingCart onClick={()=>handleCartAdd(item)} className='text-blue-500 cursor-pointer hover:text-blue-900 text-[24px]' /></div>
-                  <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[20px]' /></div>
+                  <div>
+                    <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[20px]' />
+                  </div>
                   <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[21px]' /></div>
                 </div>
                 <div className='absolute bottom-4'>
@@ -105,14 +108,14 @@ const FeaturedProducts = () => {
                 </div>
               </div>
               <div className='bg-white min-h-[120px] text-center hover:bg-[#2F1AC4] group'>
-                <h3 className='pt-4 pb-2 text-[#FB2E86] text-[16px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-bold font-lato group-hover:text-white'>{item.name}</h3>
+                <h3 className='pt-4 pb-2 text-[#FB2E86] text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-bold font-lato group-hover:text-white'>{item.name}</h3>
                 <div className='flex justify-center gap-x-2 pb-2'>
                   <div className='h-[4px] w-[20px] bg-[#05E6B7]'></div>
                   <div className='h-[4px] w-[20px] bg-[#F701A8]'></div>
                   <div className='h-[4px] w-[20px] bg-[#00009D] group-hover:bg-[#fff]'></div>
                 </div>
-                <h4 className='pb-2 text-[#151875] text-[14px] font-medium font-josefin group-hover:text-white'>{item.finish}</h4>
-                <p className='pb-4 text-[#151875] text-[14px] font-medium font-josefin group-hover:text-white'>${item.price}</p>
+                <h4 className='pb-2 text-[#151875] text-[14px] font-medium font-josefin group-hover:text-white capitalize'>{item.finish}</h4>
+                <p className='pb-4 text-[#1016ba] text-[14px] font-medium font-josefin group-hover:text-white'>${item.price}</p>
               </div>
             </div>
           </div>

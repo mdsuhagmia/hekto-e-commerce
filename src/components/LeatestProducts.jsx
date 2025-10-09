@@ -46,10 +46,10 @@ const LeatestProducts = () => {
   return (
     <section className='pb-6'>
       <Container>
-        <h2 className='text-center text-[#151875] font-bold font-lato pb-4 text-3xl'>Leatest Products</h2>
+        <h2 className='text-center text-[#151875] font-bold font-lato pb-4 text-xl sm:text-3xl'>Leatest Products</h2>
         <div className=''>
           <div className="mb-4">
-            <ul className="flex justify-center gap-x-1 sm:gap-x-0 flex-wrap -mb-px text-[12px] sm:text-sm md:text-xl font-medium font-josefin text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+            <ul className="flex justify-center gap-x-3 sm:gap-x-0 flex-wrap -mb-px text-[10px] sm:text-sm md:text-xl font-medium font-josefin text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
               <li className="me-2" role="presentation">
                 <button className="inline-block p-0 sm:p-4 text-[#151875] cursor-pointer hover:text-red-500" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">New Arrival</button>
               </li>
@@ -66,7 +66,7 @@ const LeatestProducts = () => {
           </div>
           <div id="default-tab-content">
             <div className="hidden p-4 max-w-[1152px]" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              <div className='grid grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
                 {showLampCate.map((item) => (
                   <div className='shadow-md'>
                     <div className='relative group'>
@@ -79,11 +79,11 @@ const LeatestProducts = () => {
                         <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
-                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[8px] sm:text-[14px] md:text-[16px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                      <div className='bg-[#F7F7F7] px-2 lg:flex justify-between items-center py-4'>
+                        <h4 className='text-[8px] sm:text-[14px] md:text-[16px] text-[#151875] font-josefin font-semibold pb-2 lg:pb-0'>{item.name}</h4>
                         <div className='flex items-center gap-x-4'>
                           <p className='text-[8px] md:text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
-                          <p className='line-through text-[8px] md:text-[12px] text-[#FB2448] font-josefin font-semibold hidden sm:block'>${item.price}</p>
+                          <p className='line-through text-[8px] md:text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
                         </div>
                       </div>
                   </div>
@@ -91,7 +91,7 @@ const LeatestProducts = () => {
               </div>
             </div>
             <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-              <div className='grid grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
                 {showLampCate2.map((item) => (
                   <div className='shadow-md'>
                     <div className='relative group'>
@@ -104,11 +104,11 @@ const LeatestProducts = () => {
                         <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
-                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[8px] sm:text-[14px] md:text-[16px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                      <div className='bg-[#F7F7F7] px-2 lg:flex justify-between items-center py-4'>
+                        <h4 className='text-[8px] sm:text-[14px] md:text-[16px] text-[#151875] font-josefin font-semibold pb-2 lg:pb-0'>{item.name}</h4>
                         <div className='flex items-center gap-x-4'>
                           <p className='text-[8px] md:text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
-                          <p className='line-through text-[8px] md:text-[12px] text-[#FB2448] font-josefin font-semibold hidden sm:block'>${item.price}</p>
+                          <p className='line-through text-[8px] md:text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
                         </div>
                       </div>
                   </div>
@@ -116,7 +116,7 @@ const LeatestProducts = () => {
               </div>
             </div>
             <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-              <div className='grid grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
                 {showGardenCate.map((item) => (
                   <div className='shadow-md'>
                     <div className='relative group'>
@@ -129,11 +129,11 @@ const LeatestProducts = () => {
                         <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
-                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[8px] sm:text-[14px] md:text-[16px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                      <div className='bg-[#F7F7F7] px-2 lg:flex justify-between items-center py-4'>
+                        <h4 className='text-[8px] sm:text-[14px] md:text-[16px] text-[#151875] font-josefin font-semibold pb-2 lg:pb-0'>{item.name}</h4>
                         <div className='flex items-center gap-x-4'>
                           <p className='text-[8px] md:text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
-                          <p className='line-through text-[8px] md:text-[12px] text-[#FB2448] font-josefin font-semibold hidden sm:block'>${item.price}</p>
+                          <p className='line-through text-[8px] md:text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
                         </div>
                       </div>
                   </div>
@@ -141,7 +141,7 @@ const LeatestProducts = () => {
               </div>
             </div>
             <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-              <div className='grid grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
                 {showLampCate3.map((item) => (
                   <div className='shadow-md'>
                     <div className='relative group'>
@@ -154,11 +154,11 @@ const LeatestProducts = () => {
                         <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
-                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[8px] sm:text-[14px] md:text-[16px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                      <div className='bg-[#F7F7F7] px-2 lg:flex justify-between items-center py-4'>
+                        <h4 className='text-[8px] sm:text-[14px] md:text-[16px] text-[#151875] font-josefin font-semibold pb-2 lg:pb-0'>{item.name}</h4>
                         <div className='flex items-center gap-x-4'>
                           <p className='text-[8px] md:text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
-                          <p className='line-through text-[8px] md:text-[12px] text-[#FB2448] font-josefin font-semibold hidden sm:block'>${item.price}</p>
+                          <p className='line-through text-[8px] md:text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>
                         </div>
                       </div>
                   </div>

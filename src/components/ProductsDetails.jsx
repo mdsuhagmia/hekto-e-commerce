@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Container from './Container'
 import ProductDetailsUp from './ProductDetailsUp'
-import { FaFacebookF, FaInstagram, FaStar, FaStarHalfAlt, FaTwitter } from 'react-icons/fa'
+import { FaCartPlus, FaFacebookF, FaInstagram, FaStar, FaStarHalfAlt, FaTwitter } from 'react-icons/fa'
 import { CiHeart, CiStar } from 'react-icons/ci'
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux'
-import { addToCart } from './slice/productSlice'
+import { addToCart, addToWishlist } from './slice/productSlice'
 import jj from '../assets/jj.png'
 import { initFlowbite } from 'flowbite'
 
@@ -43,14 +43,22 @@ const ProductsDetails = () => {
   // console.log(roundedDiscount)
 
   let navigate = useNavigate()
-  let Dispatch = useDispatch()
+  let dispatch = useDispatch()
 
   let handleCart = (item)=>{
-    Dispatch(addToCart({...item, qun: 1}))
+    dispatch(addToCart({...item, qun: 1}))
     toast.success("Add to cart success!")
     setTimeout(()=>{
       navigate("/cart")
     }, 2000)
+  }
+
+  let handleHeart = (item)=>{
+    dispatch(addToWishlist({...item, qun: 1}))
+    toast.success("Add to Wishlist success!")
+    setTimeout(() => {
+      navigate("/wishlist")
+    }, 2000);
   }
   
   let [more, setMore] = useState(false)
@@ -82,12 +90,19 @@ const ProductsDetails = () => {
                 <h3 className='text-[#df3636] text-[16px] font-semibold font-josefin'>Discount: ${discount.toFixed(2)}</h3>
               </div>
               <p className='text-[#A9ACC6] text-[14px] sm:text-[16px] font-medium font-josefin max-w-lg'>{singleProducts.description}</p>
-              <div className='w-40 py-4'>
-                <div className='flex justify-between items-center cursor-pointer group border-2 border-[#0000001a] px-6 py-1 rounded-[5px] hover:border-[#f01313]' onClick={()=>handleCart(singleProducts)}>
-                  <p className='text-[#151875] text-[16px] font-medium font-josefin group-hover:text-[#f01313]'>Add To cart</p>
-                  <CiHeart className='group-hover:text-[#f01313]' />
+              <div className='flex gap-x-2 sm:gap-x-6'>
+                <div className='w-40 py-4'>
+                  <div className='flex justify-between items-center cursor-pointer group border-2 border-[#0000001a] px-4 sm:px-6 py-1 rounded-[5px] hover:border-[#f01313]' onClick={() => handleCart(singleProducts)}>
+                    <p className='text-[#151875] text-[14px] sm:text-[16px] font-medium font-josefin group-hover:text-[#f01313]'>Add To cart</p>
+                    <FaCartPlus className='text-[#151875] group-hover:text-[#f01313]' />
+                  </div>
                 </div>
-                
+                <div className='w-45 py-4'>
+                  <div className='flex justify-between items-center cursor-pointer group border-2 border-[#0000001a] px-4 sm:px-6 py-1 rounded-[5px] hover:border-[#f01313]' onClick={()=>handleHeart(singleProducts)}>
+                    <p className='text-[#151875] text-[14px] sm:text-[16px] font-medium font-josefin group-hover:text-[#f01313]'>Add To Wishlist</p>
+                    <CiHeart className='group-hover:text-[#f01313]' />
+                  </div>
+                </div>
               </div>
               <p className='text-[#151875] text-[16px] font-semibold font-josefin pb-2'>Categories: {singleProducts.category}</p>
               <p className='text-[#151875] text-[16px] font-semibold font-josefin pb-2'>Stock: {singleProducts.stock}</p>
@@ -103,44 +118,44 @@ const ProductsDetails = () => {
           </div>
           <div className='pt-20'>
             <div className="mb-4">
-              <ul className="flex flex-wrap -mb-px text-[6px] sm:text-sm md:text-xl font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+              <ul className="flex flex-wrap -mb-px text-[10px] sm:text-sm md:text-xl font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                 <li className="me-2" role="presentation">
-                  <button className="inline-block p-4 border-b-2 rounded-t-lg text-[#0911f7] cursor-pointer" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Description</button>
+                  <button className="inline-block p-2 sm:p-4 border-b-2 rounded-t-lg text-[#0911f7] cursor-pointer" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Description</button>
                 </li>
                 <li className="me-2" role="presentation">
-                  <button className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-[#0911f7] cursor-pointer" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Additional Info</button>
+                  <button className="inline-block p-2 sm:p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-[#0911f7] cursor-pointer" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Additional Info</button>
                 </li>
                 <li className="me-2" role="presentation">
-                  <button className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-[#0911f7] cursor-pointer" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Reviews</button>
+                  <button className="inline-block p-2 sm:p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-[#0911f7] cursor-pointer" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Reviews</button>
                 </li>
                 <li role="presentation">
-                  <button className="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-[#0911f7] cursor-pointer" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Video</button>
+                  <button className="inline-block p-2 sm:p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-[#0911f7] cursor-pointer" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Video</button>
                 </li>
               </ul>
             </div>
             <div id="default-tab-content">
               <div className="hidden p-4 max-w-[1152px]" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <h4 className='text-[#151875] font-bold font-lato text-[18px] pb-4'>Varius tempor.</h4>
-                <p className="text-[16px] text-[#A9ACC6] font-medium font-josefin pb-6">Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
+                <p className="text-[12px] sm:text-[14px] md:text-[16px] text-[#A9ACC6] font-medium font-josefin pb-6">Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
                 {more && (
                   <div className='pb-8'>
-                    <p className="text-[16px] text-[#A9ACC6] font-medium font-josefin pb-2">Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
-                    <p className="text-[16px] text-[#A9ACC6] font-medium font-josefin pb-2">Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
+                    <p className="text-[12px] sm:text-[14px] md:text-[16px] text-[#A9ACC6] font-medium font-josefin pb-2">Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
+                    <p className="text-[12px] sm:text-[14px] md:text-[16px] text-[#A9ACC6] font-medium font-josefin pb-2">Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
                   </div>
                 )}
-                <h4 className="text-[16px] text-[#151875] font-medium font-josefin cursor-pointer hover:text-red-600 inline-block" onClick={handleMore}>
+                <h4 className="text-[14px] md:text-[18px] text-[#151875] font-medium font-josefin cursor-pointer hover:text-red-600 inline-block" onClick={handleMore}>
                   {more == true ? "Hide Details" : "More Details" }
                 </h4>
                 
               </div>
               <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                <p className="text-[16px] text-[#A9ACC6] font-medium font-josefin pb-6">Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr. Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
+                <p className="text-[12px] sm:text-[14px] md:text-[16px] text-[#A9ACC6] font-medium font-josefin pb-6">Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr. Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
               </div>
               <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-                <p className="text-[16px] text-[#A9ACC6] font-medium font-josefin pb-6">Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
+                <p className="text-[12px] sm:text-[14px] md:text-[16px] text-[#A9ACC6] font-medium font-josefin pb-6">Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
               </div>
               <div className="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                <p className="text-[16px] text-[#A9ACC6] font-medium font-josefin pb-6">Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr. Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
+                <p className="text-[12px] sm:text-[14px] md:text-[16px] text-[#A9ACC6] font-medium font-josefin pb-6">Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris varius ac est bibendum. Scelerisque a, risus ac ante. Velit consectetur neque, elit, aliquet. Non varius proin sed urna, egestas consequat laoreet diam tincidunt. Magna eget faucibus cras justo, tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr. Aliquam dis vulputate vulputate integer sagittis. Faucibus ds diam arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui, massa viverr .</p>
               </div>
             </div>
           </div>

@@ -146,10 +146,10 @@ const Menu = () => {
               <div className='bg-[#D9D9D9] rounded-l-[5px]'>
                 <input 
                   type="search"
-                  onChange={handdleSearch} 
+                  onChange={handdleSearch}
                   onKeyDown={handleKeyDown}
                   placeholder='Search...'
-                  value={search} 
+                  value={search}
                   className='h-[30px] lg:h-[35px] outline-0 px-2 lg:px-4' />
               </div>
               <div className='bg-[#FB2E86] h-[30px] lg:h-[35px] px-2 rounded-r-[5px] flex items-center cursor-pointer' onClick={handleSearchProduct}>

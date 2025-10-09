@@ -42,24 +42,8 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
   }
 
   return (
-    <div className='grid grid-cols-5'>
+    <div>
       <div>
-        <div className='pr-8 pb-8'>
-          <h2 className='text-[20px] text-[#151875] font-bold font-josefin pb-3'>Price Filter</h2>
-          <ul className='text-[15px] text-[#989BB5] font-semibold font-lato'>
-            <li onClick={()=>setShowFilter("")} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>All Price</li>
-            <li onClick={()=>handlePrice({low:0, high:100})} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>$00 - $100</li>
-            <li onClick={()=>handlePrice({low:100, high:200})} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>$100 - $200</li>
-            <li onClick={()=>handlePrice({low:200, high:300})} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>$200 - $300</li>
-            <li onClick={()=>handlePrice({low:300, high:400})} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>$300 - $400</li>
-            <li onClick={()=>handlePrice({low:400, high:500})} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>$400 - $500</li>
-            <li onClick={()=>handlePrice({low:500, high:700})} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>$500 - $700</li>
-            <li onClick={()=>handlePrice({low:700, high:800})} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>$700 - $800</li>
-            <li onClick={()=>handlePrice({low:800, high:900})} className='py-1 cursor-pointer hover:bg-gray-300 hover:text-black pl-4 rounded-[5px]'>$800 - $900</li>
-          </ul>
-        </div>
-      </div>
-      <div className='col-span-4'>
         {cateFilterShow.length > 0 ? <div>
           <div>
             {cateFilterShow.map((item) => (
@@ -85,14 +69,14 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                   </div>
                   <div className='w-2/3'>
                     <Link to={`/products/allproducts/${item.id}`}>
-                      <h1 className='text-[12px] sm:text-xl text-[#151875] font-semibold font-lato px-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
+                      <h1 className='text-[10px] sm:text-xl text-[#151875] font-semibold font-lato px-4 pb-1 sm:pb-2 hover:underline cursor-pointer inline-block'>{item.name}</h1>
                     </Link>
-                    <div className='flex gap-x-4 pb-2'>
-                      <h4 className='pl-4 text-[12px] sm:text-[15px] text-[#111C85] font-medium font-josefin'>${item.discount_price}</h4>
-                      <h4 className='pl-4 text-[12px] sm:text-[15px] text-[#FF2AAA] font-medium font-josefin line-through'>${item.price}</h4>
+                    <div className='flex gap-x-4 pb-1 sm:pb-2'>
+                      <h4 className='pl-4 text-[9px] sm:text-[15px] text-[#111C85] font-medium font-josefin'>${item.discount_price}</h4>
+                      <h4 className='pl-4 text-[9px] sm:text-[15px] text-[#FF2AAA] font-medium font-josefin line-through'>${item.price}</h4>
                     </div>
-                    <h4 className='max-w-xl pl-4 text-[#9295AA] text-[8px] sm:text-[14px] md:sm:text-[16px] font-semibold font-lato'>{item.description}</h4>
-                    <div className='flex pt-4 gap-x-6 pl-4'>
+                    <p className='max-w-xl pl-4 text-[#9295AA] text-[7px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-normal font-lato'>{item.description}</p>
+                    <div className='flex pt-2 sm:pt-4 gap-x-6 pl-4'>
                       <div className=''>
                         <AiOutlineShoppingCart 
                         onClick={()=>handleCart(item)}
@@ -140,14 +124,15 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
               </div>
               <div className='w-2/3'>
                 <Link to={`/products/allproducts/${item.id}`}>
-                  <h1 className='text-[12px] sm:text-xl text-[#151875] font-semibold font-lato px-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
+                  <h1 className='text-[10px] sm:text-xl text-[#151875] font-semibold font-lato px-4 pb-1 sm:pb-2 hover:underline cursor-pointer inline-block
+                  '>{item.name}</h1>
                 </Link>
-                <div className='flex gap-x-4 pb-2'>
-                  <h4 className='pl-4 text-[12px] sm:text-[15px] text-[#111C85] font-medium font-josefin'>${item.discount_price}</h4>
-                  <h4 className='pl-4 text-[12px] sm:text-[15px] text-[#FF2AAA] font-medium font-josefin line-through'>${item.price}</h4>
+                <div className='flex gap-x-4 pb-1 sm:pb-2'>
+                  <h4 className='pl-4 text-[9px] sm:text-[15px] text-[#111C85] font-medium font-josefin'>${item.discount_price}</h4>
+                  <h4 className='pl-4 text-[9px] sm:text-[15px] text-[#FF2AAA] font-medium font-josefin line-through'>${item.price}</h4>
                 </div>
-                <h4 className='max-w-xl pl-4 text-[#9295AA] text-[8px] sm:text-[14px] md:sm:text-[16px] font-semibold font-lato'>{item.description}</h4>
-                <div className='flex pt-4 gap-x-6 pl-4'>
+                <p className='max-w-xl pl-4 text-[#9295AA] text-[7px] sm:text-[12px] md:text-[14px] lg:text-[16px] font-normal font-lato'>{item.description}</p>
+                <div className='flex pt-2 sm:pt-4 gap-x-6 pl-4'>
                   <div className=''>
                     <AiOutlineShoppingCart 
                     onClick={()=>handleCart(item)}

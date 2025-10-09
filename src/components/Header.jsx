@@ -26,11 +26,11 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [menuOpen]); 
+  }, [menuOpen]);
 
   let data = useSelector((state) => state.product.cartItem);
 
-  
+  // let wishlistData = useSelector((state)=>state.product.wishlist)
   
   return (
     <header className='bg-[#ffffff] md:bg-[#7E33E0] py-2 border-b-2 border-[#00000019] shadow-sm relative'>
@@ -153,9 +153,14 @@ const Header = () => {
                   <Link to={"/myaccount"} className='font-josefin font-normal pr-1 text-[14px] lg:text-[16px]'>Login</Link>
                   <LuUser className='cursor-pointer' />
                 </div>
-                <div className='flex items-center gap-x-1 text-white cursor-pointer'>
-                  <Link className='font-josefin font-normal pr-1 text-[14px] lg:text-[16px]'>Wishlist</Link>
-                  <FaHeart className='cursor-pointer' />
+                <div className='relative'>
+                  <div className='flex items-center gap-x-1 text-white cursor-pointer'>
+                    <Link to={"/wishlist"} className='font-josefin font-normal pr-1 text-[14px] lg:text-[16px]'>Wishlist</Link>
+                    <FaHeart className='cursor-pointer' />
+                  </div>
+                  {/* <div className='absolute top-0 right-0'>
+                    {wishlistData.length}
+                  </div> */}
                 </div>
                 <div className='flex items-center gap-x-1 text-white pl-4 relative'>
                   <Link to={"/cart"}>

@@ -45,11 +45,11 @@ const Cart = () => {
               <table className='w-full'>
                 {data.length > 0 && (
                   <thead>
-                    <tr>
-                      <th className='text-start py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin'>Product</th>
-                      <th className='text-start py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-4 sm:px-8'>Price</th>
-                      <th className='text-start py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-4 sm:px-8'>Quantity</th>
-                      <th className='text-start py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-4 sm:px-8'>Total</th>
+                    <tr>    
+                      <th className='text-start py-2 sm:py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin'>Product</th>
+                      <th className='text-start py-2 sm:py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-2 sm:px-8'>Price</th>
+                      <th className='text-start py-2 sm:py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-2 sm:px-8'>Quantity</th>
+                      <th className='text-start py-2 sm:py-6 text-[#1D3178] text-[12px] sm:text-[16px] md:text-[20px] font-bold font-josefin px-2 sm:px-8'>Total</th>
                     </tr>
                   </thead>
                 )}
@@ -57,38 +57,38 @@ const Cart = () => {
                   {data.map((item, index) => (
                     <tr key={index} className='border-b-2 border-[#E1E1E4]'>
                       <th className='text-start text-[#1D3178] text-[14px] font-medium font-josefin py-4'>
-                        <div className='flex items-center gap-x-4'>
+                        <div className='flex items-center gap-x-2 sm:gap-x-4'>
                           <div className='relative'>
-                            <img src={item.image_path} alt="" className='h-25 w-30' />
+                            <img src={item.image_path} alt="" className='h-10 w-12 sm:h-25 sm:w-30' />
                             <div className='absolute top-[-8px] right-[-8px]'>
                               <IoMdClose
                                 onClick={() => dispatch(productRemove(index))}
-                                className='bg-white rounded-full text-2xl p-1 font-bold cursor-pointer border border-[#0000002e] hover:text-red-600'
+                                className='bg-white rounded-full text-lg sm:text-2xl p-[2px] sm:p-[4px] font-bold cursor-pointer border border-[#0000002e] hover:text-red-600'
                               />
                             </div>
                           </div>
                           <div>
-                            <h2 className='font-bold font-josefin text-[#000] pb-2'>{item.name}</h2>
-                            <p className='font-medium font-josefin text-[#A1A8C1] pb-2'>Finish: {item.finish}</p>
-                            <p className='font-medium font-josefin text-[#A1A8C1]'>Wood Type: {item.wood_type}</p>
+                            <h2 className='font-bold font-josefin text-[#000] pb-1 sm:pb-2 text-[8px] sm:text-[16px]'>{item.name}</h2>
+                            <p className='font-medium font-josefin text-[#A1A8C1] pb-1 sm:pb-2 text-[8px] sm:text-[14px]'>Finish: {item.finish}</p>
+                            <p className='font-medium font-josefin text-[#A1A8C1] text-[8px] sm:text-[14px]'>Wood Type: {item.wood_type}</p>
                           </div>
                         </div>
                       </th>
-                      <th className='text-start text-[#1D3178] text-[14px] font-medium font-josefin px-8'>
+                      <th className='text-start text-[#1D3178] text-[8px] sm:text-[14px] font-medium font-josefin px-2 sm:px-8'>
                         <p>${item.price}</p>
                       </th>
-                      <th className='text-start text-[#1D3178] text-[14px] font-medium font-josefin px-8'>
+                      <th className='text-start text-[#1D3178] text-[8px] sm:text-[14px] font-medium font-josefin px-2 sm:px-8'>
                         <div className='flex items-center gap-x-2'>
                           <button className='cursor-pointer' onClick={() => dispatch(decrement(index))}>
                             <FaMinus />
                           </button>
-                          <p className='text-[#15245E] text-[16px] font-bold font-josefin'>{item.qun}</p>
+                          <p className='text-[#15245E] text-[8px] sm:text-[16px] font-bold font-josefin'>{item.qun}</p>
                           <button className='cursor-pointer' onClick={() => dispatch(increment(index))}>
                             <FaPlus />
                           </button>
                         </div>
                       </th>
-                      <th className='text-start text-[#1D3178] text-[14px] font-medium font-josefin px-8'>
+                      <th className='text-start text-[#1D3178] text-[8px] sm:text-[14px] font-medium font-josefin px-2 sm:px-8'>
                         {(item.price * item.qun).toFixed(2)}
                       </th>
                     </tr>
@@ -207,14 +207,14 @@ const Cart = () => {
               <div className='text-center pb-16'>
                 <h2 className='text-3xl text-[#262626] font-bold font-dms text-center pb-6'>Your Cart is Empty <BsCartXFill className='inline-block' /></h2>
                 <div className='text-center'>
-                  <Link to={"/products"} className='text-2xl text-[#fff] font-bold font-dms bg-[#262626] py-2 px-12 rounded-[5px] hover:bg-[#262626a8]'>
+                  <Link to={"/products"} className='text-md sm:text-2xl text-[#fff] font-bold font-dms bg-[#262626] py-2 px-6 sm:px-12 rounded-[5px] hover:bg-[#262626a8]'>
                     Continue Shopping
                   </Link>
                 </div>
               </div>
               <div>
                 <h1 className='text-blue-500 pb-6 text-[25px] font-bold font-josefin'>Just for you</h1>
-                <div className='grid grid-cols-4 gap-x-4'>
+                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4'>
                   {suggested.map((item) => (
                     <div className='shadow-lg mb-4'>
                       <div className='relative group overflow-hidden'>
@@ -227,8 +227,8 @@ const Cart = () => {
                           <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         </div>
                       </div>
-                      <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
-                        <h4 className='text-[12px] text-[#151875] font-josefin font-semibold'>{item.name}</h4>
+                      <div className='bg-[#F7F7F7] px-2 sm:flex justify-between items-center py-4'>
+                        <h4 className='text-[12px] text-[#151875] font-josefin font-semibold pb-2 sm:pb-0'>{item.name}</h4>
                         <div className='flex items-center gap-x-4'>
                           <p className='text-[12px] text-[#151875] font-josefin font-semibold'>${item.discount_price}</p>
                           <p className='line-through text-[12px] text-[#FB2448] font-josefin font-semibold'>${item.price}</p>

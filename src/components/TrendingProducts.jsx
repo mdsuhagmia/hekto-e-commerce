@@ -18,7 +18,7 @@ const TrendingProducts = () => {
       return (
         <div
           onClick={onClick}
-          className='absolute top-[50%] left-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-2xl rounded-[5px] cursor-pointer'>
+          className='absolute top-[50%] left-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-md sm:text-xl lg:text-2xl rounded-[5px] cursor-pointer'>
             <MdArrowBackIosNew />
         </div>
       );
@@ -29,7 +29,7 @@ const TrendingProducts = () => {
       return (
         <div
           onClick={onClick}
-          className='absolute top-[50%] right-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-2xl rounded-[5px] z-[9999] cursor-pointer'>
+          className='absolute top-[50%] right-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-md sm:text-xl lg:text-2xl rounded-[5px] z-[9999] cursor-pointer'>
             <MdArrowForwardIos />
         </div>
       );
@@ -52,7 +52,7 @@ const TrendingProducts = () => {
         }
       },
       {
-        breakpoint: 640,
+        breakpoint: 767,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -61,8 +61,8 @@ const TrendingProducts = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 2,
+          slidesToScroll: 2,
         }
       }
     ]
@@ -81,10 +81,10 @@ const TrendingProducts = () => {
         <Slider {...settings}>
           {produc.map((item)=>(
             <div className='px-2'>
-              <div className='bg-[#ffffff20] min-h-[360px] w-full rounded-[5px] shadow-md border-1 border-[#0000001f] mb-8 mt-4'>
+              <div className='bg-[#ffffff20] min-h-[220px] sm:min-h-[280px] md:min-h-[340px] lg:min-h-[380px] w-full rounded-[5px] shadow-md border-1 border-[#0000001f] mb-8'>
                   <div className='bg-gray-100 w-full flex justify-center relative group'>
                 <Link to={"/products"} target='_top' className=''>
-                    <img src={item.image_path} alt="" className='w-full' />
+                    <img src={item.image_path} alt="" className='w-full rounded-t-[5px]' />
                 </Link>
                     <div className='flex gap-x-6 absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 bg-[#f8efef] w-full py-4 justify-center'>
                       <div onClick={()=>handleCart(item)}>
@@ -96,8 +96,9 @@ const TrendingProducts = () => {
                   </div>
                 <div className=''>
                   <Link to={"/products"}>
-                    <h1 className='text-xl text-[#151875] font-semibold font-lato px-4 py-4 hover:underline cursor-pointer'>{item.name}</h1>
+                    <h1 className='text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] text-[#151875] font-semibold font-lato px-4 pt-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
                   </Link>
+                  <p className='text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] text-[#151875] font-semibold font-lato px-4 pb-4'>${item.price}</p>
                 </div>
               </div>
             </div>

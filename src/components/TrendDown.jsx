@@ -32,14 +32,14 @@ const TrendDown = () => {
         <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-4'>
           <div className='bg-[#FFF6FB] pt-6 pl-6 mb-4 sm:mb-0'>
             <h2 className='text-[#151875] text-[14px] md:text-[18px] lg:text-[26px] font-semibold font-josefin pb-2'>23% off in all products</h2>
-            <button className='text-[#FB2E86] text-[14px] md:text-[14px] lg:text-[16px] font-semibold font-lato underline cursor-pointer'>Shop Now</button>
+            <Link to={"/products"} target='_top' className='text-[#FB2E86] text-[14px] md:text-[14px] lg:text-[16px] font-semibold font-lato underline cursor-pointer'>Shop Now</Link>
             <div className='flex justify-end'>
               <img src={g1} alt="" />
             </div>
           </div>
           <div className='bg-[#EEEFFB] pl-6 pt-8 mb-6 sm:mb-0'>
             <h2 className='text-[#151875] text-[14px] md:text-[18px] lg:text-[26px] font-semibold font-josefin pb-2'>23% off in all products</h2>
-            <button className='text-[#FB2E86] text-[14px] md:text-[14px] lg:text-[16px] font-semibold font-lato underline cursor-pointer'>View Collection</button>
+            <Link to={"/products"} target='_top' className='text-[#FB2E86] text-[14px] md:text-[14px] lg:text-[16px] font-semibold font-lato underline cursor-pointer'>View Collection</Link>
             <div className='flex justify-end'>
               <img src={g2} alt=""  />
             </div>

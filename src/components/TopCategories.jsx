@@ -1,8 +1,4 @@
 import Container from './Container'
-import tc1 from '../assets/tc1.png'
-import tc2 from '../assets/tc2.png'
-import tc3 from '../assets/tc3.png'
-import tc4 from '../assets/tc4.png'
 import Slider from 'react-slick'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { useContext, useEffect, useState } from 'react'
@@ -15,7 +11,7 @@ const TopCategories = () => {
         return (
           <div
             onClick={onClick}
-            className='absolute top-[50%] left-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-2xl rounded-[5px] cursor-pointer'>
+            className='absolute top-[50%] left-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-md sm:text-xl lg:text-2x rounded-[5px] cursor-pointer'>
               <MdArrowBackIosNew />
           </div>
         );
@@ -26,7 +22,7 @@ const TopCategories = () => {
         return (
           <div
             onClick={onClick}
-            className='absolute top-[50%] right-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-2xl rounded-[5px] z-[9999] cursor-pointer'>
+            className='absolute top-[50%] right-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-md sm:text-xl lg:text-2x rounded-[5px] z-[9999] cursor-pointer'>
               <MdArrowForwardIos />
           </div>
         );
