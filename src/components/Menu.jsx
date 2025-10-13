@@ -104,37 +104,37 @@ const Menu = () => {
           <div>
             <ul className='flex gap-x-4 lg:gap-x-6 items-center'>
               <li>
-                <NavLink to={"/"}
+                <NavLink to={"/"} target='_top'
                   className={({isActive})=> `text-[14px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/pages"}
-                  className={({isActive})=> `text-[14px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
-                    Pages
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to={"/products"}
+                <NavLink to={"/products"} target='_top'
                   className={({isActive})=> `text-[14px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Products
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/blog"}
+                <NavLink to={"/blog"} target='_top'
                   className={({isActive})=> `text-[14px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Blog
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/shop"}
+                <NavLink to={"/aboutus"} target='_top'
                   className={({isActive})=> `text-[14px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
-                    Shop
+                    About Us
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/contact"}
+                <NavLink to={"/singleblog"} target='_top'
+                  className={({isActive})=> `text-[14px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
+                    Single Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={"/contact"} target='_top'
                   className={({isActive})=> `text-[14px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Contact
                 </NavLink>

@@ -60,8 +60,8 @@ const Post = ({allPage, showFilter}) => {
                   <h1 className='text-[10px] sm:text-xl text-[#151875] font-semibold font-lato px-2 sm:px-4 pt-4 pb-2 hover:underline cursor-pointer inline-block'>{item.name}</h1>
                 </Link>
                 <div className='flex gap-x-2 items-center sm:gap-x-4 pb-2'>
-                  <h4 className='pl-2 sm:pl-4 text-[10px] sm:text-md text-[#151875] font-medium font-lato'>${item.discount_price}</h4>
-                  <h4 className='pl-2 sm:pl-4 text-[10px] sm:text-md text-[#FB2E86] font-medium font-lato line-through'>${item.price}</h4>
+                  <h4 className='pl-2 sm:pl-4 text-[10px] sm:text-md lg:text-xl text-[#151875] font-medium font-lato'>${item.discount_price}</h4>
+                  <h4 className='pl-2 sm:pl-4 text-[10px] sm:text-md lg:text-xl text-[#FB2E86] font-medium font-lato line-through'>${item.price}</h4>
                 </div>
               </div>
             </div>
@@ -102,8 +102,8 @@ const Post = ({allPage, showFilter}) => {
                     <h1 className='text-[10px] sm:text-xl text-[#151875] font-semibold font-lato px-2 sm:px-4 pt-4 pb-2 hover:underline cursor-pointer'>{item.name}</h1>
                   </Link>
                   <div className='flex gap-x-2 items-center sm:gap-x-4 pb-2'>
-                    <h4 className='pl-2 sm:pl-4 text-[10px] sm:text-md text-[#151875] font-medium font-lato'>${item.discount_price}</h4>
-                    <h4 className='pl-2 sm:pl-4 text-[10px] sm:text-md text-[#FB2E86] font-medium font-lato line-through'>${item.price}</h4>
+                    <h4 className='pl-2 sm:pl-4 text-[10px] sm:text-md lg:text-xl text-[#151875] font-medium font-lato'>${item.discount_price}</h4>
+                    <h4 className='pl-2 sm:pl-4 text-[10px] sm:text-md lg:text-xl text-[#FB2E86] font-medium font-lato line-through'>${item.price}</h4>
                   </div>
                 </div>
               </div>

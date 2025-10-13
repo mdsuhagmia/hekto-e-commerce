@@ -1,10 +1,8 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
 import RootLayout from "./components/root/RootLayout"
 import Home from "./pages/Home"
-import Pages from "./pages/Pages"
 import Products from "./pages/Products"
 import Blog from "./pages/Blog"
-import Shop from "./pages/Shop"
 import Contact from "./pages/Contact"
 import ProductsDetails from "./components/ProductsDetails"
 import NotFound from "./pages/NotFound"
@@ -15,19 +13,25 @@ import Cart from "./pages/Cart"
 import OrderCompleted from "./pages/OrderCompleted"
 import { ToastContainer } from "react-toastify"
 import Wishlist from "./pages/Wishlist"
+import AboutUs from "./pages/AboutUs"
+import SingleBlog from "./pages/SingleBlog"
+import HektoDemo from "./pages/HektoDemo"
+import Faq from "./pages/Faq"
 
 let routing = createBrowserRouter(createRoutesFromElements(
 <>
   <Route element={<RootLayout/>}>
     <Route path="/" element={<Home/>}></Route>
-    <Route path="/pages" element={<Pages/>}></Route>
     <Route path="/products" element={<Products/>}></Route>
+    <Route path="/aboutus" element={<AboutUs/>}></Route>
     <Route path="/products/allproducts/:id" element={<ProductsDetails/>}></Route>
     <Route path="/cart" element={<Cart/>}></Route>
     <Route path="/wishlist" element={<Wishlist/>}></Route>
     <Route path="/ordercompleted" element={<OrderCompleted/>}></Route>
     <Route path="/blog" element={<Blog/>}></Route>
-    <Route path="/shop" element={<Shop/>}></Route>
+    <Route path="/hektodemo" element={<HektoDemo/>}></Route>
+    <Route path="/faq" element={<Faq/>}></Route>
+    <Route path="/singleblog" element={<SingleBlog/>}></Route>
     <Route path="/contact" element={<Contact/>}></Route>
     <Route path="/myaccount" element={<MyAccount/>}></Route>
     <Route path="/signup" element={<SignUp/>}></Route>

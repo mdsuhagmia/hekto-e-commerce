@@ -1,15 +1,15 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Container from '../components/Container'
-import BlogInfo from '../components/BlogInfo'
+import HektoDemoInfo from '../components/HektoDemoInfo'
 
-const Blog = () => {
+const HektoDemo = () => {
   return (
     <>
       <section className='py-10 bg-[#F6F5FF]'>
         <Container>
           <div>
-            <h2 className='text-[#151875] text-[30px] md:text-[35px] font-bold font-josefin pb-1'>Blog Page</h2>
+            <h2 className='text-[#151875] text-[30px] md:text-[35px] font-bold font-josefin pb-1'>Hekto Demo</h2>
             <ul className='flex items-center gap-x-1'>
               <li>
                 <NavLink to={"/"}
@@ -24,18 +24,18 @@ const Blog = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/blog"}
+                <NavLink to={"/hektodemo"}
                   className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
-                  Blog
+                  Hekto Demo
                 </NavLink>
               </li>
             </ul>
           </div>
         </Container>
       </section>
-      <BlogInfo />
+      <HektoDemoInfo />
     </>
   )
 }
 
-export default Blog
+export default HektoDemo

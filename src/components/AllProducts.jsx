@@ -6,6 +6,7 @@ import Post from './Post'
 import Pagination from './Pagination'
 import { apiData } from './ContextApi'
 import ListItem from './ListItem'
+import jj from '../assets/jj.png'
 
 const AllProducts = () => {
   let data = useContext(apiData)
@@ -146,6 +147,9 @@ const AllProducts = () => {
           prev={prev}
           currentPage={currentPage}
           showFilter={showFilter}/>
+        <div className='pt-16'>
+          <img src={jj} alt="" className='w-full bg-cover' />
+        </div>
       </Container>
     </section>
   )

@@ -1,15 +1,15 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import FaqInfo from '../components/FaqInfo'
 import Container from '../components/Container'
-import BlogInfo from '../components/BlogInfo'
+import { NavLink } from 'react-router-dom'
 
-const Blog = () => {
+const Faq = () => {
   return (
-    <>
+     <>
       <section className='py-10 bg-[#F6F5FF]'>
         <Container>
           <div>
-            <h2 className='text-[#151875] text-[30px] md:text-[35px] font-bold font-josefin pb-1'>Blog Page</h2>
+            <h2 className='text-[#151875] text-[30px] md:text-[35px] font-bold font-josefin pb-1'>FAQ</h2>
             <ul className='flex items-center gap-x-1'>
               <li>
                 <NavLink to={"/"}
@@ -24,18 +24,18 @@ const Blog = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/blog"}
+                <NavLink to={"/faq"}
                   className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`}>
-                  Blog
+                  FAQ
                 </NavLink>
               </li>
             </ul>
           </div>
         </Container>
       </section>
-      <BlogInfo />
+      <FaqInfo />
     </>
   )
 }
 
-export default Blog
+export default Faq

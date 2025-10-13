@@ -14,6 +14,7 @@ import re4 from '../assets/re4.png'
 import sol1 from '../assets/sol1.png'
 import sol2 from '../assets/sol2.png'
 import sol3 from '../assets/sol3.png'
+import jj from '../assets/jj.png'
 
 const BlogInfo = () => {
   let [aShow, setAShow] = useState(false)
@@ -236,6 +237,9 @@ const BlogInfo = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className=''>
+          <img src={jj} alt="" className='w-full bg-cover' />
         </div>
       </Container>
     </section>

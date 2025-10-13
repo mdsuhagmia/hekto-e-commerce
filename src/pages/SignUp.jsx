@@ -28,6 +28,15 @@ const SignUp = () => {
               placeholder="Email Address"
               className="w-full px-4 py-2 border-2 border-[#0000004e] rounded-[5px] outline-0 focus:border-[#5353c5a3] mb-4"
             />
+            <input type="number"
+              placeholder='Your phone number'
+              className="w-full px-4 py-2 border-2 border-[#0000004e] rounded-[5px] outline-0 focus:border-[#5353c5a3] mb-4"
+              required 
+              autoComplete='number' />
+            <input type="text"
+              placeholder='address'
+              className="w-full px-4 py-2 border-2 border-[#0000004e] rounded-[5px] outline-0 focus:border-[#5353c5a3] mb-4"
+              required autoComplete='street-address' />
             <input
               type="password"
               required
