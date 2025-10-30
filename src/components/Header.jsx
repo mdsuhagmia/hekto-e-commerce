@@ -70,13 +70,6 @@ const Header = () => {
                       </NavLink>
                     </li>
                     <li className='pb-2'>
-                      <NavLink to={"/pages"}
-                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
-                        onClick={() => setMenuOpen(false)}>
-                        Pages
-                      </NavLink>
-                    </li>
-                    <li className='pb-2'>
                       <NavLink to={"/products"}
                         className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
                         onClick={() => setMenuOpen(false)}>
@@ -91,10 +84,17 @@ const Header = () => {
                       </NavLink>
                     </li>
                     <li className='pb-2'>
-                      <NavLink to={"/shop"}
+                      <NavLink to={"/aboutus"}
                         className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
                         onClick={() => setMenuOpen(false)}>
-                        Shop
+                        About Us
+                      </NavLink>
+                    </li>
+                    <li className='pb-2'>
+                      <NavLink to={"/singleblog"}
+                        className={({ isActive }) => `text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]"}`} 
+                        onClick={() => setMenuOpen(false)}>
+                        Single Blog
                       </NavLink>
                     </li>
                     <li className='pb-2'>

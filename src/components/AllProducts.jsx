@@ -60,20 +60,20 @@ const AllProducts = () => {
   
   let [view, setView] = useState(true)
 
-//? price low to high and high to low
-//   let handlePriceChange = (e) => {
-//   let priceValue = e.target.value
-//   let sorted = [...data]
-//   if (priceValue === "low-to-high") {
-//     sorted.sort((a, b) => a.price - b.price)
-//   } else if (priceValue === "high-to-low") {
-//     sorted.sort((a, b) => b.price - a.price)
-//   } else {
-//     sorted = data
-//   }
-//   setShowFilter(sorted)
-//   setSortedData(sorted)
-// }
+let handlePriceChange = (e) => {
+    let priceValue = e.target.value
+    let sorted = [...data]
+
+    if (priceValue === "low-to-high") {
+      sorted.sort((a, b) => a.price - b.price)
+      setShowFilter(sorted)
+    } else if (priceValue === "high-to-low") {
+      sorted.sort((a, b) => b.price - a.price)
+      setShowFilter(sorted)
+    } else if(priceValue === "best-match") {
+      setShowFilter([])
+    }
+  }
 
 
   return (
@@ -99,7 +99,7 @@ const AllProducts = () => {
               name="price"
               id="price"
               className='px-2 py-1 border-2 border-[#00000064] rounded-[5px] hidden md:block'
-              // onChange={handlePriceChange}
+              onChange={handlePriceChange}
             >
               <option value="best-match">Best Match</option>
               <option value="low-to-high">Low To High</option>

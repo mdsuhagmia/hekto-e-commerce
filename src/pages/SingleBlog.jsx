@@ -48,7 +48,7 @@ const SingleBlog = () => {
       <SingleBlogUp/>
       <section className='py-16'>
         <Container>
-          <div className='grid grid-cols-3'>
+          <div className='grid grid-cols-1 lg:grid-cols-3'>
             <div className='col-span-2'>
               <div className='mb-8'>
                 <div>
@@ -57,32 +57,32 @@ const SingleBlog = () => {
                 <div className='flex items-center gap-x-10'>
                   <div className='flex items-center gap-x-2 py-4'>
                     <FaPenFancy className='text-red-500' />
-                    <p className='text-[#151875] text-[14px] font-bold font-josefin bg-[#FFE7F9] px-6'>Surf Auxion</p>
+                    <p className='text-[#151875] text-[10px] sm:text-[14px] font-bold font-josefin bg-[#FFE7F9] px-6'>Surf Auxion</p>
                   </div>
                   <div className='flex items-center gap-x-2 py-4'>
                     <LuCalendarDays className='text-[#FFA454]' />
-                    <p className='text-[#151875] text-[14px] font-bold font-josefin bg-[#FFECE2] px-6'>Aug 09 2020</p>
+                    <p className='text-[#151875] text-[10px] sm:text-[14px] font-bold font-josefin bg-[#FFECE2] px-6'>Aug 09 2020</p>
                   </div>
                 </div>
-                <h2 className='text-[#151875] text-[30px] font-bold font-josefin py-2'>Mauris at orci non vulputate diam tincidunt nec.</h2>
-                <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px] pt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
-                <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px] pt-6'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, </p>
-                <p className='text-[#151875] text-[16px] font-medium font-josefin italic leading-[33px] pt-6'>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo dictum sapien, amet, consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo dictum sapien, amet, consequat toamk risusu”</p>
+                <h2 className='text-[#151875] text-[18px] md:text-[30px] font-bold font-josefin py-2'>Mauris at orci non vulputate diam tincidunt nec.</h2>
+                <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px] pt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
+                <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px] pt-6'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, </p>
+                <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-josefin italic leading-[20px] sm:leading-[33px] pt-6'>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo dictum sapien, amet, consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo dictum sapien, amet, consequat toamk risusu”</p>
               </div>
               <div className='mb-8'>
-                <div className='grid grid-cols-2 gap-x-4 pb-8'>
+                <div className='grid grid-cols-2 items-center gap-x-4 pb-8'>
                   <div>
                     <video src="https://www.pexels.com/download/video/6394054/" controls loop muted className='h-[178px] w-full' ></video>
                   </div>
                   <div>
-                    <img src={vright} alt="" className='h-[178px] w-full bg-cover bg-center' />
+                    <img src={vright} alt="" className='h-auto w-full bg-cover bg-center bg-no-repeat' />
                   </div>
                 </div>
-                <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px] pb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, </p>
+                <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px] pb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, </p>
                 <div>
-                  <div className='grid grid-cols-4 gap-x-2'>
+                  <div className='grid grid-cols-2 md:grid-cols-4 gap-x-2'>
                     {filterShowCate.map((item) => (
-                      <div>
+                      <div className='mb-2 lg:mb-0'>
                         <Link to={`/products/allproducts/${item.id}`} target='_top'>
                           <img src={item.image_path} alt="" className='rounded-t-[5px]' />
                         </Link>
@@ -98,8 +98,8 @@ const SingleBlog = () => {
                       </div>
                     ))}
                   </div>
-                  <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px] py-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, </p>
-                  <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, </p>
+                  <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px] py-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, </p>
+                  <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, </p>
                   <div className='flex items-center justify-center gap-x-4 py-8'>
                     <FaFacebookF className='text-4xl text-white bg-[#5625DF] p-2 rounded-full cursor-pointer' />
                     <RiInstagramFill className='text-4xl text-white bg-[#FF27B7] p-2 rounded-full cursor-pointer' />
@@ -116,7 +116,7 @@ const SingleBlog = () => {
                         <h4 className='text-[#363385] font-bold font-josefin text-[18px]'>Sapien ac</h4>
                         <h4 className='text-[#A3A2B6] font-semibold font-josefin text-[14px]'>Jan 09 2020</h4>
                       </div>
-                      <p className='max-w-[500px] text-[#A3A2B6] font-medium font-josefin text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At in vitae rutrum vulputate consectetur.</p>
+                      <p className='max-w-[500px] text-[#A3A2B6] font-medium font-josefin text-[12px] sm:text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At in vitae rutrum vulputate consectetur.</p>
                     </div>
                   </div>
                   <div className='flex items-center gap-x-4 px-2 py-2 shadow-xl mb-8 border-2 border-[#0000001c]'>
@@ -128,7 +128,7 @@ const SingleBlog = () => {
                         <h4 className='text-[#363385] font-bold font-josefin text-[18px]'>Augue conva</h4>
                         <h4 className='text-[#A3A2B6] font-semibold font-josefin text-[14px]'>Aug 18 2020</h4>
                       </div>
-                      <p className='max-w-[500px] text-[#A3A2B6] font-medium font-josefin text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At in vitae rutrum vulputate consectetur.</p>
+                      <p className='max-w-[500px] text-[#A3A2B6] font-medium font-josefin text-[12px] sm:text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At in vitae rutrum vulputate consectetur.</p>
                     </div>
                   </div>
                 </div>
@@ -154,7 +154,7 @@ const SingleBlog = () => {
                       </textarea>
                       <div className='flex items-center gap-x-1 pt-2'>
                         <input type="checkbox" required />
-                        <label htmlFor="" className='text-[14px]'>
+                        <label htmlFor="" className='text-[8px] sm:text-[14px]'>
                           Save my name, email, and website in this browser for the next time I comment.
                         </label>
                       </div>
@@ -168,7 +168,7 @@ const SingleBlog = () => {
                 </div>
               </div>
             </div>
-            <div className='pl-12'>
+            <div className='pl-0 lg:pl-12'>
               <div className=''>
                 <div className='max-w-[270px] pb-8'>
                   <h2 className='text-[#151875] font-bold font-josefin text-2xl pb-2'>Search</h2>
@@ -180,12 +180,12 @@ const SingleBlog = () => {
                     <CiSearch className='absolute top-[50%] right-4 translate-y-[-50%]' />
                   </div>
                 </div>
-                <div>
+                <div className='max-w-90'>
                   <h2 className='text-[#151875] font-bold font-josefin text-2xl pb-4'>Categories</h2>
                   <div className='grid grid-cols-2'>
                     {aCategory.map((cat) => (
                       <div
-                        className='text-[18px] text-[#3F509E] font-bold font-josefin py-2 pl-3 hover:bg-[#F939BF] hover:text-white hover:rounded-[5px]'
+                        className='text-[18px] inline-block cursor-pointer text-[#3F509E] font-bold font-josefin py-2 pl-3 hover:bg-[#F939BF] hover:text-white hover:rounded-[5px]'
                       >
                         {cat.name} ({cat.count})
                       </div>
@@ -289,40 +289,6 @@ const SingleBlog = () => {
                       <h2 className='text-[16px] text-[#3F509E] font-bold font-josefin pb-1'>Mattis varius donec fdsfd</h2>
                       <p className='text-[11px] text-[#8A8FB9] font-bold font-lato'>Aug 09 2020</p>
                     </div>
-                  </div>
-                </div>
-                <div>
-                  <div className='grid grid-cols-2 gap-x-2'>
-                    {filterShowCate1.map((item) => (
-                      <div className='pb-2'>
-                        <Link to={`/products/allproducts/${item.id}`} target='_top'>
-                          <img src={item.image_path} alt="" className='rounded-t-[5px]' />
-                        </Link>
-                        <div className=''>
-                          <Link to={`/products/allproducts/${item.id}`} target='_top' className='px-2 pt-3 pb-2 inline-block'>
-                            <h2 className='text-[12px] font-josefin font-semibold hover:underline underline-offset-2 inline-block'>{item.name}</h2>
-                          </Link>
-                          <div className='flex items-center gap-x-2 px-2 pb-4'>
-                            <p className='text-[10px] font-josefin font-medium'>{item.discount_price}</p>
-                            <p className='text-[10px] font-josefin font-medium text-[#FF38B0] line-through'>{item.price}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <h4 className='text-2xl font-bold font-josefin text-[#151875] pb-4'>Follow</h4>
-                  <div className='flex items-center gap-x-4'>
-                    <FaFacebookF className='text-xl text-white bg-[#5625DF] p-1 rounded-full cursor-pointer' />
-                    <RiInstagramFill className='text-xl text-white bg-[#FF27B7] p-1 rounded-full cursor-pointer' />
-                    <FaTwitter className='text-xl text-white bg-[#37DAF3] p-1 rounded-full cursor-pointer' />
-                  </div>
-                  <h4 className='text-2xl font-bold font-josefin text-[#151875] pb-4 pt-10'>Tags</h4>
-                  <div className='grid grid-cols-3 gap-x-4'>
-                    <h4>General</h4>
-                    <h4>Atsanil</h4>
-                    <h4>Insas.</h4>
-                    <h4 className='pt-2'>Bibsaas</h4>
-                    <h4  className='pt-2'>Nulla.</h4>
                   </div>
                 </div>
               </div>

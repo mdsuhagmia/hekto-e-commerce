@@ -34,7 +34,7 @@ const BlogInfo = () => {
   return (
     <section className='py-16'>
       <Container>
-        <div className='grid grid-cols-3'>
+        <div className='grid grid-cols-1 lg:grid-cols-3'>
           <div className='col-span-2'>
             <div className='mb-8'>
               <div>
@@ -43,21 +43,21 @@ const BlogInfo = () => {
               <div className='flex items-center gap-x-10'>
                 <div className='flex items-center gap-x-2 py-4'>
                   <FaPenFancy className='text-red-500' />
-                  <p className='text-[#151875] text-[14px] font-bold font-josefin bg-[#FFE7F9] px-6'>Surf Auxion</p>
+                  <p className='text-[#151875] text-[10px] sm:text-[14px] font-bold font-josefin bg-[#FFE7F9] px-6'>Surf Auxion</p>
                 </div>
                 <div className='flex items-center gap-x-2 py-4'>
                   <LuCalendarDays className='text-[#FFA454]' />
-                  <p className='text-[#151875] text-[14px] font-bold font-josefin bg-[#FFECE2] px-6'>Aug 09 2020</p>
+                  <p className='text-[#151875] text-[10px] sm:text-[14px] font-bold font-josefin bg-[#FFECE2] px-6'>Aug 09 2020</p>
                 </div>
               </div>
-              <h2 className='text-[#151875] text-[30px] font-bold font-josefin py-2'>Mauris at orci non vulputate diam tincidunt nec.</h2>
-              <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
+              <h2 className='text-[#151875] text-[18px] md:text-[30px] font-bold font-josefin py-2'>Mauris at orci non vulputate diam tincidunt nec.</h2>
+              <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
               {aShow && (
-                <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px]'>Repellat minus reiciendis ipsam odio obcaecati hic fugit repudiandae velit, iure harum debitis illum rerum placeat provident.</p>
+                <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px]'>Repellat minus reiciendis ipsam odio obcaecati hic fugit repudiandae velit, iure harum debitis illum rerum placeat provident.</p>
               )}
               <button
                 onClick={() => setAShow(!aShow)}
-                className='pt-4 text-[#151875] text-[16px] font-medium font-lato cursor-pointer pb-6 underline'>
+                className='pt-4 text-[#151875] text-[14px] md:text-[16px] font-medium font-lato cursor-pointer pb-6 underline'>
                 Read More
               </button>
             </div>
@@ -68,21 +68,21 @@ const BlogInfo = () => {
               <div className='flex items-center gap-x-10'>
                 <div className='flex items-center gap-x-2 py-4'>
                   <FaPenFancy className='text-red-500' />
-                  <p className='text-[#151875] text-[14px] font-bold font-josefin bg-[#FFE7F9] px-6'>Surf Auxion</p>
+                  <p className='text-[#151875] text-[10px] sm:text-[14px] font-bold font-josefin bg-[#FFE7F9] px-6'>Surf Auxion</p>
                 </div>
                 <div className='flex items-center gap-x-2 py-4'>
                   <LuCalendarDays className='text-[#FFA454]' />
-                  <p className='text-[#151875] text-[14px] font-bold font-josefin bg-[#FFECE2] px-6'>Aug 09 2020</p>
+                  <p className='text-[#151875] text-[10px] sm:text-[14px] font-bold font-josefin bg-[#FFECE2] px-6'>Aug 09 2020</p>
                 </div>
               </div>
-              <h2 className='text-[#151875] text-[30px] font-bold font-josefin py-2'>Aenean vitae in aliquam ultrices lectus. Etiam.</h2>
-              <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
+              <h2 className='text-[#151875] text-[18px] md:text-[30px] font-bold font-josefin py-2'>Aenean vitae in aliquam ultrices lectus. Etiam.</h2>
+              <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
               {bShow && (
-                <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px]'>Repellat minus reiciendis ipsam odio obcaecati hic fugit repudiandae velit, iure harum debitis illum rerum placeat provident.</p>
+                <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px]'>Repellat minus reiciendis ipsam odio obcaecati hic fugit repudiandae velit, iure harum debitis illum rerum placeat provident.</p>
               )}
               <button
                 onClick={() => setBShow(!bShow)}
-                className='pt-4 text-[#151875] text-[16px] font-medium font-lato cursor-pointer pb-6 underline'>
+                className='pt-4 text-[#151875] text-[14px] md:text-[16px] font-medium font-lato cursor-pointer pb-6 underline'>
                 Read More
               </button>
             </div>
@@ -93,26 +93,26 @@ const BlogInfo = () => {
               <div className='flex items-center gap-x-10'>
                 <div className='flex items-center gap-x-2 py-4'>
                   <FaPenFancy className='text-red-500' />
-                  <p className='text-[#151875] text-[14px] font-bold font-josefin bg-[#FFE7F9] px-6'>Surf Auxion</p>
+                  <p className='text-[#151875] text-[10px] sm:text-[14px] font-bold font-josefin bg-[#FFE7F9] px-6'>Surf Auxion</p>
                 </div>
                 <div className='flex items-center gap-x-2 py-4'>
                   <LuCalendarDays className='text-[#FFA454]' />
-                  <p className='text-[#151875] text-[14px] font-bold font-josefin bg-[#FFECE2] px-6'>Aug 09 2020</p>
+                  <p className='text-[#151875] text-[10px] sm:text-[14px] font-bold font-josefin bg-[#FFECE2] px-6'>Aug 09 2020</p>
                 </div>
               </div>
-              <h2 className='text-[#151875] text-[30px] font-bold font-josefin py-2'>Sit nam congue feugiat nisl, mauris amet nisi.</h2>
-              <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
+              <h2 className='text-[#151875] text-[18px] md:text-[30px] font-bold font-josefin py-2'>Sit nam congue feugiat nisl, mauris amet nisi.</h2>
+              <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
               {cShow && (
-                <p className='text-[#151875] text-[16px] font-medium font-lato leading-[30px]'>Repellat minus reiciendis ipsam odio obcaecati hic fugit repudiandae velit, iure harum debitis illum rerum placeat provident.</p>
+                <p className='text-[#151875] text-[14px] md:text-[16px] font-medium font-lato leading-[20px] sm:leading-[30px]'>Repellat minus reiciendis ipsam odio obcaecati hic fugit repudiandae velit, iure harum debitis illum rerum placeat provident.</p>
               )}
               <button
                 onClick={() => setCShow(!cShow)}
-                className='pt-4 text-[#151875] text-[16px] font-medium font-lato cursor-pointer pb-6 underline'>
+                className='pt-4 text-[#151875] text-[14px] md:text-[16px] font-medium font-lato cursor-pointer pb-6 underline'>
                 Read More
               </button>
             </div>
           </div>
-          <div className='pl-12'>
+          <div className='pl-0 lg:pl-12'>
             <div className=''>
               <div className='max-w-[270px] pb-8'>
                 <h2 className='text-[#151875] font-bold font-josefin text-2xl pb-2'>Search</h2>
@@ -124,12 +124,12 @@ const BlogInfo = () => {
                   <CiSearch className='absolute top-[50%] right-4 translate-y-[-50%]' />
                 </div>
               </div>
-              <div>
+              <div className='max-w-90'>
                 <h2 className='text-[#151875] font-bold font-josefin text-2xl pb-4'>Categories</h2>
                 <div className='grid grid-cols-2'>
                     {aCategory.map((cat)=>(
                       <div
-                        className='text-[18px] text-[#3F509E] font-bold font-josefin py-2 pl-3 hover:bg-[#F939BF] hover:text-white hover:rounded-[5px]'
+                        className='text-[18px] inline-block cursor-pointer text-[#3F509E] font-bold font-josefin py-2 pl-3 hover:bg-[#F939BF] hover:text-white hover:rounded-[5px]'
                       >
                         {cat.name} ({cat.count})
                       </div>

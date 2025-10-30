@@ -86,7 +86,7 @@ const TopCategories = () => {
                 </div>
               </div>
               <div className='text-center'>
-                <h4 className='text-[#151875] text-[16px] font-semibold font-lato pb-2 pt-4'>{item.name}</h4>
+                <h4 className='text-[#151875] text-[12px] sm:text-[16px] font-semibold font-lato pb-2 pt-4'>{item.name}</h4>
                 <h5 className='text-[#151875] text-[14px] font-semibold font-lato pb-4'>${item.price}</h5>
               </div>
             </div>

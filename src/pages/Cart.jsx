@@ -98,12 +98,12 @@ const Cart = () => {
               {data.length > 0 && (
                 <div className='flex justify-between items-center pt-8'>
                   <div>
-                      <Link to={"/products"} className='text-[16px] font-semibold font-josefin bg-[#FB2E86] rounded-[5px] px-8 py-2 text-white cursor-pointer inline-block'>
+                      <Link to={"/products"} className='text-[12px] sm:text-[16px] font-semibold font-josefin bg-[#FB2E86] rounded-[5px] px-4 py-1 sm:px-8 sm:py-2 text-white cursor-pointer inline-block'>
                       Update Curt
                     </Link>
                   </div>
                   <div>
-                      <button onClick={() => dispatch(allRemoceCart())} className='text-[16px] font-semibold font-josefin bg-[#FB2E86] rounded-[5px] px-8 py-2 text-white cursor-pointer'>
+                      <button onClick={() => dispatch(allRemoceCart())} className='text-[12px] sm:text-[16px] font-semibold font-josefin bg-[#FB2E86] rounded-[5px] px-4 py-1 sm:px-8 sm:py-2 text-white cursor-pointer'>
                       Clear Curt
                       </button>
                   </div>

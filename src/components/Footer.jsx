@@ -12,14 +12,18 @@ const Footer = () => {
     setShowCategory(cateShow)
   },[data])
 
+  let handleCateF = (item)=>{
+    console.log("ami", item)
+  }
+
   return (
   <>
-    <footer className='hidden md:block bg-[#EEEFFB] py-[80px]'>
+    <footer className='bg-[#EEEFFB] py-[80px]'>
       <Container>
-        <div className='flex justify-between'>
-          <div className='w-[29%] lg:w-[28%]'>
+        <div className='md:flex justify-between'>
+          <div className='w-full md:w-[29%] lg:w-[28%] pb-8 md:pb-0'>
             <img src={logo} alt="ff" />
-            <div className='flex items-center pt-8 w-[90%] lg:w-full'>
+            <div className='flex items-center pt-8 w-[65%] sm:w-[40%] md:w-full lg:w-full'>
               <div className='bg-[#fff] rounded-l-[5px] w-[70%]'>
                 <input type="search"
                   placeholder='Enter Email Address'
@@ -32,11 +36,11 @@ const Footer = () => {
             <p className='text-[#8A8FB9] font-josefin pt-6 pb-2'>Contact Info</p>
             <p className='text-[#8A8FB9] font-josefin pb-2 text-[14px] lg:text-[16px]'>17 Princess Road, <br /> London, Greater London NW1 8JR, UK</p>
           </div>
-          <div className='w-[28%] lg:w-[10%]'>
+          <div className='w-full md:w-[10%] lg:w-[10%]  pb-8 md:pb-0'>
             <h2 className='text-black text-lg lg:text-2xl font-josefin font-bold pb-6'>Catagories</h2>
             <ul>
                 {showCategory.map((item) => (
-                  <li className='pb-2'>
+                  <li onClick={()=>handleCateF(item)} className='pb-2'>
                     <Link
                       className='text-sm lg:text-[15px] text-[#8A8FB9] font-lato font-semibold pb-16 hover:underline hover:text-indigo-950 capitalize'>
                        {item}
@@ -45,7 +49,7 @@ const Footer = () => {
                 ))}
             </ul>
           </div>
-          <div className='w-[22%] lg:w-[16%]'>
+          <div className='w-full md:w-[18%] lg:w-[16%]  pb-8 md:pb-0'>
             <h2 className='text-black text-lg lg:text-2xl font-josefin font-bold pb-6'>Customer Care</h2>
             <ul>
               <li className='pb-2'>
@@ -80,7 +84,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className='w-[17%] lg:w-[20%]'>
+          <div className='w-full md:w-[17%] lg:w-[20%]'>
             <h2 className='text-black text-lg lg:text-2xl font-josefin font-bold pb-6'>Pages</h2>
             <ul>
               <li className='pb-2'>

@@ -15,7 +15,7 @@ const LeatestBlog = () => {
     <section className='pb-16'>
       <Container>
         <div>
-          <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-8 pt-12 text-center'>Leatest Blog</h2>
+          <h2 className='text-[#151875] text-[35px] font-bold font-josefin pb-8 pt-0 sm:pt-12 text-center'>Leatest Blog</h2>
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4'>
             <div className=''>
               <div>

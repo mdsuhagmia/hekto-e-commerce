@@ -29,7 +29,7 @@ const TrendingProducts = () => {
       return (
         <div
           onClick={onClick}
-          className='absolute top-[50%] right-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-md sm:text-xl lg:text-2xl rounded-[5px] z-[9999] cursor-pointer'>
+          className='absolute top-[50%] right-4 translate-y-[-50%] bg-blue-500 text-white p-1 text-md sm:text-xl lg:text-2xl rounded-[5px] z-[999] cursor-pointer'>
             <MdArrowForwardIos />
         </div>
       );
