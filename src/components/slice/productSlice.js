@@ -19,16 +19,6 @@ export const productSlice = createSlice({
       }
     },
 
-    addToWishlist: (state, action)=>{
-      let finddWish = state.wishlist.findIndex(
-    (item) => item.id === action.payload.id
-  );
-  if (finddWish === -1) {
-    state.wishlist.push(action.payload);
-    localStorage.setItem("wishlistStores", JSON.stringify(state.wishlist));
-  }
-    },
-
     productRemove: (state, action)=>{
       state.cartItem.splice(action.payload, 1)
       localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
@@ -50,10 +40,32 @@ export const productSlice = createSlice({
       state.cartItem = []
       localStorage.setItem("cartStores", JSON.stringify(state.cartItem))
     },
+
+    addToWishlist: (state, action)=>{
+      let finddWish = state.wishlist.findIndex(
+    (item) => item.id === action.payload.id
+  );
+  if (finddWish === -1) {
+    state.wishlist.push(action.payload);
+    localStorage.setItem("wishlistStores", JSON.stringify(state.wishlist));
+  }
+    },
+
+    removeWishList: (state, action)=>{
+      state.wishlist.splice(action.payload, 1)
+      localStorage.setItem("wishlistStores", JSON.stringify(state.wishlist))
+    },
+
+    allWishlistRemove: (state)=>{
+      state.wishlist = []
+      localStorage.setItem("wishlistStores", JSON.stringify(state.wishlist))
+    },
+
+
   },
 })
 
 
-export const { addToCart, productRemove, increment, decrement, allRemoceCart, addToWishlist } = productSlice.actions
+export const { addToCart, productRemove, increment, decrement, allRemoceCart, addToWishlist, removeWishList, allWishlistRemove } = productSlice.actions
 
 export default productSlice.reducer

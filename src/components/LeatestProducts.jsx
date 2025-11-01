@@ -5,7 +5,7 @@ import { apiData } from './ContextApi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { addToCart } from './slice/productSlice';
+import { addToCart, addToWishlist } from './slice/productSlice';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
@@ -43,6 +43,11 @@ const LeatestProducts = () => {
 
     },[data])
 
+    let handleWish = (item)=>{
+    dispatch(addToWishlist(item))
+    toast.success("Added to Wishlist successfully!")
+  }
+
   return (
     <section className='pb-6'>
       <Container>
@@ -75,7 +80,7 @@ const LeatestProducts = () => {
                       </Link>
                       <div className='absolute left-4 bottom-8 opacity-0 group-hover:opacity-100'>
                         <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                        <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-4'><FaRegHeart onClick={()=>handleWish(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
@@ -100,7 +105,7 @@ const LeatestProducts = () => {
                       </Link>
                       <div className='absolute left-4 bottom-8 opacity-0 group-hover:opacity-100'>
                         <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                        <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-4'><FaRegHeart onClick={()=>handleWish(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
@@ -125,7 +130,7 @@ const LeatestProducts = () => {
                       </Link>
                       <div className='absolute left-4 bottom-8 opacity-0 group-hover:opacity-100'>
                         <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                        <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-4'><FaRegHeart onClick={()=>handleWish(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
@@ -150,7 +155,7 @@ const LeatestProducts = () => {
                       </Link>
                       <div className='absolute left-4 bottom-8 opacity-0 group-hover:opacity-100'>
                         <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                        <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-4'><FaRegHeart onClick={()=>handleWish(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>

@@ -7,7 +7,7 @@ import Slider from 'react-slick'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { apiData } from './ContextApi'
 import { useDispatch } from 'react-redux'
-import { addToCart } from './slice/productSlice'
+import { addToCart, addToWishlist } from './slice/productSlice'
 import { toast } from 'react-toastify'
 
 const FeaturedProducts = () => {
@@ -79,6 +79,11 @@ const FeaturedProducts = () => {
     toast.success("Added to cart successfully!")
   }
 
+  let handleWish = (item)=>{
+    dispatch(addToWishlist(item))
+    toast.success("Added to Wishlist successfully!")
+  }
+
   return (
     <section className='bg-white py-16'>
       <Container>
@@ -96,7 +101,7 @@ const FeaturedProducts = () => {
                 <div className='flex gap-x-4 absolute top-2 left-8 opacity-0 group-hover:opacity-100'>
                   <div><AiOutlineShoppingCart onClick={()=>handleCartAdd(item)} className='text-blue-500 cursor-pointer hover:text-blue-900 text-[24px]' /></div>
                   <div>
-                    <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[20px]' />
+                    <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[20px]' />
                   </div>
                   <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[21px]' /></div>
                 </div>

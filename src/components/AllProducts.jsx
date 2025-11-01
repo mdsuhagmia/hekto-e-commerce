@@ -146,7 +146,8 @@ let handlePriceChange = (e) => {
           next={next}
           prev={prev}
           currentPage={currentPage}
-          showFilter={showFilter}/>
+          showFilter={showFilter}
+          lastPage={lastPage}/>
         <div className='pt-16'>
           <img src={jj} alt="" className='w-full bg-cover' />
         </div>

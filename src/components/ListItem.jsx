@@ -3,7 +3,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { addToCart } from './slice/productSlice'
+import { addToCart, addToWishlist } from './slice/productSlice'
 import { toast } from 'react-toastify'
 
 const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
@@ -41,6 +41,11 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
     toast.success("Added to cart successfully!")
   }
 
+  let handleWish = (item)=>{
+      dispatch(addToWishlist(item))
+      toast.success("Added to Wishlist successfully!")
+    }
+
   return (
     <div>
       <div>
@@ -60,7 +65,7 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                         className='text-blue-500 cursor-pointer text-md' />
                       </div>
                       <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                        <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
+                        <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                       </div>
                       <div className='bg-white p-2 rounded-full hover:bg-[#ffffffc2]'>
                         <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
@@ -83,7 +88,7 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                         className='text-blue-500 cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                       </div>
                       <div className=''>
-                        <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
+                        <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                       </div>
                       <div className=''>
                         <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
@@ -115,7 +120,7 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                     className='text-blue-500 cursor-pointer text-md' />
                   </div>
                   <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                    <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
+                    <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                   </div>
                   <div className='bg-white p-2 rounded-full hover:bg-[#ffffffc2]'>
                     <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
@@ -139,7 +144,7 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                     className='text-blue-500 cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                   </div>
                   <div className=''>
-                    <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
+                    <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                   </div>
                   <div className=''>
                     <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />

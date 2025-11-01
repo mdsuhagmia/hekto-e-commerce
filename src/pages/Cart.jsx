@@ -222,7 +222,7 @@ const Cart = () => {
                           <img src={item.image_path} alt="" className='rounded-t-[5px]' />
                         </Link>
                         <div className='absolute -left-15 group-hover:left-2 bottom-8 opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-500'>
-                          <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item) (window.scrollTo({top: 0}))} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                          <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item) (window.scrollTo({top: 0, behavior: 'smooth'}))} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                           <div className='pb-4'><FaRegHeart className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                           <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         </div>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
-import { addToCart } from './slice/productSlice'
+import { addToCart, addToWishlist } from './slice/productSlice'
 import { toast } from 'react-toastify'
 
 const TrendingProducts = () => {
@@ -74,6 +74,11 @@ const TrendingProducts = () => {
       toast.success("Added to cart successfully!")
     }
 
+    let handleWish = (item)=>{
+    dispatch(addToWishlist(item))
+    toast.success("Added to Wishlist successfully!")
+  }
+
   return (
     <section className='pb-16'>
       <Container>
@@ -90,7 +95,7 @@ const TrendingProducts = () => {
                       <div onClick={()=>handleCart(item)}>
                         <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-2xl' />
                       </div>
-                      <div><FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' /></div>
+                      <div><FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' /></div>
                       <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' /></div>
                     </div>
                   </div>

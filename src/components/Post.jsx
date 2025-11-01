@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { addToCart } from './slice/productSlice'
+import { addToCart, addToWishlist } from './slice/productSlice'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify';
 
@@ -33,6 +33,11 @@ const Post = ({allPage, showFilter}) => {
     toast.success("Added to cart successfully!")
   }
 
+  let handleWish = (item)=>{
+    dispatch(addToWishlist(item))
+    toast.success("Added to Wishlist successfully!")
+  }
+
   return (
     <div className=''>
       {cateFilterShow.length > 0 ? <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
@@ -48,7 +53,7 @@ const Post = ({allPage, showFilter}) => {
                     <AiOutlineShoppingCart onClick={()=>handleCart(item)} className='text-blue-500 cursor-pointer text-md' />
                   </div>
                   <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                    <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
+                    <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                   </div>
                   <div className='bg-white p-2 rounded-full hover:bg-[#ffffffc2]'>
                     <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
@@ -89,7 +94,7 @@ const Post = ({allPage, showFilter}) => {
                       <AiOutlineShoppingCart className='text-blue-500 cursor-pointer text-md' onClick={()=>handleCart(item)} />
                     </div>
                     <div className='bg-white mb-2 p-2 rounded-full hover:bg-[#ffffffc2]'>
-                      <FaRegHeart className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
+                      <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                     </div>
                     <div className='bg-white p-2 rounded-full hover:bg-[#ffffffc2]'>
                       <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
