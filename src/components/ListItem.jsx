@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addToCart, addToWishlist } from './slice/productSlice'
 import { toast } from 'react-toastify'
+import { RiCloseLargeFill } from 'react-icons/ri'
 
 const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
 
@@ -41,10 +42,28 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
     toast.success("Added to cart successfully!")
   }
 
-  let handleWish = (item)=>{
-      dispatch(addToWishlist(item))
-      toast.success("Added to Wishlist successfully!")
+  let handleWish = (item) => {
+    dispatch(addToWishlist(item))
+    toast.success("Added to Wishlist successfully!")
+  }
+
+  let [imageView, setImageView] = useState(false)
+  let handleImageView = (item) => {
+    setImageView(item.image_path)
+  }
+
+  let ImageRef = useRef()
+  useEffect(() => {
+    let handleClickOutside = (e) => {
+      if (imageView && !ImageRef.current.contains(e.target)) {
+        setImageView(false)
+      }
     }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [imageView])
 
   return (
     <div>
@@ -68,7 +87,7 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                         <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                       </div>
                       <div className='bg-white p-2 rounded-full hover:bg-[#ffffffc2]'>
-                        <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
+                        <FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                       </div>
                     </div>
                   </div>
@@ -91,7 +110,7 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                         <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                       </div>
                       <div className=''>
-                        <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
+                        <FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                       </div>
                     </div>
                   </div>
@@ -123,7 +142,7 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                     <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                   </div>
                   <div className='bg-white p-2 rounded-full hover:bg-[#ffffffc2]'>
-                    <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
+                    <FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md' />
                   </div>
                 </div>
               </div>
@@ -147,7 +166,7 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
                     <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                   </div>
                   <div className=''>
-                    <FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
+                    <FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-md sm:text-2xl' />
                   </div>
                 </div>
               </div>
@@ -155,6 +174,19 @@ const ListItem = ({allPage, showFilter, data, setShowFilter}) => {
           </div>
         ))}
       </div>
+      {imageView && (
+          <div ref={ImageRef} className='fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[99999]'>
+            <div className='relative'>
+              <img src={imageView} className='w-full' alt="" />
+              <div className='absolute top-10 right-6'>
+                <RiCloseLargeFill
+                  onClick={() => setImageView(false)}
+                  className='text-5xl text-red-500 bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 font-extrabold'
+                />
+              </div>
+            </div>
+          </div>
+        )}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from './Container'
 import { apiData } from './ContextApi'
 import Slider from 'react-slick'
@@ -9,6 +9,7 @@ import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { addToCart, addToWishlist } from './slice/productSlice'
 import { toast } from 'react-toastify'
+import { RiCloseLargeFill } from 'react-icons/ri'
 
 const TrendingProducts = () => {
   let produc = useContext(apiData)
@@ -79,6 +80,24 @@ const TrendingProducts = () => {
     toast.success("Added to Wishlist successfully!")
   }
 
+  let [imageView, setImageView] = useState(false)
+    let handleImageView = (item)=>{
+      setImageView(item.image_path)
+    }
+  
+    let ImageRef = useRef()
+    useEffect(()=>{
+      let handleClickOutside = (e)=>{
+        if(imageView && !ImageRef.current.contains(e.target)){
+          setImageView(false)
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside)
+      return()=>{
+        document.removeEventListener("mousedown", handleClickOutside)
+      }
+    },[imageView])
+
   return (
     <section className='pb-16'>
       <Container>
@@ -96,7 +115,7 @@ const TrendingProducts = () => {
                         <AiOutlineShoppingCart className='text-blue-500 cursor-pointer hover:text-blue-900 text-2xl' />
                       </div>
                       <div><FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' /></div>
-                      <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' /></div>
+                      <div><FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-2xl' /></div>
                     </div>
                   </div>
                 <div className=''>
@@ -109,6 +128,19 @@ const TrendingProducts = () => {
             </div>
           ))}
         </Slider>
+        {imageView && (
+          <div ref={ImageRef} className='fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[99999]'>
+            <div className='relative'>
+              <img src={imageView} className='w-full' alt="" />
+              <div className='absolute top-10 right-6'>
+                <RiCloseLargeFill
+                  onClick={() => setImageView(false)}
+                  className='text-5xl text-red-500 bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 font-extrabold'
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </Container>
     </section>
   )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from './Container'
 import { Link } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
@@ -9,6 +9,7 @@ import { apiData } from './ContextApi'
 import { useDispatch } from 'react-redux'
 import { addToCart, addToWishlist } from './slice/productSlice'
 import { toast } from 'react-toastify'
+import { RiCloseLargeFill } from 'react-icons/ri'
 
 const FeaturedProducts = () => {
   function SampleNextArrow(props) {
@@ -84,6 +85,24 @@ const FeaturedProducts = () => {
     toast.success("Added to Wishlist successfully!")
   }
 
+  let [imageView, setImageView] = useState(false)
+  let handleImageView = (item)=>{
+    setImageView(item.image_path)
+  }
+
+  let ImageRef = useRef()
+  useEffect(()=>{
+    let handleClickOutside = (e)=>{
+      if(imageView && !ImageRef.current.contains(e.target)){
+        setImageView(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return()=>{
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  },[imageView])
+
   return (
     <section className='bg-white py-16'>
       <Container>
@@ -103,7 +122,7 @@ const FeaturedProducts = () => {
                   <div>
                     <FaRegHeart onClick={()=>handleWish(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[20px]' />
                   </div>
-                  <div><FaSearchPlus className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[21px]' /></div>
+                  <div><FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#1389FF] cursor-pointer hover:text-blue-900 text-[21px]' /></div>
                 </div>
                 <div className='absolute bottom-4'>
                   <Link to={`/products/allproducts/${item.id}`} target='_top'
@@ -126,6 +145,19 @@ const FeaturedProducts = () => {
           </div>
           ))}
         </Slider>
+        {imageView && (
+          <div ref={ImageRef} className='fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[99999]'>
+            <div className='relative'>
+              <img src={imageView} className='w-full' alt="" />
+              <div className='absolute top-10 right-6'>
+                <RiCloseLargeFill
+                  onClick={() => setImageView(false)}
+                  className='text-5xl text-red-500 bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 font-extrabold'
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </Container>
     </section>
   )

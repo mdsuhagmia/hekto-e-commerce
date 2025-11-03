@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Container from '../components/Container'
 import { addToCart, addToWishlist, allWishlistRemove, removeWishList } from '../components/slice/productSlice'
@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
 import { toast } from 'react-toastify'
+import { RiCloseLargeFill } from 'react-icons/ri'
 
 const Wishlist = () => {
   let data = useSelector((state)=>state.product.wishlist)
@@ -30,11 +31,39 @@ const Wishlist = () => {
 
     let navigate = useNavigate()
     let handleCartAdd = (item)=>{
-      dispatch(addToCart(item))
+      dispatch(addToCart({...item, qun: 1}))
       toast.success("Added to cart successfully!")
-      navigate("/cart")
+      setTimeout(() => {
+        navigate("/cart")
+      }, 1000);
     }
 
+    let handleMove = (item)=>{
+      dispatch(removeWishList(item))
+      dispatch(addToCart({...item, qun: 1}))
+      toast.success("Wishlist to cart successfully!")
+      setTimeout(() => {
+        navigate("/cart")
+      }, 1000);
+    }
+
+  let [imageView, setImageView] = useState(false)
+  let handleImageView = (item) => {
+    setImageView(item.image_path)
+  }
+
+  let ImageRef = useRef()
+  useEffect(() => {
+    let handleClickOutside = (e) => {
+      if (imageView && !ImageRef.current.contains(e.target)) {
+        setImageView(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [imageView])
 
   return (
     <section className='py-16'>
@@ -45,16 +74,16 @@ const Wishlist = () => {
               <div className='col-span-2'>
                 <img src={item.image_path} alt="" className='w-full rounded-l' />
               </div>
-              <div className='col-span-5'>
+              <div className='col-span-4 sm:col-span-5'>
                 <h2 className='font-bold font-josefin text-[#000] pb-1 sm:pb-2 text-[8px] sm:text-[16px] lg:text-[30px]'>{item.name}</h2>
                 <p className='font-medium font-josefin text-[#000000a6] pb-1 sm:pb-2 text-[8px] sm:text-[14px]'>Finish: {item.finish}</p>
                 <p className='font-medium font-josefin text-[#000000a6] text-[8px] sm:text-[14px]'>Wood Type: {item.wood_type}</p>
               </div>
               <div>
-                <MdDelete onClick={()=>dispatch(removeWishList(index))} className='text-3xl cursor-pointer hover:text-red-500 text-violet-700' />
+                <MdDelete onClick={()=>dispatch(removeWishList(index))} className='text-xl sm:text-3xl cursor-pointer hover:text-red-500 text-violet-700' />
               </div>
-              <div className='col-span-2 pr-6'>
-                <button onClick={()=>dispatch(addToCart(item), dispatch(removeWishList(index)))} className='text-[16px] font-bold font-josefin text-white bg-blue-500 w-full py-2 rounded cursor-pointer hover:bg-blue-400'>
+              <div className='col-span-3 sm:col-span-2 pr-2 sm:pr-6'>
+                <button onClick={()=>handleMove(item)} className='text-[8px] sm:text-[10px] md:text-[16px] font-bold font-josefin text-white bg-blue-500 w-full py-1 sm:py-2 rounded cursor-pointer hover:bg-blue-400'>
                   Move To Cart
                 </button>
               </div>
@@ -68,7 +97,7 @@ const Wishlist = () => {
         </div> : <div>
           <div>
               <div className='text-center pb-16'>
-                <h2 className='text-3xl text-[#262626] font-bold font-dms text-center pb-6'>Your WishList is Empty <ImHeartBroken className='inline-block' /></h2>
+                <h2 className='text-xl sm:text-3xl text-[#262626] font-bold font-dms text-center pb-6'>Your WishList is Empty <ImHeartBroken className='inline-block' /></h2>
                 <div className='text-center'>
                   <Link to={"/products"} className='text-md sm:text-2xl text-[#fff] font-bold font-dms bg-[#262626] py-2 px-6 sm:px-12 rounded-[5px] hover:bg-[#262626a8]'>
                     Continue Shopping
@@ -87,7 +116,7 @@ const Wishlist = () => {
                         <div className='absolute -left-15 group-hover:left-2 bottom-8 opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-500'>
                           <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item) (window.scrollTo({top: 0}))} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                           <div className='pb-4'><FaRegHeart onClick={()=>handleAddWish(item) (window.scrollTo({top: 0, behavior: 'smooth'}))} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                          <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                          <div className='pb-2'><FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         </div>
                       </div>
                       <div className='bg-[#F7F7F7] px-2 sm:flex justify-between items-center py-4'>
@@ -103,6 +132,19 @@ const Wishlist = () => {
               </div>
             </div>
         </div> }
+        {imageView && (
+          <div ref={ImageRef} className='fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[99999]'>
+            <div className='relative'>
+              <img src={imageView} className='w-full' alt="" />
+              <div className='absolute top-10 right-6'>
+                <RiCloseLargeFill
+                  onClick={() => setImageView(false)}
+                  className='text-5xl text-red-500 bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 font-extrabold'
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </Container>
     </section>
   )

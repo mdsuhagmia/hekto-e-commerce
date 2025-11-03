@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from './Container'
 import { initFlowbite } from 'flowbite'
 import { useDispatch } from 'react-redux'
@@ -8,6 +8,7 @@ import { apiData } from './ContextApi'
 import { Link } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { FaRegHeart, FaSearchPlus } from 'react-icons/fa'
+import { RiCloseLargeFill } from 'react-icons/ri'
 
 const DiscountItem = () => {
   useEffect(()=>{
@@ -57,6 +58,24 @@ const DiscountItem = () => {
     toast.success("Added to Wishlist successfully!")
   }
 
+  let [imageView, setImageView] = useState(false)
+    let handleImageView = (item)=>{
+      setImageView(item.image_path)
+    }
+  
+    let ImageRef = useRef()
+    useEffect(()=>{
+      let handleClickOutside = (e)=>{
+        if(imageView && !ImageRef.current.contains(e.target)){
+          setImageView(false)
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside)
+      return()=>{
+        document.removeEventListener("mousedown", handleClickOutside)
+      }
+    },[imageView])
+
   return (
     <section className='pb-6'>
       <Container>
@@ -100,7 +119,7 @@ const DiscountItem = () => {
                       <div className='absolute -left-8 group-hover:left-4 bottom-8 opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-300'>
                         <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         <div className='pb-4'><FaRegHeart onClick={()=>handleWish(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                        <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-2'><FaSearchPlus onClick={()=>handleImageView(item)}  className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
                       <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
@@ -131,7 +150,7 @@ const DiscountItem = () => {
                       <div className='absolute -left-8 group-hover:left-4 bottom-8 opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-300'>
                         <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         <div className='pb-4'><FaRegHeart onClick={()=>handleWish(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                        <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-2'><FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
                       <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
@@ -162,7 +181,7 @@ const DiscountItem = () => {
                       <div className='absolute -left-8 group-hover:left-4 bottom-8 opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-300'>
                         <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         <div className='pb-4'><FaRegHeart onClick={()=>handleWish(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                        <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-2'><FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
                       <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
@@ -193,7 +212,7 @@ const DiscountItem = () => {
                       <div className='absolute -left-8 group-hover:left-4 bottom-8 opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-300'>
                         <div className='pb-4'><AiOutlineShoppingCart onClick={() => handleCartAdd(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[37px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                         <div className='pb-4'><FaRegHeart onClick={()=>handleWish(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
-                        <div className='pb-2'><FaSearchPlus className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
+                        <div className='pb-2'><FaSearchPlus onClick={()=>handleImageView(item)} className='text-[#fff] cursor-pointer hover:text-gray-200 text-[34px] shadow-2xl shadow-black p-1 rounded-full' /></div>
                       </div>
                     </div>
                       <div className='bg-[#F7F7F7] px-2 flex justify-between items-center py-4'>
@@ -207,6 +226,19 @@ const DiscountItem = () => {
             </div>
           </div>
         </div>
+        {imageView && (
+          <div ref={ImageRef} className='fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[99999]'>
+            <div className='relative'>
+              <img src={imageView} className='w-full' alt="" />
+              <div className='absolute top-10 right-6'>
+                <RiCloseLargeFill
+                  onClick={() => setImageView(false)}
+                  className='text-5xl text-red-500 bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 font-extrabold'
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </Container>
     </section>
   )
