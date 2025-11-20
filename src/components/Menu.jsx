@@ -84,12 +84,11 @@ const Menu = () => {
     }
   }, [activeIndex]);
 
-  let handleSearchProduct = () => {
+  let handleSearchClick = () => {
   if (searchFilter.length > 0) {
-    const firstItem = searchFilter[0];
-    navigate(`/products/allproducts/${firstItem.id}`);
-    setSearch("");
+    navigate('/products', { state: { cateData: searchFilter, category: 'Search Results' } });
     setSearchFilter([]);
+    setSearch("");
   }
 };
 
@@ -104,37 +103,37 @@ const Menu = () => {
           <div>
             <ul className='flex gap-x-3 lg:gap-x-6 items-center'>
               <li>
-                <NavLink to={"/"} target='_top'
+                <NavLink to={"/"}
                   className={({isActive})=> `text-[12px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/products"} target='_top'
+                <NavLink to={"/products"}
                   className={({isActive})=> `text-[12px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Products
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/blog"} target='_top'
+                <NavLink to={"/blog"}
                   className={({isActive})=> `text-[12px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Blog
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/aboutus"} target='_top'
+                <NavLink to={"/aboutus"}
                   className={({isActive})=> `text-[12px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     About Us
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/singleblog"} target='_top'
+                <NavLink to={"/singleblog"}
                   className={({isActive})=> `text-[12px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Single Blog
                 </NavLink>
               </li>
               <li>
-                <NavLink to={"/contact"} target='_top'
+                <NavLink to={"/contact"}
                   className={({isActive})=> `text-[12px] lg:text-[16px] font-lato font-medium ${isActive ? "text-red-600" : "text-[#0D0E43]" }`}>
                     Contact
                 </NavLink>
@@ -152,7 +151,7 @@ const Menu = () => {
                   value={search}
                   className='h-[30px] lg:h-[35px] outline-0 px-2 lg:px-4' />
               </div>
-              <div className='bg-[#FB2E86] h-[30px] lg:h-[35px] px-2 rounded-r-[5px] flex items-center cursor-pointer' onClick={handleSearchProduct}>
+              <div className='bg-[#FB2E86] h-[30px] lg:h-[35px] px-2 rounded-r-[5px] flex items-center cursor-pointer' onClick={searchFilter.length > 0 ? handleSearchClick : undefined}>
                 <FiSearch className='text-white text-xl' />
               </div>
             </div>

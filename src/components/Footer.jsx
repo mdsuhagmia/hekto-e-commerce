@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Container from './Container'
 import logo from '../assets/logo.png'
 import { apiData } from './ContextApi'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 const Footer = () => {
   let data = useContext(apiData)
@@ -12,9 +12,21 @@ const Footer = () => {
     setShowCategory(cateShow)
   },[data])
 
-  let handleCateF = (item)=>{
-    console.log("ami", item)
+  let [activeCategory, setActiveCategory] = useState("");
+
+  let navigate = useNavigate()
+  let handleCateF = (citem)=>{
+    setActiveCategory(citem);
+    let cateFil = data.filter((item)=>item.category === citem)
+    navigate("/products", {state: {cateData: cateFil, category: citem}})
   }
+
+  let location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/products") {
+      setActiveCategory("");
+    }
+  }, [location.pathname]);
 
   return (
   <>
@@ -42,7 +54,7 @@ const Footer = () => {
                 {showCategory.map((item) => (
                   <li onClick={()=>handleCateF(item)} className='pb-2'>
                     <Link
-                      className='text-sm lg:text-[15px] text-[#8A8FB9] font-lato font-semibold pb-16 hover:underline hover:text-indigo-950 capitalize'>
+                      className={`text-sm lg:text-[15px] font-lato font-semibold pb-16 hover:underline  capitalize ${activeCategory === item ? "text-red-500" : "text-[#8A8FB9] hover:text-indigo-950"}`}>
                        {item}
                     </Link>
                   </li>
@@ -53,16 +65,16 @@ const Footer = () => {
             <h2 className='text-black text-lg lg:text-2xl font-josefin font-bold pb-6'>Customer Care</h2>
             <ul>
               <li className='pb-2'>
-                <a href="/myaccount" 
+                <Link to="/myaccount" 
                   className='text-sm lg:text-[15px] text-[#8A8FB9] font-lato font-semibold pb-16 hover:underline hover:text-indigo-950'>
                     My Account
-                </a>
+                </Link>
               </li>
               <li className='pb-2'>
-                <a href='#'
+                <Link to="/discount"
                   className='text-sm lg:text-[15px] text-[#8A8FB9] font-lato font-semibold pb-3 hover:underline hover:text-indigo-950'>
                     Discount
-                </a>
+                </Link>
               </li>
               <li className='pb-2'>
                 <a href='#'
@@ -88,19 +100,19 @@ const Footer = () => {
             <h2 className='text-black text-lg lg:text-2xl font-josefin font-bold pb-6'>Pages</h2>
             <ul>
               <li className='pb-2'>
-                <a href='/blog'
-                  className='text-sm lg:text-[15px] text-[#8A8FB9] font-lato font-semibold pb-16 hover:underline hover:text-indigo-950'>
+                <NavLink to={"/blog"}
+                  className={({ isActive }) => `text-sm lg:text-[15px] font-lato font-semibold pb-3 hover:underline hover:text-indigo-950 ${isActive ? "underline text-indigo-950" : "text-[#8A8FB9]"}`}>
                     Blog
-                </a>
+                </NavLink>
               </li>
               <li className='pb-2'>
-                <NavLink to={"/hektodemo"} target='_top'
+                <NavLink to={"/hektodemo"}
                   className={({ isActive }) => `text-sm lg:text-[15px] font-lato font-semibold pb-3 hover:underline hover:text-indigo-950 ${isActive ? "underline text-indigo-950" : "text-[#8A8FB9]"}`}>
                     Hekto Demo
                 </NavLink>
               </li>
               <li className='pb-2'>
-                <NavLink to={"/faq"} target='_top'
+                <NavLink to={"/faq"}
                   className={({ isActive }) => `text-sm lg:text-[15px] font-lato font-semibold pb-3 hover:underline hover:text-indigo-950 ${isActive ? "underline text-indigo-950" : "text-[#8A8FB9]"}`}>
                     FAQ
                 </NavLink>

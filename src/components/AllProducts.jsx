@@ -7,9 +7,20 @@ import Pagination from './Pagination'
 import { apiData } from './ContextApi'
 import ListItem from './ListItem'
 import jj from '../assets/jj.png'
+import { useLocation } from 'react-router-dom'
 
 const AllProducts = () => {
   let data = useContext(apiData)
+  let location = useLocation()
+
+  useEffect(()=>{
+    if(location.state && location.state.cateData){
+      setShowFilter(location.state.cateData)
+      window.scrollTo({top: 0, behavior: 'smooth'})
+    }else{
+      setShowFilter([])
+    }
+  },[location.state])
 
   let [perPage, setPerPage] = useState(12)
   let [currentPage, setCurrentPage] = useState(1)

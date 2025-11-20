@@ -5,6 +5,7 @@ import Footer from '../Footer'
 import { Outlet } from 'react-router-dom'
 import FooterDown from '../FooterDown'
 import { FaAngleDoubleUp } from 'react-icons/fa'
+import ScrollToTop from '../ScrollToTop'
 
 const RootLayout = () => {
   let [showArrow, setShowArrow] = useState(false)
@@ -24,6 +25,7 @@ const RootLayout = () => {
   }
   return (
     <div>
+      <ScrollToTop/>
       <Header/>
       <Menu/>
       <Outlet/>
